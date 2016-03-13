@@ -48,7 +48,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Kelas</span>
+          <span class="mdl-layout-title">Pemilihan Calon Asisten Mahasiswa</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -93,42 +93,76 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid demo-content">
-          
-          
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">Updates</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                Non dolore elit adipisicing ea reprehenderit consectetur culpa.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
-              </div>
-            </div>
-            <div class="demo-separator mdl-cell--1-col"></div>
-          </div>
-          
-                    <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">Updates</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                Non dolore elit adipisicing ea reprehenderit consectetur culpa.
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
-              </div>
-            </div>
-            <div class="demo-separator mdl-cell--1-col"></div>
-          </div>
+      	<div class="mdl-grid demo-content">
+        	<span class="mdl-layout-title">MATKUL</span>
+        </div>
+        <div class="mdl-grid">
+          <table class="mdl-data-table mdl-js-data-table">
+              <thead>
+                <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Name</th>
+                  <th class="mdl-data-table__cell--non-numeric">Nickname</th>
+                  <th>Age</th>
+                  <th class="mdl-data-table__cell--non-numeric">Living?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
+                  <td class="mdl-data-table__cell--non-numeric">The smart one</td>
+                  <td>40</td>
+                  <td class="mdl-data-table__cell--non-numeric">No</td>
+                </tr>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">Paul McCartney</td>
+                  <td class="mdl-data-table__cell--non-numeric">The cute one</td>
+                  <td>73</td>
+                  <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                </tr>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">George Harrison</td>
+                  <td class="mdl-data-table__cell--non-numeric">The shy one</td>
+                  <td>58</td>
+                  <td class="mdl-data-table__cell--non-numeric">No</td>
+                </tr>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">Ringo Starr</td>
+                  <td class="mdl-data-table__cell--non-numeric">The funny one</td>
+                  <td>74</td>
+                  <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                </tr>
+              </tbody>
+            </table>
           
         </div>
+        <div class="mdl-grid demo-content">
+        	<span class="mdl-layout-title">CLOSEREG</span>
+        </div>
+        <form action="#">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Text...</label>
+              </div>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Text...</label>
+              </div>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                  Button
+                </button>          
+			</div>
+        </div>
+       
+        
       </main>
     </div>
+      <a href="https://github.com/google/material-design-lite/blob/master/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">SIMPAN</a>
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
   </body>
 </html>

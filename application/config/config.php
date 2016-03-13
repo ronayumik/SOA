@@ -60,6 +60,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | http://codeigniter.com/user_guide/general/urls.html
 */
+
 $config['url_suffix'] = '';
 
 /*
@@ -156,6 +157,7 @@ $config['composer_autoload'] = FALSE;
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
+
 /*
 |--------------------------------------------------------------------------
 | Enable Query Strings
@@ -192,6 +194,8 @@ $config['directory_trigger'] = 'd';
 | Error Logging Threshold
 |--------------------------------------------------------------------------
 |
+| If you have enabled error logging, you can set an error threshold to
+| determine what gets logged. Threshold options are:
 | You can enable error logging by setting a threshold over zero. The
 | threshold determines what gets logged. Threshold options are:
 |
@@ -286,15 +290,8 @@ $config['cache_path'] = '';
 | Cache Include Query String
 |--------------------------------------------------------------------------
 |
-| Whether to take the URL query string into consideration when generating
-| output cache files. Valid options are:
-|
-|	FALSE      = Disabled
-|	TRUE       = Enabled, take all query parameters into account.
-|	             Please be aware that this may result in numerous cache
-|	             files generated for the same page over and over again.
-|	array('q') = Enabled, but only take into account the specified list
-|	             of query parameters.
+| Set this to TRUE if you want to use different cache files depending on the
+| URL query string.  Please be aware this might result in numerous cache files.
 |
 */
 $config['cache_query_string'] = FALSE;
@@ -332,7 +329,7 @@ $config['encryption_key'] = '';
 |
 | 'sess_save_path'
 |
-|	The location to save sessions to, driver dependent.
+|	The location to save sessions to, driver dependant.
 |
 |	For the 'files' driver, it's a path to a writable directory.
 |	WARNING: Only absolute paths are supported!
@@ -362,7 +359,7 @@ $config['encryption_key'] = '';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 72000;
+$config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
@@ -395,7 +392,7 @@ $config['cookie_httponly'] 	= FALSE;
 |--------------------------------------------------------------------------
 |
 | Determines whether to standardize newline characters in input data,
-| meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
+| meaning to replace \r\n, \r, \n occurences with the PHP_EOL value.
 |
 | This is particularly useful for portability between UNIX-based OSes,
 | (usually \n) and Windows (\r\n).
@@ -482,10 +479,9 @@ $config['time_reference'] = 'local';
 | can rewrite the tags on-the-fly, enabling you to utilize that syntax
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
-| Note: You need to have eval() enabled for this to work.
-|
 */
 $config['rewrite_short_tags'] = FALSE;
+
 
 /*
 |--------------------------------------------------------------------------
