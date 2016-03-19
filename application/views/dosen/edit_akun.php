@@ -95,23 +95,46 @@
       <main class="mdl-layout__content mdl-color--grey-100">
         <form action="#">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Text...</label>
+                <label class="mdl-textfield__label" for="sample3">Nama</label>
               </div>
           </div>
-          <div class="mdl-cell mdl-cell--4-col">
+          
+          <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Text...</label>
+                <label class="mdl-textfield__label" for="sample3">Nomor Telepon</label>
               </div>
           </div>
-          <div class="mdl-cell mdl-cell--2-col">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                  Button
-                </button>          
-			</div>
+          
+          <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Email</label>
+              </div>
+          </div>
+        
+        <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Password</label>
+              </div>
+          </div>
+        
+        <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3">
+                <label class="mdl-textfield__label" for="sample3">Retype Passwrod</label>
+              </div>
+          </div>
+          
+          <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="file" id="sample3">
+              </div>
+          </div>
         </div>
        
         

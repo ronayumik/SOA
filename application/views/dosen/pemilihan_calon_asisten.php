@@ -100,36 +100,36 @@
           <table class="mdl-data-table mdl-js-data-table">
               <thead>
                 <tr>
-                  <th class="mdl-data-table__cell--non-numeric">Name</th>
-                  <th class="mdl-data-table__cell--non-numeric">Nickname</th>
-                  <th>Age</th>
-                  <th class="mdl-data-table__cell--non-numeric">Living?</th>
+                  <th class="mdl-data-table__cell--non-numeric">No</th>
+                  <th class="mdl-data-table__cell--non-numeric">NRP</th>
+                  <th class="mdl-data-table__cell--non-numeric">Nama</th>
+                  <th class="mdl-data-table__cell--non-numeric">Angkatan</th>
+                  <th class="mdl-data-table__cell--non-numeric">Approval</th>
+                </tr>
+                
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="mdl-data-table__cell--non-numeric">John Lennon</td>
-                  <td class="mdl-data-table__cell--non-numeric">The smart one</td>
-                  <td>40</td>
-                  <td class="mdl-data-table__cell--non-numeric">No</td>
+                  <td class="mdl-data-table__cell--non-numeric">1</td>
+                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
+                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
+                  <td class="mdl-data-table__cell--non-numeric">2013</td>
+                  <td class="mdl-data-table__cell--non-numeric">check</td>
                 </tr>
                 <tr>
-                  <td class="mdl-data-table__cell--non-numeric">Paul McCartney</td>
-                  <td class="mdl-data-table__cell--non-numeric">The cute one</td>
-                  <td>73</td>
-                  <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                  <td class="mdl-data-table__cell--non-numeric">2</td>
+                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
+                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
+                  <td class="mdl-data-table__cell--non-numeric">2013</td>
+                  <td class="mdl-data-table__cell--non-numeric">check</td>
                 </tr>
                 <tr>
-                  <td class="mdl-data-table__cell--non-numeric">George Harrison</td>
-                  <td class="mdl-data-table__cell--non-numeric">The shy one</td>
-                  <td>58</td>
-                  <td class="mdl-data-table__cell--non-numeric">No</td>
-                </tr>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">Ringo Starr</td>
-                  <td class="mdl-data-table__cell--non-numeric">The funny one</td>
-                  <td>74</td>
-                  <td class="mdl-data-table__cell--non-numeric">Yes</td>
+                  <td class="mdl-data-table__cell--non-numeric">3</td>
+                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
+                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
+                  <td class="mdl-data-table__cell--non-numeric">2013</td>
+                  <td class="mdl-data-table__cell--non-numeric">check</td>
                 </tr>
               </tbody>
             </table>
@@ -138,31 +138,30 @@
         <div class="mdl-grid demo-content">
         	<span class="mdl-layout-title">CLOSEREG</span>
         </div>
+      <main class="mdl-layout__content mdl-color--grey-100">
         <form action="#">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Text...</label>
+                <label class="mdl-textfield__label" for="sample3">NRP</label>
               </div>
           </div>
-          <div class="mdl-cell mdl-cell--4-col">
+          
+          <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Text...</label>
+                <label class="mdl-textfield__label" for="sample3">Nama</label>
               </div>
           </div>
-          <div class="mdl-cell mdl-cell--2-col">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                  Button
-                </button>          
-			</div>
+          <div class="mdl-cell mdl-cell--12-col">
+           <a href="" target="_blank" class="mdl-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">APPROVE</a>
+           </div>
         </div>
        
         
       </main>
     </div>
-      <a href="https://github.com/google/material-design-lite/blob/master/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">SIMPAN</a>
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
   </body>
 </html>
