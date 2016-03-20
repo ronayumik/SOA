@@ -75,38 +75,32 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <?php echo $navigation;?>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>home</i>Kelas</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/pemilihan_calon_asisten'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>people</i>Calon Asdos</a>
+              <div class="mdl-layout-spacer"></div>
+              <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
+        
+        <?php
+            foreach($kelas as $k)
+            {
+        ?>
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid">
         
           <div class="demo-cards mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-grid mdl-grid--no-spacing">
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
               <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h3 class="mdl-card__title-text">IMK A</h3>
+                <h3 class="mdl-card__title-text"><?php echo "$k->lmk_nama $k->k_kelas";  ?></h3>
               </div>
               <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                <h5>IF-103</h5>
-                <p>Senin, 10.00-12.00<br>Diagnosa</p>
+                <h5><?php echo "$k->k_ruang"; ?></h5>
+                <p><?php echo "$k->k_waktu_hari, $k->k_waktu_jam_mulai - $k->k_waktu_jam_selesai";?><br>Diagnosa</p>
               </div>
             </div>
           </div>
-          
-                    <div class="demo-cards mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h3 class="mdl-card__title-text">IMK A</h3>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-               <h5>IF-103</h5>
-                <p>Senin, 10.00-12.00<br><a>Pilih Asisten</a></p>
-              </div>
-            </div>
-          </div>
-          
+            <?php } ?>
         </div>
       </main>
     </div>

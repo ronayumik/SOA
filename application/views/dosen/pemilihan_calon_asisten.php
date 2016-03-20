@@ -86,10 +86,8 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Kelas</a>
-          <a class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Calon Asdos</a>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>home</i>Kelas</a>
+          <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/pemilihan_calon_asisten'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>people</i>Calon Asdos</a>
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
@@ -103,35 +101,36 @@
                   <th class="mdl-data-table__cell--non-numeric">No</th>
                   <th class="mdl-data-table__cell--non-numeric">NRP</th>
                   <th class="mdl-data-table__cell--non-numeric">Nama</th>
-                  <th class="mdl-data-table__cell--non-numeric">Angkatan</th>
+                  <th class="mdl-data-table__cell--non-numeric">Kelas Mendaftar</th>
+                    <th class="mdl-data-table__cell--non-numeric">IPK</th>
+                    <th class="mdl-data-table__cell--non-numeric">Nilai Mata Kuliah</th>
+                    <th class="mdl-data-table__cell--non-numeric">Transkript</th>
                   <th class="mdl-data-table__cell--non-numeric">Approval</th>
                 </tr>
                 
                 </tr>
               </thead>
+            <?php
+                $i = 1;
+                foreach($calon_asisten as $row)
+                {
+                    
+                
+            ?>
               <tbody>
                 <tr>
-                  <td class="mdl-data-table__cell--non-numeric">1</td>
-                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
-                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
-                  <td class="mdl-data-table__cell--non-numeric">2013</td>
-                  <td class="mdl-data-table__cell--non-numeric">check</td>
+                  <td class="mdl-data-table__cell--non-numeric"><?php echo $i; $i++; ?></td>
+                  <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_nrp_mhs; ?></td>
+                  <td class="mdl-data-table__cell--non-numeric"><?php echo $row->a_nama; ?></td>
+                  <td class="mdl-data-table__cell--non-numeric"><?php echo "$row->lmk_nama $row->k_kelas"; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_ipk; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_nilai_matkul; ?></td>
+                    <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_transkrip; ?></td>
+                  <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_keterangan; ?></td>
                 </tr>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">2</td>
-                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
-                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
-                  <td class="mdl-data-table__cell--non-numeric">2013</td>
-                  <td class="mdl-data-table__cell--non-numeric">check</td>
-                </tr>
-                <tr>
-                  <td class="mdl-data-table__cell--non-numeric">3</td>
-                  <td class="mdl-data-table__cell--non-numeric">5113100090</td>
-                  <td class="mdl-data-table__cell--non-numeric">Didit Sepiyanto</td>
-                  <td class="mdl-data-table__cell--non-numeric">2013</td>
-                  <td class="mdl-data-table__cell--non-numeric">check</td>
-                </tr>
+                
               </tbody>
+            <?php } ?>
             </table>
           
         </div>
