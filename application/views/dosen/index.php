@@ -69,7 +69,7 @@
               <span class="visuallyhidden">LogOut</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Edit Akun</li>
+              <li class="mdl-menu__item"><a href="<?php echo base_url(); ?>dosen/edit_akun">Edit Akun</a></li>
               <li class="mdl-menu__item">Logout</li>
             </ul>
           </div>

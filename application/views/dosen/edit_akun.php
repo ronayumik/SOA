@@ -80,7 +80,7 @@
               <span class="visuallyhidden">LogOut</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Edit Akun</li>
+              <li class="mdl-menu__item"><a href="<?php echo base_url(); ?>dosen/edit_akun">Edit Akun</a></li>
               <li class="mdl-menu__item">Logout</li>
             </ul>
           </div>
@@ -93,33 +93,31 @@
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
+          <?php
+            foreach($dosen as $data)
+            {
+                
+          ?>
         <form action="#">
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Nama</label>
+                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_nama; ?></label>
               </div>
           </div>
           
           <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Nomor Telepon</label>
-              </div>
-          </div>
-          
-          <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Email</label>
+                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_email; ?></label>
               </div>
           </div>
         
         <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Password</label>
+                <label class="mdl-textfield__label" for="sample3"></label>
               </div>
           </div>
         
@@ -130,14 +128,9 @@
               </div>
           </div>
           
-          <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="file" id="sample3">
-              </div>
-          </div>
         </div>
        
-        
+        <?php } ?>
       </main>
     </div>
       <a href="https://github.com/google/material-design-lite/blob/master/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">SIMPAN</a>

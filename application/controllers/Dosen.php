@@ -19,9 +19,17 @@ class Dosen extends CI_Controller {
         $data['calon_asisten']=$this->dosen_m->list_daftar_asisten('333333333333333333');
 		$this->load->view('dosen/pemilihan_calon_asisten', $data);
 	}
+    
+    public function pilih_asisten($kelas, $nrp)
+	{
+        $this->dosen_m->pilih_asisten($kelas, $nrp);
+        $data['calon_asisten']=$this->dosen_m->list_daftar_asisten('333333333333333333');
+		$this->load->view('dosen/pemilihan_calon_asisten', $data);
+	}
 	
 	public function edit_akun()
 	{
-		$this->load->view('dosen/edit_akun');
+        $data['dosen'] = $this->dosen_m->detail_dosen('333333333333333333');
+		$this->load->view('dosen/edit_akun', $data);
 	}
 }

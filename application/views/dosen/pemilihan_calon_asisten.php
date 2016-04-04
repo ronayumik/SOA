@@ -80,7 +80,7 @@
               <span class="visuallyhidden">LogOut</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Edit Akun</li>
+                <li class="mdl-menu__item"><a href="<?php echo base_url(); ?>dosen/edit_akun">Edit Akun</a></li>
               <li class="mdl-menu__item">Logout</li>
             </ul>
           </div>
@@ -126,7 +126,23 @@
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_ipk; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_nilai_matkul; ?></td>
                     <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_transkrip; ?></td>
-                  <td class="mdl-data-table__cell--non-numeric"><?php echo $row->ad_keterangan; ?></td>
+                    
+                    <?php
+                        if($row->ad_keterangan == NULL)
+                        {
+                            echo "<td class='mdl-data-table__cell--non-numeric'><a href='";
+                            echo base_url();
+                            echo "dosen/pilih_asisten/";
+                            echo "$row->ad_id_kelas/$row->ad_nrp_mhs";
+                            echo "'>Pilih</a></td>";
+                        }
+                        else
+                        {
+                            echo "<td class='mdl-data-table__cell--non-numeric'>";
+                            echo $row->ad_keterangan;
+                            echo "</td>";
+                        }
+                    ?>
                 </tr>
                 
               </tbody>

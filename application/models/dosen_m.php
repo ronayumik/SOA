@@ -22,6 +22,20 @@ Class Dosen_m extends CI_Model{
         $data = $query->result();
         return $data;
     }
+    
+    public function pilih_asisten($id_kelas, $nrp)
+    {
+        $query = $this->db->query("update asisten_daftar set ad_keterangan = 'DITERIMA' where ad_id_kelas = '$id_kelas' and ad_nrp_mhs = '$nrp'");
+        //$data = $query->result();
+        //return $data;
+    }
+    
+    public function detail_dosen($id)
+    {
+        $query = $this->db->query("select * from user where u_nip = $id");
+        $data = $query->result();
+        return $data;
+    }
 }
     
 ?>
