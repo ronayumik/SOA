@@ -82,15 +82,16 @@
         </nav>
       </div>
         
-        <?php
-            foreach($kelas as $k)
-            {
-        ?>
+        
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid">
         
-          <div class="demo-cards mdl-cell mdl-cell--3-col mdl-cell--3-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+          <div class="demo-cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--10-col-desktop  mdl-grid ">
+            <?php
+            foreach($kelas as $k)
+            {
+        ?>
+            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell  mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
               <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
                 <h3 class="mdl-card__title-text"><?php echo "$k->lmk_nama $k->k_kelas";  ?></h3>
               </div>
@@ -99,8 +100,9 @@
                 <p><?php echo "$k->k_waktu_hari, $k->k_waktu_jam_mulai - $k->k_waktu_jam_selesai";?><br>Diagnosa</p>
               </div>
             </div>
-          </div>
             <?php } ?>
+          </div>
+            
         </div>
       </main>
     </div>

@@ -38,7 +38,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Mengelola Pengumuman</span>
+          <span class="mdl-layout-title">Mengelola Akun Dosen</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -77,30 +77,31 @@
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
               <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/'>Mengelola Oprec</a>
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/pemilihan_calon_asisten'>Calon Asdos</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/mengelola_akun_dosen'>Akun Dosen</a>
               <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/pemilihan_calon_asisten'>Pengumuman</a>
               <div class="mdl-layout-spacer"></div>
               <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
         
-      <main class="mdl-layout__content mdl-color--grey-100" style="padding:20px">
+      <main class="mdl-layout__content mdl-color--grey-100" >
+        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--10-col-desktop mdl-grid">
                   <?php for($i=0; $i<6; $i++){ ?>
-        <div class="kartu">
-          <div class="mdl-card" style="width:100%; heigth:auto">
-            <div class="mdl-card__title">
-               <h2 class="mdl-card__title-text">Auckland Sky Tower Auckland, New Zealand</h2>
+            <div  class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
+              <div style="background: url('<?php echo base_url();?>assets/images/user2.jpg') center / cover;" class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2  class="mdl-card__title-text" style="color:#000">Didit Sepiyanto</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                sepiyantodidit@gmail.com
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">HAPUS AKUN</a>
+              </div>
             </div>
-            <div class="mdl-card__supporting-text">
-            The Sky Tower is an observation and telecommunications tower located in Auckland,
-            New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
-            in the Southern Hemisphere.<br><BR>
-            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="color:white">Edit Pengumuman</button>
-            </div>
-          </div>
-        </div>
+          
         <br>
         <?php }?>
+        </div>
 
 
          <button type="button" class="mdl-button show-modal">Show Modal</button>

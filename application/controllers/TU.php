@@ -10,7 +10,7 @@ class TU extends CI_Controller {
 	
 	public function mengelola_akun_dosen()
 	{
-        
+        $this->load->view('tu/akun_dosen');
     }
 	public function mengelola_pengumuman()
 	{
