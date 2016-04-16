@@ -14,6 +14,6 @@ class TU extends CI_Controller {
     }
 	public function mengelola_pengumuman()
 	{
-       
+       $this->load->view('tu/pengumuman');
 	}
 }
