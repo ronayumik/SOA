@@ -222,3 +222,43 @@ _:-ms-input-placeholder, :root .demo-graph {
       -ms-flex-align: center;
           align-items: center;
 }
+
+.tg  {
+  border-collapse:collapse;
+  border-spacing:0;
+}
+.tg td{
+  font-size:14px;
+  padding:10px 5px;
+  border: 1px solid #B6B6B6;
+  overflow:hidden;
+  word-break:normal;
+}
+.tg th{
+  font-size:14px;
+  font-weight:normal;
+  padding:10px 5px;
+  border: 1px solid #B6B6B6;
+  overflow:hidden;
+  word-break:normal;
+}
+.tg .tg-nrw1{
+  font-size:10px;
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-s6z2{
+  text-align:center
+}
+.tg .tg-baqh{
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-6nwz{
+  font-size:14px;
+  text-align:center;
+  vertical-align:top
+}
+.tg .tg-yw4l{
+  vertical-align:top
+}
