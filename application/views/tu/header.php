@@ -20,7 +20,6 @@
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="<?php echo base_url();?>assets/images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
-
     <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png">
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
@@ -37,32 +36,15 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Kelas</span>
+          <span class="mdl-layout-title"><?php echo $judul;?></span>
           <div class="mdl-layout-spacer"></div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
-          </ul>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
           <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>didit@dosen.its.ac.id</span>
+            <span>didit@tu.its.ac.id</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -75,37 +57,10 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>home</i>Kelas</a>
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>dosen/pemilihan_calon_asisten'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>people</i>Calon Asdos</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu'>Mengelola Oprek</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/mengelola_akun_dosen'>Akun Dosen</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/mengelola_pengumuman'>Pengumuman</a>
               <div class="mdl-layout-spacer"></div>
               <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
-        
-        
-      <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid">
-        
-          <div class="demo-cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--10-col-desktop  mdl-grid ">
-            <?php
-            foreach($kelas as $k)
-            {
-        ?>
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell  mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
-              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h3 class="mdl-card__title-text"><?php echo "$k->lmk_nama $k->k_kelas";  ?></h3>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                <h5><?php echo "$k->k_ruang"; ?></h5>
-                <p><?php echo "$k->k_waktu_hari, $k->k_waktu_jam_mulai - $k->k_waktu_jam_selesai";?><br>Diagnosa</p>
-              </div>
-            </div>
-            <?php } ?>
-          </div>
-            
-        </div>
-      </main>
-    </div>
-    <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
-  </body>
-</html>
