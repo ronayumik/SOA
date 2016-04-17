@@ -11,7 +11,7 @@ class Dosen extends CI_Controller {
 	public function index()
 	{
 		$data['kelas']=$this->dosen_m->list_kelas_diajar('333333333333333333');
-		$this->load->view('dosen/index',$data);
+		$this->load->view('dosen/index', $data);
 	}
 	
 	public function pemilihan_calon_asisten()
