@@ -164,20 +164,28 @@
                         <div class="mdl-cell mdl-cell--2-col" style="font-size: 25px; line-height: 30px; margin: 0; background: rgba(0,0,0,.1); width: 20%">
                           <?php echo $kelas['k_kelas']; ?>
                         </div>
-                        <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 30px; width: 60%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
+                        <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 30px; width: 80%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
                           <div style="display: table-cell; vertical-align: middle;">
                             <?php echo $kelas['u_nama']; ?>
                           </div>
                         </div>
-                        <div class="mdl-cell mdl-cell--2-col" style="float: right; margin: 0; background: rgba(0,0,0,.1); padding: 7px; width: 20%">
+                        <!-- <div class="mdl-cell mdl-cell--2-col" style="float: right; margin: 0; background: rgba(0,0,0,.1); padding: 7px; width: 20%">
                           <?php echo $kelas['lmk_semester']; ?>
-                        </div>
+                        </div> -->
                         <?php if($kelas['k_nrp_asisten'] != 0) { ?>
-                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 100%; margin: 0; font-size: 16px; border-top: 1px solid rgba(0,0,0,.1)" >
+                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 20%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
                             <div style="display: table-cell; vertical-align: middle;">
+                              <button onclick="add_asisten(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 20px; min-width: 20px; height: 20px" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                <i style="font-size: 15px" class="material-icons">mode_edit</i>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 80%; margin: 0; font-size: 16px; border-top: 1px solid rgba(0,0,0,.1)" >
+                            <div style="font-size: 15px; display: table-cell; vertical-align: middle;">
                               <?php echo $kelas['k_nrp_asisten']; ?>
                             </div>
                           </div>
+                          
                         <?php } else { ?> 
                           <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 100%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
                             <div style="display: table-cell; vertical-align: middle;">
@@ -260,8 +268,8 @@
 
             dialog.querySelector('.close').addEventListener('click', function() {
               dialog.close();
-              $('#nama_mk').remove();
-              $('#nama_kelas').remove();
+              // $('#nama_mk').remove();
+              // $('#nama_kelas').remove();
               $('body').bind("mousewheel", function() {
                 return true;
               });
@@ -269,6 +277,20 @@
 
     </script>
     <script>
+      function submit_asisten(nrp_calon_asisten, id_kelas) {
+        if(nrp_calon_asisten != 0){
+          $.ajax ({
+            type: "POST",
+            url: '<?php echo base_url(); ?>index.php/kaprodi/add_asisten',
+            data: ({nrp: nrp_calon_asisten, id_kelas: id_kelas}),
+            dataType: 'json',
+            success: function() {
+              location.reload();
+            }
+          })
+        }
+        
+      }
       function add_asisten(id_kelas) {
         var dialog = document.querySelector('#list_asisten');
         dialog.showModal();
@@ -289,13 +311,13 @@
                       + nama_dosen_kelas +
                       "</span></div>";
 
-            $('#nama_mk_head').append(isi);
+            $('#nama_mk_head').html(isi);
 
             isi = "<div id='nama_kelas' style='text-align: center; font-size: 20px; display: table-cell;vertical-align: middle;'>"
                   + nama_kelas +
                   "</div>";
 
-            $('#nama_kelas_head').append(isi);
+            $('#nama_kelas_head').html(isi);
             //console.log(data['list_asisten'].length);
             isi = "<div id='content_list_asisten'>";
 
@@ -305,8 +327,17 @@
                   "</td><td>"
                   + data['list_asisten'][i].ad_ipk +
                   "</td><td style='padding: 12px'><button onclick='submit_asisten("
-                  + "id_asisten" +
-                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;''><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
+                  + data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas +
+                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
+            }
+            if(data['list_asisten'].length == 0) {
+               isi += "<tr><td class='mdl-data-table__cell--non-numeric'>"
+                  + "0000000000" +
+                  "</td><td>"
+                  + "0.00" +
+                  "</td><td style='padding: 12px'><button onclick='submit_asisten("
+                  + 0 + "," + 0 +
+                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
             }
                 
             isi += "</div>";
@@ -316,9 +347,7 @@
         });
       }
 
-      function sumbit_asisten(id_asisten, id_kelas) {
-
-      }
+      
     </script>
   </body>
 </html>

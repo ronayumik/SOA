@@ -52,9 +52,6 @@
           <button style="background: #388E3C; color: white" id="tt1" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
             <i class="material-icons">add</i>
           </button>
-          <span class="mdl-tooltip" for="tt1">
-            add new <strong>post</strong>
-          </span>
           <!-- <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item">About</li>
             <li class="mdl-menu__item">Contact</li>

@@ -40,6 +40,11 @@ Class Kaprodi_m extends CI_Model{
         $data = $this->db->query($sql);
         return $data;
     }
+
+    public function add_asisten($nrp, $id_kelas) {
+        $data = $this->db->query("UPDATE kelas set k_nrp_asisten= '$nrp' where k_id_kelas='$id_kelas'");
+        return $data;
+    }
 }
     
 ?>
