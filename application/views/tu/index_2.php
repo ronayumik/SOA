@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mengelola Jadwal</title>
+    <title>TU</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -96,7 +96,7 @@
         <header class="demo-drawer-header">
           <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>ibnu@kaprodi.if.its.ac.id</span>
+            <span>ibnu@tu.if.its.ac.id</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>

@@ -24,6 +24,11 @@
     <script src="<?php echo base_url();?>assets/js/mindmup-editabletable.js"></script>
     <script src="<?php echo base_url();?>assets/js/numeric-input-example.js"></script>
 
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.cyan-light_blue.min.css">
@@ -31,18 +36,20 @@
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">List Oprec Asisten Dosen</span>
+          <span class="mdl-layout-title">Pengelolaan Pengumuman</span>
           <div class="mdl-layout-spacer"></div>
-          <a href="<?php echo base_url(); ?>index.php/tu/new_oprec" style="background: #388E3C; color: white" id="tt1" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+          <button style="background: #388E3C; color: white" id="tt1" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
             <i class="material-icons">add</i>
-          </a>
+          </button>
           <span class="mdl-tooltip" for="tt1">
-            add new <strong>oprec</strong>
+            add new <strong>post</strong>
           </span>
         </div>
       </header>
+
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
           <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
@@ -59,6 +66,7 @@
             </ul>
           </div>
         </header>
+
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
               <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/memilih_oprec'>
                 <i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>home</i>Pengelolaan Oprec Asisten Dosen
@@ -74,37 +82,55 @@
       </div>
         
       <main class="mdl-layout__content mdl-color--grey-100" style="padding:20px">
-        <?php 
-          foreach ($list_oprec->result() as $oprec) {
-        ?>
-          <div class="kartu">
-            <div class="mdl-card" style="width:100%; heigth:auto; min-height: 0px">
-              <div class="mdl-card__title" style="display: block">
-                <div class="mdl-grid" style="padding: 0">
-                  <div class="mdl-cell mdl-cell--8-col" style="margin: 0; display: flex">
-                    <i class="material-icons" style="font-size: 60px; margin-right: 20px; ">bookmark</i>
-                    <div style="font-size: 25px; display: inline-block; vertical-align: middle">Semester <?php echo $oprec->j_semester . " " . $oprec->j_tahun; ?> <br> 
-                      <span style="font-size: 15px; color: rgba(0,0,0,.5)"><?php echo explode(" ", $oprec->j_tgl_oprek_buka)[0]; ?></span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 20px"></div>
-              <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
-                  <a href="<?php echo base_url(); ?>index.php/tu/edit_oprec/<?php echo $oprec->j_id; ?>" style="margin-right: 20px; color: black; float: left; width: 8%; background: #f1f1f1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    Edit
-                  </a>
-                  <a style="color: black; float: left; width: 8%; background: #f1f1f1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    Hapus
-                  </a>
-              </div>
+        <?php for($i=0; $i<6; $i++){ ?>
+        <div class="kartu">
+          <div class="mdl-card" style="width:100%; heigth:auto">
+            <div class="mdl-card__title">
+               <h2 class="mdl-card__title-text">Auckland Sky Tower Auckland, New Zealand</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+            The Sky Tower is an observation and telecommunications tower located in Auckland,
+            New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
+            in the Southern Hemisphere.<br><BR>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="color:white; background: #1976D2"><i style="margin-right: 10px" class="material-icons">mode_edit</i> Edit</button>
+            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="color:white; background: #D32F2F"><i style="margin-right: 10px" class="material-icons">delete</i> Delete</button>
             </div>
           </div>
-        <?php } ?>
+        </div>
         <br>
+        <?php }?>
+
+
+         <button type="button" class="mdl-button show-modal">Show Modal</button>
+          <dialog class="mdl-dialog">
+            <div class="mdl-dialog__content">
+              <p>
+                Allow this site to collect usage data to improve your experience?
+              </p>
+            </div>
+            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+              <button type="button" class="mdl-button">Agree</button>
+              <button type="button" class="mdl-button close">Disagree</button>
+            </div>
+          </dialog>
+          <script>
+            var dialog = document.querySelector('dialog');
+            var showModalButton = document.querySelector('.show-modal');
+            if (! dialog.showModal) {
+              dialogPolyfill.registerDialog(dialog);
+            }
+            showModalButton.addEventListener('click', function() {
+              dialog.showModal();
+            });
+            dialog.querySelector('.close').addEventListener('click', function() {
+              dialog.close();
+            });
+          </script>
       </main>
     </div>
     
     <!-- Colored FAB button -->
+    
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
   </body>
 </html>

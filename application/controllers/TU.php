@@ -50,9 +50,10 @@ class TU extends CI_Controller {
 		$id_mk = $this->input->post('nama_mk');
 		$kelas = $this->input->post('kelas');
 		$id_dosen = $this->input->post('dosen_mk');
+		$id_jadwal = $this->input->post('id_jadwal');
 
 		if($this->tu_m->simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk)) {
-			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			$this->load->view('tu/edit_oprec/'.$id_jadwal);
 		}
 
 	}
@@ -75,7 +76,7 @@ class TU extends CI_Controller {
 		$id_mk 		= $this->input->post('nama_mk');
 
 		if($this->tu_m->tambah_kelas($id_dosen, $kelas, $id_jadwal, $room, $hari, $jam_mulai, $jam_selesai, $id_mk)) {
-			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			$this->edit_oprec($id_jadwal);
 		}
 	}
 
@@ -88,12 +89,28 @@ class TU extends CI_Controller {
 	}
 
 	public function new_oprec() {
-		$this->tu_m->new_oprec();
-		
-		$id_jadwal = $this->tu_m->get_last_id()->result_array();
-		var_dump($id_jadwal[0]['j_id']);
-		//$this->edit_oprec($id_jadwal[0]['max(j_id)']);
+		$this->tu_m->new_id_oprec();
 
+		$id_jadwal = $this->tu_m->get_last_id();
+
+		$this->edit_oprec($id_jadwal->result_array()[0]['j_id']);
+
+	}
+
+	public function update_semester() {
+		$semester = $this->input->post('j_semester');
+		$id_jadwal = $this->input->post('id_jadwal');
+
+		$data = $this->tu_m->update_semester($id_jadwal, $semester);
+		echo json_encode($data);
+	}
+
+	public function update_tahun() {
+		$tahun = $this->input->post('j_tahun');
+		$id_jadwal = $this->input->post('id_jadwal');
+
+		$data = $this->tu_m->update_tahun($id_jadwal, $tahun);
+		echo json_encode($data);
 	}
 
 
@@ -108,8 +125,8 @@ class TU extends CI_Controller {
     }
 	public function mengelola_pengumuman()
 	{
-		$data['judul'] = "Mengelola Pengumuman";
-	   $this->load->view('tu/header',$data);
+		//$data['judul'] = "Mengelola Pengumuman";
+	   //$this->load->view('tu/header',$data);
        $this->load->view('tu/pengumuman');
 	}
 }

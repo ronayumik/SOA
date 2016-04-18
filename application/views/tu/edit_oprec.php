@@ -47,7 +47,32 @@
           </a>
           
           <span class="mdl-layout-title">
-            Semester <?php echo $oprec_terpilih[0]['j_semester'] . " " . $oprec_terpilih[0]['j_tahun'] ?>
+            Semester 
+            <?php 
+              if($oprec_terpilih[0]['j_semester'] != '') {
+                echo $oprec_terpilih[0]['j_semester'] . " ";
+              } else { ?>
+                <div class="mdl-select mdl-js-select">
+                  <select onchange="update_semester('<?php echo $oprec_terpilih[0]['j_id'] ?>')" class="mdl-select__input" id="j_semester" name="j_semester">
+                    <option value='Ganjil'>Ganjil</option>
+                    <option value='Genap'>Genap</option>
+                  </select>
+                  <label class="mdl-select__label" for="j_semester">Ganjil/Genap</label>
+                </div>
+              <?php } 
+                if($oprec_terpilih[0]['j_tahun'] != '') {
+                  echo $oprec_terpilih[0]['j_tahun'];
+                } else { ?>
+                  <div class="mdl-select mdl-js-select">
+                    <select onchange="update_tahun('<?php echo $oprec_terpilih[0]['j_id'] ?>')" class="mdl-select__input" id="j_tahun" name="j_tahun">
+                      <option value='2015/2016'>2015/2016</option>
+                      <option value='2016/2017'>2016/2017</option>
+                      <option value='2017/2018'>2017/2018</option>
+                      <option value='2018/2019'>2018/2019</option>
+                    </select>
+                    <label class="mdl-select__label" for="j_tahun">Tahun ajaran</label>
+                  </div>
+              <?php } ?>
           </span>
 
           
@@ -63,7 +88,7 @@
         <header class="demo-drawer-header">
           <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>ibnu@kaprodi.if.its.ac.id</span>
+            <span>ibnu@tu.if.its.ac.id</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -353,6 +378,36 @@
       </div>
     </dialog>
     <script>
+      function update_semester(id_jadwal) {
+        var j_semester = $('#j_semester').val();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url(); ?>index.php/tu/update_semester',
+          data: ({j_semester: j_semester, id_jadwal: id_jadwal}),
+          dataType: 'json',
+          success: function(data) {
+              if(data) {
+                location.reload();
+              }
+          },
+        });
+      }
+
+      function update_tahun(id_jadwal) {
+        var j_tahun = $('#j_tahun').val();
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url(); ?>index.php/tu/update_tahun',
+          data: ({j_tahun: j_tahun, id_jadwal: id_jadwal}),
+          dataType: 'json',
+          success: function(data) {
+              if(data) {
+                location.reload();
+              }
+          },
+        });
+      }
+
       function hapus_kelas(id_kelas) {
         $.ajax({
           type: "POST",
