@@ -48,6 +48,19 @@ Class Tu_m extends CI_Model{
 
         return $data;
     }
+
+    public function new_oprec() {
+        // echo "1";
+        $sql    = "INSERT INTO jadwal (j_tahun, j_semester, j_tgl_oprek_buka, j_tgl_oprek_tutup) VALUES ('','','','')";
+        $this->db->query($sql);
+        // echo "2";
+        
+    }
+
+    public function get_last_id() {
+        $sql    = "select max(j_id) from jadwal";
+        return $this->db->query($sql);
+    }
 }
     
 ?>
