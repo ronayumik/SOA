@@ -45,6 +45,48 @@ class TU extends CI_Controller {
 	}
 
 
+	public function simpan_kelas() {
+		$id_kelas = $this->input->post('id_kelas');
+		$id_mk = $this->input->post('nama_mk');
+		$kelas = $this->input->post('kelas');
+		$id_dosen = $this->input->post('dosen_mk');
+
+		if($this->tu_m->simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk)) {
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
+
+	}
+
+	public function create_kelas() {
+
+		$data['list_mk']  		= $this->tu_m->list_mk()->result_array();
+		$data['list_dosen'] 	= $this->tu_m->list_dosen()->result_array();
+		echo json_encode($data);
+	}
+
+	public function tambah_kelas() {
+		$id_dosen 	= $this->input->post('dosen_mk');
+		$kelas 		= $this->input->post('kelas');
+		$id_jadwal	= $this->input->post('id_jadwal');
+		$room		= $this->input->post('room');
+		$hari		= $this->input->post('hari');
+		$jam_mulai	= $this->input->post('jam_mulai');
+		$jam_selesai= $this->input->post('jam_selesai');
+		$id_mk 		= $this->input->post('nama_mk');
+
+		if($this->tu_m->tambah_kelas($id_dosen, $kelas, $id_jadwal, $room, $hari, $jam_mulai, $jam_selesai, $id_mk)) {
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function hapus_kelas() {
+		$id_kelas = $this->input->post('id_kelas');
+
+		if($this->tu_m->hapus_kelas($id_kelas)) {
+			echo json_encode(true);
+		}
+	}
+
 
 
 

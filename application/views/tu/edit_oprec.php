@@ -206,7 +206,11 @@
                         if($flag) { ?>
                           <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 120px; width: 100%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
                             <div style="color: #F44336;display: table-cell; vertical-align: middle;">
-                              KOSONG
+                              <!-- Colored FAB button with ripple -->
+                              <button onclick="add_kelas('<?php echo $room[$j] ?>', '<?php echo $hari[$l] ?>', '<?php echo $jam_mulai[$k] ?>', '<?php echo $jam_selesai[$k] ?>', '<?php echo $kelas['k_id_jadwal'] ?>')" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="color: white;background: #4CAF50;font-size: 10px; height: auto; line-height: 0; padding: 0 5px;">
+                                <i class="material-icons" style="">add</i>
+                                <span>Kelas</span>
+                              </button>
                             </div>
                           </div>
                         <?php 
@@ -252,17 +256,12 @@
         </div>
 
       
-        <form action="#">
+        <form id="form_kelas" action="<?php echo base_url(); ?>index.php/tu/simpan_kelas" method="POST">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--10-col">
               <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 <select class="mdl-select__input" id="nama_mk" name="nama_mk">
-                  <!-- <option value=""></option>
-                  <option value="option1">Manajemen Proyek Perangkat Lunak</option>
-                  <option value="option2">option 2</option>
-                  <option value="option3">option 3</option>
-                  <option value="option4">option 4</option>
-                  <option value="option5">option 5</option> -->
+                  <option selected='selected' value='0'>0</option>
                 </select>
                 <label class="mdl-select__label" for="nama_mk">Mata Kuliah</label>
               </div>
@@ -270,7 +269,7 @@
             <div class="mdl-cell mdl-cell--2-col">
               <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 <select class="mdl-select__input" id="kelas" name="kelas">
-
+                  <option selected='selected' value='0'>0</option>
                 </select>
                 <label class="mdl-select__label" for="kelas">Kelas</label>
               </div>
@@ -279,20 +278,162 @@
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-select mdl-js-select mdl-select--floating-label">
                 <select class="mdl-select__input" id="dosen_mk" name="dosen_mk">
-
+                  <option selected='selected' value='0'>0</option>
                 </select>
                 <label class="mdl-select__label" for="dosen_mk">Dosen Mata Kuliah</label>
               </div>
             </div> 
           </div>
+          <div id="hiddem_input">
+          </div>
         </form>
 
       <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button">Simpan</button>
+        <button onclick="simpan_kelas()" type="button" class="mdl-button">Simpan</button>
+        <button type="button" class="mdl-button close">Batal</button>
+      </div>
+    </dialog>
+
+    <dialog id="create_kelas" class="mdl-dialog" style="width: 480px">
+      
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--10-col" style="display: table; height: 40px; width: 80%; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(0,0,0,.1)" >
+            <div style="display: table-cell; vertical-align: middle;">
+              <i style="vertical-align: middle" class="material-icons">event</i>
+              <span id="detail_waktu_add" style="vertical-align: middle">
+                
+              </span>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--10-col" style="display: table; height: 40px; width: 20%; margin: 0; font-size: 25px; border-bottom: 1px solid rgba(0,0,0,.1)" >
+            <div style="display: table-cell; vertical-align: middle;">
+              <span id="ruang_add" style="vertical-align: middle">
+                
+              </span>
+            </div>
+          </div>
+        </div>
+
+      
+        <form id="form_kelas_add" action="<?php echo base_url(); ?>index.php/tu/tambah_kelas" method="POST">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--10-col">
+              <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                <select class="mdl-select__input" id="nama_mk_add" name="nama_mk">
+                  <option selected='selected' value='0'>0</option>
+                </select>
+                <label class="mdl-select__label" for="nama_mk_add">Mata Kuliah</label>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--2-col">
+              <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                <select class="mdl-select__input" id="kelas_add" name="kelas">
+                  <option selected='selected' value='0'>0</option>
+                </select>
+                <label class="mdl-select__label" for="kelas_add">Kelas</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                <select class="mdl-select__input" id="dosen_mk_add" name="dosen_mk">
+                  <option selected='selected' value='0'>0</option>
+                </select>
+                <label class="mdl-select__label" for="dosen_mk_add">Dosen Mata Kuliah</label>
+              </div>
+            </div> 
+          </div>
+          <div id="hiddem_input_add">
+          </div>
+        </form>
+
+      <div class="mdl-dialog__actions">
+        <button onclick="create_kelas()" type="button" class="mdl-button">buat</button>
         <button type="button" class="mdl-button close">Batal</button>
       </div>
     </dialog>
     <script>
+      function hapus_kelas(id_kelas) {
+        $.ajax({
+          type: "POST",
+          url: '<?php echo base_url(); ?>index.php/tu/hapus_kelas',
+          data: ({id_kelas: id_kelas}),
+          dataType: 'json',
+          success: function(data) {
+              if(data) {
+                location.reload();
+              }
+          },
+        });
+      }
+      function simpan_kelas() {
+        $("#form_kelas").submit();
+      }
+
+      function create_kelas() {
+        $("#form_kelas_add").submit();
+      }
+
+      function add_kelas(room, hari, jam_mulai, jam_selesai, id_jadwal) {
+        var dialog = document.querySelector('#create_kelas');
+        dialog.showModal();
+
+        $.ajax({
+          type: "POST",
+          url: '<?php echo base_url(); ?>index.php/tu/create_kelas',
+          dataType: 'json',
+          success: function(data) {
+            var list_mk   = data['list_mk'];
+            var list_dosen = data['list_dosen'];
+            var nama_kelas = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+            var isi = hari + " " + jam_mulai + " - " + jam_selesai;
+            $('#detail_waktu_add').html(isi);
+
+            isi = room;
+            $('#ruang_add').html(isi);
+
+            isi = "";
+            for (var i = list_mk.length - 1; i >= 0; i--) {
+                isi += "<option value='" + list_mk[i].lmk_id + "'>" +list_mk[i].lmk_nama + "</option>";
+            };
+            $('#nama_mk_add').html(isi);
+
+            isi = "";
+            for (var i = 5 - 1; i >= 0; i--) {
+              
+                isi += "<option value='" + nama_kelas[i] + "'>" + nama_kelas[i] + "</option>";
+
+            };
+            $('#kelas_add').html(isi);
+
+            isi = "";
+            for (var i = list_dosen.length - 1; i >= 0; i--) {
+                isi += "<option value='" + list_dosen[i].u_nip + "'>" + list_dosen[i].u_nama + "</option>";
+            };
+
+            $('#dosen_mk_add').html(isi);
+
+            isi = "";
+            isi += "<input type='hidden' name='hari' value='"
+                    + hari +
+                    "'>";
+            isi += "<input type='hidden' name='jam_mulai' value='"
+                    + jam_mulai +
+                    "'>";
+            isi += "<input type='hidden' name='jam_selesai' value='"
+                    + jam_selesai +
+                    "'>";
+            isi += "<input type='hidden' name='room' value='"
+                    + room +
+                    "'>";
+            isi += "<input type='hidden' name='id_jadwal' value='"
+                    + id_jadwal +
+                    "'>";
+            $('#hiddem_input_add').html(isi);
+          },
+        });
+      }
       function edit_kelas(id_kelas) {
         var dialog = document.querySelector('#edit_kelas');
         dialog.showModal();
@@ -307,6 +448,7 @@
               var jam_mulai = data['detail_kelas'][0].k_waktu_jam_mulai;
               var jam_selesai = data['detail_kelas'][0].k_waktu_jam_selesai;
               var ruang_kelas = data['detail_kelas'][0].k_ruang;
+              // var id_jadwal = data['detail_kelas'][0].k_id_jadwal;
               var list_mk   = data['list_mk'];
               var list_dosen = data['list_dosen'];
 
@@ -323,7 +465,7 @@
               for (var i = list_mk.length - 1; i >= 0; i--) {
                 // console.log(list_mk[i].lmk_id);
                 if(list_mk[i].lmk_id == data['detail_kelas'][0].k_matkul) {
-                  isi += "<option value='" + list_mk[i].lmk_id + "' selected='selected'>" +list_mk[i].lmk_nama + "</option>";
+                  isi += "<option selected='selected' value='" + list_mk[i].lmk_id + "'>" +list_mk[i].lmk_nama + "</option>";
                 } else {
                   isi += "<option value='" + list_mk[i].lmk_id + "'>" +list_mk[i].lmk_nama + "</option>";
                 }
@@ -334,7 +476,7 @@
               for (var i = 5 - 1; i >= 0; i--) {
                 // console.log(list_mk[i].lmk_id);
                 if(nama_kelas[i] == data['detail_kelas'][0].k_kelas) {
-                  isi += "<option value='" + nama_kelas[i] + "' selected='selected'>" + nama_kelas[i] + "</option>";
+                  isi += "<option selected='selected' value='" + nama_kelas[i] + "'>" + nama_kelas[i] + "</option>";
                 } else {
                   isi += "<option value='" + nama_kelas[i] + "'>" + nama_kelas[i] + "</option>";
                 }
@@ -343,8 +485,8 @@
 
               isi = "";
               for (var i = list_dosen.length - 1; i >= 0; i--) {
-                if(list_dosen[i].u_nip == data['detail_kelas'][0].k_id_kelas) {
-                  isi += "<option value='" + list_dosen[i].u_nip + "' selected='selected'>" + list_dosen[i].u_nama + "</option>";
+                if(list_dosen[i].u_nip == data['detail_kelas'][0].k_id_dosen) {
+                  isi += "<option selected='selected' value='" + list_dosen[i].u_nip + "'>" + list_dosen[i].u_nama + "</option>";
                 } else {
                   isi += "<option value='" + list_dosen[i].u_nip + "'>" + list_dosen[i].u_nama + "</option>";
                 }
@@ -352,9 +494,15 @@
 
               $('#dosen_mk').html(isi);
 
+              isi = "";
+              isi += "<input type='hidden' name='id_kelas' value='"
+                      + data['detail_kelas'][0].k_id_kelas +
+                      "'>";
+              $('#hiddem_input').html(isi);
           },
         });
       }
+
     </script>
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
     <script>
@@ -522,6 +670,15 @@
 
             dialog.querySelector('.close').addEventListener('click', function() {
               dialog.close();
+              $('body').bind("mousewheel", function() {
+                return true;
+              });
+            });
+
+            dialog2 = document.querySelector('#create_kelas');
+
+            dialog2.querySelector('.close').addEventListener('click', function() {
+              dialog2.close();
               $('body').bind("mousewheel", function() {
                 return true;
               });
