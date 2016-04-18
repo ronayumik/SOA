@@ -44,7 +44,7 @@
         <header class="demo-drawer-header">
           <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>didit@tu.its.ac.id</span>
+            <span>didit@mhs.if.its.ac.id</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -57,9 +57,8 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu'>Mengelola Oprek</a>
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/mengelola_akun_dosen'>Akun Dosen</a>
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/mengelola_pengumuman'>Pengumuman</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/mahasiswa/jadwal'>Jadwal Matakuliah</a>
+              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/mahasiswa/melihat_pengumuman'>Pengumuman</a>
               <div class="mdl-layout-spacer"></div>
               <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
