@@ -46,16 +46,25 @@
             </button>
           </a>
           
-          <span class="mdl-layout-title">
+          <!-- <span class="mdl-layout-title">
             Semester <?php echo $oprec_terpilih[0]['j_semester'] . " " . $oprec_terpilih[0]['j_tahun'] ?>
-          </span>
+          </span> -->
 
           
           <div class="mdl-layout-spacer"></div>
-          <button class="mdl-button mdl-js-button" style="float: right; text-transform: none">
+            <button style="margin-right: 20px" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              <!-- <i class="material-icons" style="">add</i> -->
+              BATAL
+            </button>
+            <button style="color: white" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              <!-- <i class="material-icons" style="">add</i> -->
+              SAVE
+            </button>
+
+          <!-- <button class="mdl-button mdl-js-button" style="float: right; text-transform: none">
                   Due to <?php echo $oprec_terpilih[0]['j_tgl_oprek_tutup']; ?>
                   <i class="material-icons" style="margin-left: 10px">event</i>
-          </button>
+          </button> -->
         </div>
       </header>
 
@@ -207,7 +216,7 @@
                           <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 120px; width: 100%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
                             <div style="color: #F44336;display: table-cell; vertical-align: middle;">
                               <!-- Colored FAB button with ripple -->
-                              <button onclick="add_kelas('<?php echo $room[$j] ?>', '<?php echo $hari[$l] ?>', '<?php echo $jam_mulai[$k] ?>', '<?php echo $jam_selesai[$k] ?>', '<?php echo $oprec_terpilih[0]['j_id'] ?>')" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="color: white;background: #4CAF50;font-size: 10px; height: auto; line-height: 0; padding: 0 5px;">
+                              <button onclick="add_kelas('<?php echo $room[$j] ?>', '<?php echo $hari[$l] ?>', '<?php echo $jam_mulai[$k] ?>', '<?php echo $jam_selesai[$k] ?>', '<?php echo  $oprec_terpilih[0]['j_id'] ?>')" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="color: white;background: #4CAF50;font-size: 10px; height: auto; line-height: 0; padding: 0 5px;">
                                 <i class="material-icons" style="">add</i>
                                 <span>Kelas</span>
                               </button>

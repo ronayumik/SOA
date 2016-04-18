@@ -32,7 +32,7 @@ class TU extends CI_Controller {
 
 		//Info kelas2 
 		$data['list_kelas'] =  $this->kaprodi_m->list_kelas($id_jadwal);
-
+		// var_dump($data['list_kelas']->result_array());
 		$this->load->view('tu/edit_oprec', $data);
 	}
 
@@ -87,7 +87,14 @@ class TU extends CI_Controller {
 		}
 	}
 
+	public function new_oprec() {
+		$this->tu_m->new_oprec();
+		
+		$id_jadwal = $this->tu_m->get_last_id()->result_array();
+		var_dump($id_jadwal[0]['j_id']);
+		//$this->edit_oprec($id_jadwal[0]['max(j_id)']);
 
+	}
 
 
 
