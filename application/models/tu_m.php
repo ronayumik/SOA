@@ -11,7 +11,7 @@ Class Tu_m extends CI_Model{
 	//--untuk hasilkan query
 	public function list_oprec()
     {
-        $data = $this->db->query("select * from jadwal");
+        $data = $this->db->query("select * from jadwal order by j_tgl_oprek_tutup DESC");
         return $data;
     }
 
@@ -48,6 +48,21 @@ Class Tu_m extends CI_Model{
 
         return $data;
     }
+
+    public function hapus_oprec($id_jadwal) {
+        $data = $this->db->query("DELETE FROM jadwal where j_id = '$id_jadwal'");
+        return $data;
+    }
+
+    public function tambah_oprec($semester, $tahun_ajaran, $waktu_buka, $waktu_tutup) {
+        
+        $data = $this->db->query("INSERT INTO jadwal (j_tahun, j_semester, j_tgl_oprek_buka, j_tgl_oprek_tutup) VALUES ('$tahun_ajaran', '$semester','$waktu_buka','$waktu_tutup')");
+        return $data;
+    }
+
+
+
+
 
     public function new_id_oprec() {
         $sql    = "INSERT INTO jadwal (j_tahun, j_semester, j_tgl_oprek_buka, j_tgl_oprek_tutup) VALUES ('','','','')";

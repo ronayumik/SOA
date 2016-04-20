@@ -8,18 +8,22 @@ class TU extends CI_Controller {
         parent::__construct();
         $this->load->model('kaprodi_m');
         $this->load->model('tu_m');
+        $this->load->helper('url');
     }
 
 	public function index()
 	{
-		$this->load->view('tu/index_2');
-		// $data['judul'] = "Mengelola Oprek";
-		// $this->load->view('tu/header',$data);
-		// $this->load->view('tu/index');
+		$data_header['status'] = "";
+		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
+		$this->load->view('tu/header_tu', $data_header);
+		$this->load->view('tu/index');
 	}
 
 	public function memilih_oprec() {
-		$data['list_oprec'] = $this->kaprodi_m->list_oprec();
+		$data_header['status'] = "";
+		$data_header['judul'] = "List Open Recruitment Asisten Dosen";
+		$data['list_oprec'] = $this->tu_m->list_oprec();
+		$this->load->view('tu/header_tu', $data_header);
        	$this->load->view('tu/memilih_oprec', $data);
 	}
 
@@ -32,7 +36,11 @@ class TU extends CI_Controller {
 
 		//Info kelas2 
 		$data['list_kelas'] =  $this->kaprodi_m->list_kelas($id_jadwal);
-		// var_dump($data['list_kelas']->result_array());
+
+		$data_header['status'] = "edit";
+		$data_header['judul'] = "Open Recruitment Asisten Dosen";
+		$data_header['detail_oprec'] = $data['oprec_terpilih'];
+		$this->load->view('tu/header_tu', $data_header);
 		$this->load->view('tu/edit_oprec', $data);
 	}
 
@@ -53,7 +61,7 @@ class TU extends CI_Controller {
 		$id_jadwal = $this->input->post('id_jadwal');
 
 		if($this->tu_m->simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk)) {
-			$this->load->view('tu/edit_oprec/'.$id_jadwal);
+			echo json_encode(true);
 		}
 
 	}
@@ -76,7 +84,8 @@ class TU extends CI_Controller {
 		$id_mk 		= $this->input->post('nama_mk');
 
 		if($this->tu_m->tambah_kelas($id_dosen, $kelas, $id_jadwal, $room, $hari, $jam_mulai, $jam_selesai, $id_mk)) {
-			$this->edit_oprec($id_jadwal);
+			echo json_encode(true);
+			// echo json_encode($this->load->view('tu/tabel_jadwal'));
 		}
 	}
 
@@ -87,6 +96,30 @@ class TU extends CI_Controller {
 			echo json_encode(true);
 		}
 	}
+
+	public function delete_oprec() {
+		$id_oprec = $this->input->post('id_oprec');
+
+		if($this->tu_m->hapus_oprec($id_oprec)) {
+			$data['pesan'] = "menghapus oprec";
+			echo json_encode($data);
+		}
+	}
+
+	public function tambah_oprec() {
+		$semester 		= $this->input->post('semester');
+		$tahun_ajaran 	= $this->input->post('tahun_ajaran');
+		$waktu_buka		= $this->input->post('waktu_buka');
+		$waktu_tutup	= $this->input->post('waktu_tutup');
+
+		if($this->tu_m->tambah_oprec($semester, $tahun_ajaran, $waktu_buka, $waktu_tutup)) {
+			$data['pesan'] = 'berhasil menambah oprec';
+			echo json_encode(true);
+		}
+		
+	}
+
+
 
 	public function new_oprec() {
 		$this->tu_m->new_id_oprec();
