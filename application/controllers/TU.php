@@ -29,7 +29,6 @@ class TU extends CI_Controller {
        	$this->load->view('tu/memilih_oprec', $data);
 	}
 
-
 	public function edit_oprec($id) {
 		$id_jadwal = $id;
 

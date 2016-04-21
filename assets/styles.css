@@ -504,7 +504,3 @@ _:-ms-input-placeholder, :root .demo-graph {
 .mdl-grid:hover > .action {
   visibility: visible;
 }
-
-table thead {
-  position: fixed;
-}

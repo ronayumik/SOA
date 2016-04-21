@@ -251,22 +251,18 @@
     </dialog>
     
     <dialog id="edit_kelas" class="mdl-dialog" style="width: 480px">
-      
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--10-col" style="display: table; height: 40px; width: 80%; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(0,0,0,.1)" >
-            <div style="display: table-cell; vertical-align: middle;">
+        <div class="mdl-grid" style="padding: 0">
+          <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
+            <i style="background: #0288D1" class="material-icons icon-list-oprec">mode_edit</i>
+            <h1 style="font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
               <i style="vertical-align: middle" class="material-icons">event</i>
-              <span id="detail_waktu_edit" style="vertical-align: middle">
-                
+              <span id="detail_waktu_edit" style="vertical-align: middle"> 
               </span>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--10-col" style="display: table; height: 40px; width: 20%; margin: 0; font-size: 25px; border-bottom: 1px solid rgba(0,0,0,.1)" >
-            <div style="display: table-cell; vertical-align: middle;">
-              <span id="ruang_edit" style="vertical-align: middle">
-                
-              </span>
-            </div>
+            </h1>
+            <h1 style="float: right; font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
+              <i id="ruang_edit" style="padding: 0; vertical-align: middle; float: right; margin: 0; background: white; color: black" class="icon-list-oprec">mode_edit</i>
+            </h1>
+            <div class="mdl-menu__item--full-bleed-divider"></div>
           </div>
         </div>
       
@@ -309,8 +305,23 @@
     </dialog>
 
     <dialog id="create_kelas" class="mdl-dialog" style="width: 480px">
-      
-        <div class="mdl-grid">
+        
+        <div class="mdl-grid" style="padding: 0">
+          <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
+            <i style="background: #5E7642;" class="material-icons icon-list-oprec">add</i>
+            <h1 style="font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
+              <i style="vertical-align: middle" class="material-icons">event</i>
+              <span id="detail_waktu_add" style="vertical-align: middle"> 
+              </span>
+            </h1>
+            <h1 style="float: right; font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
+              <i id="ruang_add" style="padding: 0; vertical-align: middle; float: right; margin: 0; background: white; color: black" class="icon-list-oprec">mode_edit</i>
+            </h1>
+            <div class="mdl-menu__item--full-bleed-divider"></div>
+          </div>
+        </div>
+
+        <!-- <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--10-col" style="display: table; height: 40px; width: 80%; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(0,0,0,.1)" >
             <div style="display: table-cell; vertical-align: middle;">
               <i style="vertical-align: middle" class="material-icons">event</i>
@@ -326,7 +337,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
         <form id="form_kelas_add">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--10-col">

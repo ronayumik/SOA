@@ -1,41 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Material Design Lite</title>
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="<?php echo base_url();?>assets/images/android-desktop.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>assets/images/ios-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="<?php echo base_url();?>assets/images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-    <link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png">
-    <script src="<?php echo base_url();?>assets/js/mindmup-editabletable.js"></script>
-    <script src="<?php echo base_url();?>assets/js/numeric-input-example.js"></script>
-    <script src="<?php echo base_url();?>assets/js/jquery-1.12.1.js"></script>
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles.css">
-  </head>
-  <body>
+<!--   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -57,44 +20,14 @@
                   <i class="material-icons" style="margin-left: 10px">event</i>
           </button>
         </div>
-      </header>
-
-      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
-          <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
-          <div class="demo-avatar-dropdown">
-            <span>ibnu@kaprodi.if.its.ac.id</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">LogOut</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <!-- <li class="mdl-menu__item"><a href="<?php echo base_url(); ?>dosen/edit_akun">Edit Akun</a></li> -->
-              <li class="mdl-menu__item">Logout</li>
-            </ul>
-          </div>
-        </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/kaprodi/memilih_oprec'>
-                <i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>home</i>Memilih Asisten Dosen
-              </a>
-              <a class='mdl-navigation__link' >
-                <i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>people</i>Pendaftar Asisten Dosen
-              </a>
-              <a class='mdl-navigation__link' >
-                <i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>people</i>History Asisten Dosen
-              </a>
-              <div class="mdl-layout-spacer"></div>
-        </nav>
-      </div>
+      </header> -->
         
       <main class="mdl-layout__content mdl-color" style="padding:20px">
 
         <table class="tg">
           <tr>
-            <th class="tg-baqh" style="width: 3%">ROOM</th>
-            <th class="tg-baqh" style="width: 6%;">JAM</th>
+            <th class="tg-baqh" style="width: 1%">ROOM</th>
+            <th class="tg-baqh" style="width: 4%;">JAM</th>
             <th class="tg-baqh" style="width: 10%; font-size: 20px; font-weight: 500">SENIN</th>
             <th class="tg-baqh" style="width: 10%; font-size: 20px; font-weight: 500">SELASA</th>
             <th class="tg-baqh" style="width: 10%; font-size: 20px; font-weight: 500">RABU</th>
@@ -146,56 +79,145 @@
 
               <?php for($l= 0; $l<5; $l++) { ?>
                   <td class="tg-6nwz" style="background: white;font-weight: 500; padding: 0">
-                    <div class="mdl-grid" style="padding: 0">
-                      <?php 
+                    <?php 
                         $flag = true;
                         foreach ($list_kelas->result_array() as $kelas) {
+                          $ada_asisten = false;
+                          if($kelas['k_nrp_asisten'] == 0) {
+                            $warna = '#D32F2F';
+                            $warna_muda = '#FFCDD2';
+                          } else {
+                            $ada_asisten = true;
+                            $warna = '#5E7642';
+                            $warna_muda = '#CCFF90';
+                          }
                         if($kelas['k_ruang'] ==  $room[$j] && $kelas['k_waktu_jam_mulai'] == $jam_mulai[$k]) {
                       ?>
                         <?php 
                           if($kelas['k_waktu_hari'] == $hari[$l]) {
                           $flag = false;
                         ?>
-                        <div class="mdl-cell mdl-cell--12-col" style="display: table; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1)">
-                          <div style="font-size: 15px; display: table-cell;vertical-align: middle;">
+                    <div class="mdl-grid mdl-shadow--2dp" style="margin: 5px; padding: 0">
+                        <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
+                          <button id="<?php echo $kelas['k_id_dosen']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">account_circle</i>
+                          </button>
+                          <div class="mdl-tooltip" for="<?php echo $kelas['k_id_dosen']; ?>">
+                            Dosen
+                          </div>
+                          <!-- <ul for="<?php echo $kelas['k_id_kelas']; ?>" class="mdl-menu mdl-js-menu mdl-js-ripple-effect">
+                            <li onclick="edit_kelas(<?php echo $kelas['k_id_kelas']; ?>)" role="button" class="mdl-menu__item">
+                              <i class="material-icons v-middle">mode_edit</i>
+                              <span class="v-middle">Edit</span>
+                            </li>
+                            <li onclick="hapus_kelas(<?php echo $kelas['k_id_kelas']; ?>)" class="mdl-menu__item">
+                              <i class="material-icons v-middle">delete</i>
+                              <span class="v-middle">Delete</span>
+                            </li>
+                          </ul> -->
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col" style="color: white; display: flex; align-items: center; background: <?php echo $warna; ?>;text-align: left; min-height: 30px; width: 80%; margin: 0; font-size: 12px; padding-top: 5px; padding-bottom: 5px" >
+                              <?php echo $kelas['u_nama']; ?>
+                        </div>
+
+                        
+
+                        <!-- <div class="mdl-cell mdl-cell--12-col" style="background: #CCFF90;text-align: center;display: table; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
+                          <button style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i style="color: red" class="material-icons">more_vert</i>
+                          </button>
+                        </div -->
+
+                        <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna_muda; ?>; display: flex; align-items: center; margin: 0; height: 55px; width: 80%;">
+                          <div style="padding-left: 7px; text-align: left; font-size: 15px; display: table-cell;vertical-align: middle;">
                             <?php echo $kelas['lmk_nama']; ?>
                           </div>
                         </div>
-                        <div class="mdl-cell mdl-cell--2-col" style="font-size: 25px; line-height: 30px; margin: 0; background: rgba(0,0,0,.1); width: 20%">
-                          <?php echo $kelas['k_kelas']; ?>
-                        </div>
-                        <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 30px; width: 80%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
-                          <div style="display: table-cell; vertical-align: middle;">
-                            <?php echo $kelas['u_nama']; ?>
+                        <div class="mdl-cell mdl-cell--12-col" style="text-align: center; background: <?php echo $warna_muda; ?>; display: flex; align-items: center;justify-content: center; margin: 0; height: 55px; width: 20%; border-left: 1px solid rgba(0,0,0,.1);">
+                          <div style="font-size: 20px; display: table-cell;vertical-align: middle;">
+                            <?php echo $kelas['k_kelas']; ?>
                           </div>
                         </div>
+
+              <!-- Asisten -->
+                        <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
+                          <?php if($ada_asisten) { ?>
+                          <button id="<?php echo $kelas['k_id_kelas']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">more_vert</i>
+                          </button>
+                          <ul for="<?php echo $kelas['k_id_kelas']; ?>" class="mdl-menu mdl-js-menu mdl-js-ripple-effect">
+                            <li onclick="edit_kelas(<?php echo $kelas['k_id_kelas']; ?>)" role="button" class="mdl-menu__item">
+                              <i class="material-icons v-middle">mode_edit</i>
+                              <span class="v-middle">Edit</span>
+                            </li>
+                            <li onclick="hapus_kelas(<?php echo $kelas['k_id_kelas']; ?>)" class="mdl-menu__item">
+                              <i class="material-icons v-middle">delete</i>
+                              <span class="v-middle">Delete</span>
+                            </li>
+                          </ul>
+                          <?php } else { ?>
+                          <button onclick="add_asisten(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">person_add</i>
+                          </button>
+                          <?php } ?>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col" style="justify-content: flex-end; color: white; display: flex; align-items: center; background: <?php echo $warna; ?>;text-align: right; min-height: 30px; width: 60%; margin: 0; font-size: 12px; padding-top: 5px; padding-bottom: 5px" >
+                              <?php 
+                                if($ada_asisten) { 
+                                  echo $kelas['k_nrp_asisten'];
+                                } else {
+                                  echo "<i>belum ada asisten</i>";
+                                }
+                               ?>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
+                          <button id="<?php echo $kelas['k_nrp_asisten']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <?php if($ada_asisten) { ?>
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">check_box</i>
+                            <?php } else { ?>
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">indeterminate_check_box</i>
+                            <?php } ?>
+                          </button>
+                          <div class="mdl-tooltip" for="<?php echo $kelas['k_nrp_asisten']; ?>">
+                            Asisten
+                          </div>
+                        </div>
+
+                        <!-- <div class="mdl-cell mdl-cell--2-col" style="font-size: 25px; line-height: 30px; margin: 0; background: rgba(0,0,0,.1); width: 20%">
+                          <?php echo $kelas['k_kelas']; ?>
+                        </div> -->
+                        
                         <!-- <div class="mdl-cell mdl-cell--2-col" style="float: right; margin: 0; background: rgba(0,0,0,.1); padding: 7px; width: 20%">
                           <?php echo $kelas['lmk_semester']; ?>
                         </div> -->
-                        <?php if($kelas['k_nrp_asisten'] != 0) { ?>
-                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 20%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
+                        
+                          <!-- <div class="action mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 100%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
                             <div style="display: table-cell; vertical-align: middle;">
-                              <button onclick="add_asisten(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 20px; min-width: 20px; height: 20px" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                              <button onclick="edit_kelas(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 20px; min-width: 20px; height: 20px" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
                                 <i style="font-size: 15px" class="material-icons">mode_edit</i>
                               </button>
                             </div>
-                          </div>
-                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 80%; margin: 0; font-size: 16px; border-top: 1px solid rgba(0,0,0,.1)" >
-                            <div style="font-size: 15px; display: table-cell; vertical-align: middle;">
-                              <?php echo $kelas['k_nrp_asisten']; ?>
+                            <div style="display: table-cell; vertical-align: middle;">
+                              <button onclick="hapus_kelas(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 20px; min-width: 20px; height: 20px" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                                <i style="font-size: 15px" class="material-icons">delete</i>
+                              </button>
                             </div>
-                          </div>
+                          </div> -->
                           
-                        <?php } else { ?> 
-                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 100%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
+                          
+                        
+                          <!-- <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 40px; width: 100%; margin: 0; font-size: 12px; border-top: 1px solid rgba(0,0,0,.1)" >
                             <div style="display: table-cell; vertical-align: middle;">
                               <button onclick="add_asisten(<?php echo $kelas['k_id_kelas']; ?>)" class="list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="color: white;background: #4CAF50;font-size: 10px; height: auto; line-height: 0; padding: 0 5px;">
                                 <i class="material-icons" style="">add</i>
                                 <span>Asisten</span>
                               </button>
                             </div>
-                          </div>
-                        <?php } ?>
+                          </div> -->
+
 
                         <?php } ?>
                       <?php 
@@ -203,16 +225,20 @@
                         }  //foreach
 
                         if($flag) { ?>
-                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 120px; width: 100%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
+                          <div class="mdl-cell mdl-cell--12-col" style="display: table; height: 147px; width: 100%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
                             <div style="color: #F44336;display: table-cell; vertical-align: middle;">
-                              KOSONG
+                              <button style="margin-right: 8px;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                                <i class="material-icons icon-list-oprec no-back" style="color: #5E7642; font-size: 20px; padding: 1px;">warning</i>
+                                <span style="color: #5E7642;line-height: 0; font-size: 15px; vertical-align: middle">kosong</span>
+                              </button>
                             </div>
                           </div>
-                        <?php 
+                        
+                    </div>
+                    <?php 
                         }
                         $flag = true;
                       ?>
-                    </div>
                   </td>
               <?php } ?>
 
@@ -220,8 +246,8 @@
 
            <tr style="border: none;">
               <?php for($l= 0; $l<5; $l++) { ?>
-                  <td class="tg-nrw1" style="border: none;background: #D32F2F;  height: 1px; padding: 0; ">
-                  </td>
+                  <!-- <td class="tg-nrw1" style="border: none;background: white;  height: 1px; padding: 0; ">
+                  </td> -->
               <?php } ?>   
             </tr>
   <?php } ?>
@@ -229,7 +255,6 @@
         </table>
       </main>
     </div>
-    
     <!-- Colored FAB button -->
       <dialog id='list_asisten' class="mdl-dialog" style="width: 480px">
         <h5 class="mdl-dialog__title">
@@ -264,19 +289,24 @@
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
 
     <script>
-            var dialog = document.querySelector('#list_asisten');
+    var dialog = document.querySelector('#list_asisten');
 
-            dialog.querySelector('.close').addEventListener('click', function() {
-              dialog.close();
-              // $('#nama_mk').remove();
-              // $('#nama_kelas').remove();
-              $('body').bind("mousewheel", function() {
-                return true;
-              });
-            });
+    dialog.querySelector('.close').addEventListener('click', function() {
+      dialog.close();
+      // $('#nama_mk').remove();
+      // $('#nama_kelas').remove();
+      $('body').bind("mousewheel", function() {
+        return true;
+      });
+    });
+
+    function load_page(url) {
+        window.location.href = url;
+      }
 
     </script>
     <script>
+
       function submit_asisten(nrp_calon_asisten, id_kelas) {
         if(nrp_calon_asisten != 0){
           $.ajax ({
