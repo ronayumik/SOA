@@ -221,7 +221,7 @@
           <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
             <i class="material-icons icon-list-oprec" style="background: #388E3C">assignment</i>
             <h1 style="display: inline-block; margin: 0; vertical-align: middle">
-              <span class="mdl-layout-title" style="font-size: 30px;">Form mendaftar Asisten</span>
+              <span class="mdl-layout-title" style="font-size: 30px;">Form pendaftaran Asisten</span>
               <span class="mdl-layout-title" style="font-size: 15px; color: rgba(0,0,0,.5)">
                 <i style="vertical-align: middle" class="material-icons">event</i>
                 <span id="detail_waktu" style="vertical-align: middle; margin-right: 15px">RABU 13.00 - 16.00</span>
@@ -264,19 +264,56 @@
               </div>
             </div>
 
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="number" id="nohp">
+                <label class="mdl-textfield__label" for="nohp">No HP</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                <select class="mdl-select__input" id="pengalaman" name="pengalaman">
+                  <option value='Pernah'>Pernah</option>
+                  <option value='Belum pernah'>Belum pernah</option>
+                </select>
+                <label class="mdl-select__label" for="pengalaman">Pengalaman Asisten</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+                <input class="mdl-textfield__input" placeholder="Transkrip" type="text" id="transkrip" readonly/>
+                <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+                  <i class="material-icons">attach_file</i>
+                  <input type="file" id="uploadBtn" required>
+                </div>
+              </div>
+            </div>
+
             <div class="mdl-cell mdl-cell--12-col">
-                Pengalaman Asisten
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="pengalaman">
-                  <input type="checkbox" id="pengalaman" class="mdl-switch__input">
-                  <span class="mdl-switch__label"></span>
-                </label>
+                <h1 style="display: inline-block; margin: 0; vertical-align: middle; font-size: 0">
+                  <span style="color: rgb(63,81,181); font-size: 12px; letter-spacing: 0;">Mata Kuliah Pilihan</span>
+                  <span class="mdl-layout-title" style="font-size: 15px; color: rgba(0,0,0,.7)">
+                    <i style="vertical-align: middle" class="material-icons">book</i>
+                    <span id="nama_mk" style="vertical-align: middle; margin-right: 15px">Manajemen Perancangan Perangkat Lunak (A)</span>
+                  </span>
+                </h1>
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col">
+              <span style="color: rgb(63,81,181); font-size: 12px; letter-spacing: 0;">Syarat dan ketentuan</span>
+              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="syarat" style="margin-left: 5px">
+                <input type="checkbox" id="syarat" class="mdl-checkbox__input">
+                <span class="mdl-checkbox__label">Saya bersedia dengan <a href="">syarat dan ketentuan</a> yang berlaku</span>
+              </label>
             </div>
             
           </div>
         </form>
 
         <div class="mdl-dialog__actions">
-          <button onclick="submit_new_oprec()" style="margin-right: 8px; color: white; float: right; background: #388E3C" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+          <button onclick="submit_form_apply()" style="margin-right: 8px; color: white; float: right; background: #388E3C" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
               <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">assignment_turned_in</i>
               <span style="line-height: 0; font-size: 15px; vertical-align: middle">APPLY</span>
             </button>
@@ -287,7 +324,9 @@
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
 
     <script>
-
+    document.getElementById("uploadBtn").onchange = function () {
+        document.getElementById("transkrip").value = this.files[0].name;
+    };
     function load_page(url) {
         window.location.href = url;
       }
@@ -320,6 +359,8 @@
             isi = room;
             $('#ruang').html(isi);
 
+            isi = data['detail_kelas'][0].lmk_nama + " (" + data['detail_kelas'][0].k_kelas + ")";
+            $('#nama_mk').html(isi);
             // isi = "";
             // for (var i = 5 - 1; i >= 0; i--) {
               
@@ -332,6 +373,183 @@
 
       });
     }
+
+    function submit_form_apply() {
+      $.ajax({
+        type: "POST",
+        url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_form',
+        data:  $("#form_apply").serialize(),
+        dataType: 'json',
+        success: function(data) {
+          if(data) {
+            localStorage['pesan']      = 'yes';
+            localStorage['isi_pesan']  = 'membuat kelas baru';
+            location.reload();
+          }
+        },
+      });
+    }
+
+    </script>
+    <script>
+      function MaterialSelect(element) {
+        'use strict';
+
+        this.element_ = element;
+        this.maxRows = this.Constant_.NO_MAX_ROWS;
+        // Initialize instance.
+        this.init();
+      }
+
+      MaterialSelect.prototype.Constant_ = {
+        NO_MAX_ROWS: -1,
+        MAX_ROWS_ATTRIBUTE: 'maxrows'
+      };
+
+      MaterialSelect.prototype.CssClasses_ = {
+        LABEL: 'mdl-textfield__label',
+        INPUT: 'mdl-select__input',
+        IS_DIRTY: 'is-dirty',
+        IS_FOCUSED: 'is-focused',
+        IS_DISABLED: 'is-disabled',
+        IS_INVALID: 'is-invalid',
+        IS_UPGRADED: 'is-upgraded'
+      };
+
+      MaterialSelect.prototype.onKeyDown_ = function(event) {
+        'use strict';
+
+        var currentRowCount = event.target.value.split('\n').length;
+        if (event.keyCode === 13) {
+          if (currentRowCount >= this.maxRows) {
+            event.preventDefault();
+          }
+        }
+      };
+
+      MaterialSelect.prototype.onFocus_ = function(event) {
+        'use strict';
+
+        this.element_.classList.add(this.CssClasses_.IS_FOCUSED);
+      };
+
+      MaterialSelect.prototype.onBlur_ = function(event) {
+        'use strict';
+
+        this.element_.classList.remove(this.CssClasses_.IS_FOCUSED);
+      };
+
+      MaterialSelect.prototype.updateClasses_ = function() {
+        'use strict';
+        this.checkDisabled();
+        this.checkValidity();
+        this.checkDirty();
+      };
+
+      MaterialSelect.prototype.checkDisabled = function() {
+        'use strict';
+        if (this.input_.disabled) {
+          this.element_.classList.add(this.CssClasses_.IS_DISABLED);
+        } else {
+          this.element_.classList.remove(this.CssClasses_.IS_DISABLED);
+        }
+      };
+
+      MaterialSelect.prototype.checkValidity = function() {
+        'use strict';
+        if (this.input_.validity.valid) {
+          this.element_.classList.remove(this.CssClasses_.IS_INVALID);
+        } else {
+          this.element_.classList.add(this.CssClasses_.IS_INVALID);
+        }
+      };
+
+      MaterialSelect.prototype.checkDirty = function() {
+        'use strict';
+        if (this.input_.value && this.input_.value.length > 0) {
+          this.element_.classList.add(this.CssClasses_.IS_DIRTY);
+        } else {
+          this.element_.classList.remove(this.CssClasses_.IS_DIRTY);
+        }
+      };
+
+      MaterialSelect.prototype.disable = function() {
+        'use strict';
+
+        this.input_.disabled = true;
+        this.updateClasses_();
+      };
+
+      MaterialSelect.prototype.enable = function() {
+        'use strict';
+
+        this.input_.disabled = false;
+        this.updateClasses_();
+      };
+
+      MaterialSelect.prototype.change = function(value) {
+        'use strict';
+
+        if (value) {
+          this.input_.value = value;
+        }
+        this.updateClasses_();
+      };
+
+      MaterialSelect.prototype.init = function() {
+        'use strict';
+
+        if (this.element_) {
+          this.label_ = this.element_.querySelector('.' + this.CssClasses_.LABEL);
+          this.input_ = this.element_.querySelector('.' + this.CssClasses_.INPUT);
+
+          if (this.input_) {
+            if (this.input_.hasAttribute(this.Constant_.MAX_ROWS_ATTRIBUTE)) {
+              this.maxRows = parseInt(this.input_.getAttribute(
+                  this.Constant_.MAX_ROWS_ATTRIBUTE), 10);
+              if (isNaN(this.maxRows)) {
+                this.maxRows = this.Constant_.NO_MAX_ROWS;
+              }
+            }
+
+            this.boundUpdateClassesHandler = this.updateClasses_.bind(this);
+            this.boundFocusHandler = this.onFocus_.bind(this);
+            this.boundBlurHandler = this.onBlur_.bind(this);
+            this.input_.addEventListener('input', this.boundUpdateClassesHandler);
+            this.input_.addEventListener('focus', this.boundFocusHandler);
+            this.input_.addEventListener('blur', this.boundBlurHandler);
+
+            if (this.maxRows !== this.Constant_.NO_MAX_ROWS) {
+              // TODO: This should handle pasting multi line text.
+              // Currently doesn't.
+              this.boundKeyDownHandler = this.onKeyDown_.bind(this);
+              this.input_.addEventListener('keydown', this.boundKeyDownHandler);
+            }
+
+            this.updateClasses_();
+            this.element_.classList.add(this.CssClasses_.IS_UPGRADED);
+          }
+        }
+      };
+
+      MaterialSelect.prototype.mdlDowngrade_ = function() {
+        'use strict';
+        this.input_.removeEventListener('input', this.boundUpdateClassesHandler);
+        this.input_.removeEventListener('focus', this.boundFocusHandler);
+        this.input_.removeEventListener('blur', this.boundBlurHandler);
+        if (this.boundKeyDownHandler) {
+          this.input_.removeEventListener('keydown', this.boundKeyDownHandler);
+        }
+      };
+
+      // The component registers itself. It can assume componentHandler is available
+      // in the global scope.
+      componentHandler.register({
+        constructor: MaterialSelect,
+        classAsString: 'MaterialSelect',
+        cssClass: 'mdl-js-select',
+        widget: true
+      });
     </script>
   </body>
 </html>
