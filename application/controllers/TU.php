@@ -13,6 +13,7 @@ class TU extends CI_Controller {
 
 	public function index()
 	{
+		$data_header['menus'] = true;
 		$data_header['status'] = "";
 		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
 		$this->load->view('tu/header_tu', $data_header);
@@ -20,6 +21,7 @@ class TU extends CI_Controller {
 	}
 
 	public function memilih_oprec() {
+		$data_header['oprec'] = true;
 		$data_header['status'] = "";
 		$data_header['judul'] = "List Open Recruitment Asisten Dosen";
 		$data['list_oprec'] = $this->tu_m->list_oprec();
@@ -83,9 +85,9 @@ class TU extends CI_Controller {
 		$jam_selesai= $this->input->post('jam_selesai');
 		$id_mk 		= $this->input->post('nama_mk');
 
+
 		if($this->tu_m->tambah_kelas($id_dosen, $kelas, $id_jadwal, $room, $hari, $jam_mulai, $jam_selesai, $id_mk)) {
 			echo json_encode(true);
-			// echo json_encode($this->load->view('tu/tabel_jadwal'));
 		}
 	}
 

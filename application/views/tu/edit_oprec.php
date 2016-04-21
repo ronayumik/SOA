@@ -237,6 +237,18 @@
         <i class="material-icons">add</i>
       </button>
     </div>
+
+    <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 400px;">
+      <div class="mdl-grid" style="padding: 0">
+        <div class="mdl-cell mdl-cell--8-col" id="isi_pesan">
+        </div>
+        <div class="mdl-cell mdl-cell--4-col" style="display: flex; align-items: center; text-align: left">
+          <button style="margin-left: auto; color: black;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp close">
+            OKAY
+          </button>
+        </div>
+      </div>
+    </dialog>
     
     <dialog id="edit_kelas" class="mdl-dialog" style="width: 480px">
       
@@ -353,6 +365,51 @@
       </div>
     </dialog>
     <script>
+      dialog = document.querySelector('#edit_kelas');
+
+      dialog.querySelector('.close').addEventListener('click', function() {
+        dialog.close();
+        $('body').bind("mousewheel", function() {
+          return true;
+        });
+      });
+
+      dialog2 = document.querySelector('#create_kelas');
+
+      dialog2.querySelector('.close').addEventListener('click', function() {
+        dialog2.close();
+        $('body').bind("mousewheel", function() {
+          return true;
+        });
+      });
+
+      dialog3 = document.querySelector('#pesan_yes_no');
+
+      dialog3.querySelector('.close').addEventListener('click', function() {
+        dialog3.close();
+        $('body').bind("mousewheel", function() {
+          return true;
+        });
+      });
+
+      $(document).ready(function() {
+          
+          if (localStorage['pesan'] == 'yes') {
+
+              var isi;
+              isi = "<i class='material-icons icon-list-oprec no-back' style='color: #388E3C'>check_circle</i><h1 style='display: inline-block; margin: 0; vertical-align: middle'><span class='mdl-layout-title' style='line-height: 0; font-size: 15px; vertical-align: middle'><strong>Berhasil</strong> "
+                    + localStorage['isi_pesan'] +
+                    "</span></h1>";
+              $('#isi_pesan').html(isi);
+
+              var dialog = document.querySelector('#pesan_yes_no');
+              dialog.showModal();
+
+              localStorage['pesan']      = 'no';
+              localStorage['isi_pesan']  = '';
+          }
+      });
+
       function load_page(url) {
         window.location.href = url;
       }
@@ -395,6 +452,8 @@
           dataType: 'json',
           success: function(data) {
               if(data) {
+                localStorage['pesan']      = 'yes';
+                localStorage['isi_pesan']  = 'menghapus kelas ';
                 location.reload();
               }
           },
@@ -408,6 +467,8 @@
           dataType: 'json',
           success: function(data) {
             if(data) {
+              localStorage['pesan']      = 'yes';
+              localStorage['isi_pesan']  = 'mengupdate kelas ';
               location.reload();
             }
           },
@@ -423,6 +484,8 @@
           dataType: 'json',
           success: function(data) {
             if(data) {
+              localStorage['pesan']      = 'yes';
+              localStorage['isi_pesan']  = 'membuat kelas baru';
               location.reload();
             }
           },
@@ -720,26 +783,7 @@
         widget: true
       });
     </script>
-    <script>
-            var dialog = document.querySelector('#edit_kelas');
 
-            dialog.querySelector('.close').addEventListener('click', function() {
-              dialog.close();
-              $('body').bind("mousewheel", function() {
-                return true;
-              });
-            });
-
-            dialog2 = document.querySelector('#create_kelas');
-
-            dialog2.querySelector('.close').addEventListener('click', function() {
-              dialog2.close();
-              $('body').bind("mousewheel", function() {
-                return true;
-              });
-            });
-
-    </script>
   </body>
 </html>
 

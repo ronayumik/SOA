@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TU</title>
+    <title>Tata Usaha</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -90,17 +90,17 @@
         </header> -->
         <nav class="demo-navigation mdl-navigation">
               <div class="mdl-menu__item--full-bleed-divider"></div>
-              <a class='mdl-navigation__link active' href='<?php echo base_url(); ?>index.php/tu'>
+              <a class='mdl-navigation__link <?php if($menus) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/tu'>
                 <i class=' material-icons' role='presentation'>home</i>Menus
               </a>
               <div class="mdl-menu__item--full-bleed-divider"></div>
-              <a class='mdl-navigation__link' href='<?php echo base_url(); ?>index.php/tu/memilih_oprec'>
+              <a class='mdl-navigation__link <?php if($oprec) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/tu/memilih_oprec'>
                 <i class=' material-icons' role='presentation'>today</i>Open Recruitment Asisten
               </a>
-              <a class='mdl-navigation__link' >
+              <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>' >
                 <i class='material-icons' role='presentation'>forum</i>Pengelolaan Pengumuman
               </a>
-              <a class='mdl-navigation__link' >
+              <a class='mdl-navigation__link <?php if($dosen) echo 'active' ?>' >
                 <i class='material-icons' role='presentation'>people</i>Pengelolaan Akun Dosen
               </a>
               <div class="mdl-layout-spacer"></div>

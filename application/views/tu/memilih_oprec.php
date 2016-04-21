@@ -8,17 +8,19 @@
 
                 $date_buka = date_create($oprec->j_tgl_oprek_buka);
                 $date_tutup = date_create($oprec->j_tgl_oprek_tutup);
-                $date_now =  date('Y-m-d h:i:sa');
+                $date_now = date_create(date('Y-m-d h:i:sa'));
                 $waktu_untuk_mhs = false;
                 $waktu_untuk_dosen = false;
                 $lewat_waktu = false;
 
                 $diff3Day = new DateInterval('P3D');
+                $diff1Day = new DateInterval('P1D');
                 $warna = "#673AB7";
 
                 $batas_waktu_isi_dosen = date_create($oprec->j_tgl_oprek_tutup);
                 $batas_waktu_isi_dosen = $batas_waktu_isi_dosen->add($diff3Day);
-
+                var_dump($date_now);
+                $date_now = $date_now->add($diff1Day);
                 $di_isi_oleh;
 
                 $int_waktu_buka   = strtotime(date_format($date_buka, 'Y-m-d h:i:sa'));
@@ -33,7 +35,7 @@
                   $warna = "#FFA000";
                 } else if($int_waktu_buka > $int_waktu_skrg) {
                   $di_isi_oleh = "Pengisian oleh <strong>Tata Usaha</strong>";
-                } else if($int_waktu_skrg >= $int_waktu_tutup && $int_waktu_skrg <= $int_waktu_dosen) {
+                } else if($int_waktu_skrg > $int_waktu_tutup && $int_waktu_skrg <= $int_waktu_dosen) {
                   $di_isi_oleh = "Pengisian oleh <strong>Dosen / Kaprodi</strong>";
                   $warna = "#D32F2F";
                 } else if($int_waktu_tutup < $int_waktu_skrg) {
@@ -74,7 +76,7 @@
                   <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
                       <button onclick="load_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">mode_edit</i>
-                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">Edit</span>
+                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">Jadwal</span>
                       </button>
                       <button onclick="delete_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         Hapus
