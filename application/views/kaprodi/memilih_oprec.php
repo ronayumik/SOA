@@ -14,17 +14,33 @@
                 $lewat_waktu = false;
 
                 $diff3Day = new DateInterval('P3D');
+                $diff1Day = new DateInterval('P1D');
                 $warna = "#673AB7";
 
                 $batas_waktu_isi_dosen = date_create($oprec->j_tgl_oprek_tutup);
                 $batas_waktu_isi_dosen = $batas_waktu_isi_dosen->add($diff3Day);
-
+                $cek_tutup = date_create($oprec->j_tgl_oprek_tutup);
                 $di_isi_oleh;
 
                 $int_waktu_buka   = strtotime(date_format($date_buka, 'Y-m-d h:i:sa'));
-                $int_waktu_tutup  = strtotime(date_format($date_tutup, 'Y-m-d h:i:sa'));
+                $int_waktu_tutup  = strtotime(date_format($cek_tutup->add($diff1Day), 'Y-m-d h:i:sa'));
                 $int_waktu_skrg   = strtotime($date_now);
                 $int_waktu_dosen  = strtotime(date_format($batas_waktu_isi_dosen, 'Y-m-d h:i:sa'));
+
+                // var_dump($int_waktu_dosen);
+                // echo strtotime($date_now);
+                if($int_waktu_buka <= $int_waktu_skrg && $int_waktu_tutup >= $int_waktu_skrg) {
+                  $di_isi_oleh = "Pengisian oleh <strong>Mahasiswa</strong>";
+                  $warna = "#FFA000";
+                } else if($int_waktu_buka > $int_waktu_skrg) {
+                  $di_isi_oleh = "Pengisian oleh <strong>Tata Usaha</strong>";
+                } else if($int_waktu_skrg > $int_waktu_tutup && $int_waktu_skrg <= $int_waktu_dosen) {
+                  $di_isi_oleh = "Pengisian oleh <strong>Dosen / Kaprodi</strong>";
+                  $warna = "#D32F2F";
+                } else if($int_waktu_tutup < $int_waktu_skrg) {
+                  $di_isi_oleh = "Pengisian <strong>Ditutup</strong>";
+                  $warna = "#9E9E9E";
+                }
 
                 // var_dump($int_waktu_dosen);
                 // echo strtotime($date_now);

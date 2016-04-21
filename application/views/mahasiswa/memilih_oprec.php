@@ -32,14 +32,17 @@
                 if($int_waktu_buka <= $int_waktu_skrg && $int_waktu_tutup >= $int_waktu_skrg) {
                   $di_isi_oleh = "Pengisian oleh <strong>Mahasiswa</strong>";
                   $warna = "#FFA000";
+                  $waktu_untuk_mhs = true;
                 } else if($int_waktu_buka > $int_waktu_skrg) {
                   $di_isi_oleh = "Pengisian oleh <strong>Tata Usaha</strong>";
                 } else if($int_waktu_skrg > $int_waktu_tutup && $int_waktu_skrg <= $int_waktu_dosen) {
                   $di_isi_oleh = "Pengisian oleh <strong>Dosen / Kaprodi</strong>";
                   $warna = "#D32F2F";
+                  $waktu_untuk_dosen = true;
                 } else if($int_waktu_tutup < $int_waktu_skrg) {
                   $di_isi_oleh = "Pengisian <strong>Ditutup</strong>";
                   $warna = "#9E9E9E";
+                  $lewat_waktu = true;
                 }
                 
                 //var_dump($date);
@@ -73,13 +76,17 @@
                   </div>
                   <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 16px"></div>
                   <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
+                    <?php if($waktu_untuk_mhs) { ?>
                       <button onclick="load_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">mode_edit</i>
-                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">Jadwal</span>
+                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">assignment</i>
+                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">APPLY</span>
                       </button>
-                      <button onclick="delete_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-                        Hapus
+                    <?php } else { ?>
+                      <button style="margin-right: 8px; color: #B6B6B6; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <i class="material-icons icon-list-oprec no-back" style="color: #B6B6B6; font-size: 20px; padding: 1px;">assignment</i>
+                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">APPLY</span>
                       </button>
+                    <?php } ?>
                       <button style="margin-right: 8px; color: <?php echo $warna; ?>; float: left;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
                         <i class="material-icons icon-list-oprec no-back" style="color: <?php echo $warna; ?>; font-size: 20px; padding: 1px;">error</i>
                         <span style="line-height: 0; font-size: 15px; vertical-align: middle">
@@ -108,76 +115,6 @@
       </div>
     </dialog>
 
-    <div style="position: absolute; bottom: 0; right: 0; z-index: 100; padding: 30px">
-      <button id="new_oprec_button" onclick="new_oprec_button()" style="background: #673AB7" class="mdl-button mdl-js-button mdl-shadow--2dp mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-      </button>
-      <div style="font-size: 13px;" class="mdl-tooltip mdl-tooltip--left" for="new_oprec_button">
-        Buat Open Recruitment
-      </div>
-    </div>
-
-    <dialog id="create_oprec" class="mdl-dialog" style="width: 480px">
-        <div class="mdl-grid" style="padding: 0">
-          <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
-            <i class="material-icons icon-list-oprec">add</i>
-            <h1 style="display: inline-block; margin: 0; vertical-align: middle">
-              <span class="mdl-layout-title" style="font-size: 30px;">
-                Open Recruitment Baru
-              </span>
-            </h1>
-            <div class="mdl-menu__item--full-bleed-divider"></div>
-          </div>
-        </div>
-
-        <form id="form_new_oprec">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                <select class="mdl-select__input" id="semester_genap_ganjil" name="semester">
-                  <option selected='selected' value='Ganjil'>Ganjil</option>
-                  <option value='Genap'>Genap</option>
-                </select>
-                <label class="mdl-select__label" for="semester_genap_ganjil">Semester</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                <select class="mdl-select__input" id="tahun_ajaran" name="tahun_ajaran">
-                  <option selected='selected' value='2015/2016'>2015/2016</option>
-                  <option value='2016/2017'>2016/2017</option>
-                  <option value='2017/2018'>2017/2018</option>
-                  <option value='2018/2019'>2018/2019</option>
-                </select>
-                <label class="mdl-select__label" for="tahun_ajaran">Tahun Ajaran</label>
-              </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input placeholder="Placeholder" type="date" class="mdl-textfield__input" id="waktu_buka" name="waktu_buka" required>
-                </input>
-                <label class="mdl-textfield__label" for="waktu_buka">Waktu buka</label>
-              </div>
-            </div> 
-            <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input placeholder="Placeholder" type="date" class="mdl-textfield__input" id="waktu_tutup" name="waktu_tutup" required>
-                </input>
-                <label class="mdl-textfield__label" for="waktu_tutup">Waktu tutup</label>
-              </div>
-            </div> 
-          </div>
-        </form>
-
-        <div class="mdl-dialog__actions">
-          <button onclick="submit_new_oprec()" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-              <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">library_add</i>
-              <span style="line-height: 0; font-size: 15px; vertical-align: middle">create</span>
-            </button>
-          <button type="button" class="mdl-button close">Batal</button>
-        </div>
-    </dialog>
-
     <script>
       var dialog = document.querySelector('#pesan_yes_no');
 
@@ -188,61 +125,8 @@
         });
       });
 
-      dialog = document.querySelector('#create_oprec');
-
-      dialog.querySelector('.close').addEventListener('click', function() {
-        dialog.close();
-        $('body').bind("mousewheel", function() {
-          return true;
-        });
-      });
-
       function load_this(id_oprec) {
-        window.location.href = "<?php echo base_url(); ?>index.php/tu/edit_oprec/" + id_oprec;
-      }
-
-      function new_oprec_button() {
-        dialog = document.querySelector('#create_oprec');
-        dialog.showModal();
-      }
-
-      function submit_new_oprec() {
-
-        $.ajax({
-          type: "POST",
-          url: '<?php echo base_url(); ?>index.php/tu/tambah_oprec',
-          data:  $("#form_new_oprec").serialize(),
-          dataType: 'json',
-          success: function(data) {
-            console.log("data");
-            if(data) {
-              location.reload();
-            }
-          },
-        });
-      }
-
-      function delete_this(id_oprec) {
-         var el = document.querySelector("#div" + id_oprec);
-         dialog = document.querySelector('#pesan_yes_no');
-         
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo base_url(); ?>index.php/tu/delete_oprec',
-          data: ({id_oprec: id_oprec}),
-          dataType: 'json',
-          success: function(data) {
-              if(data) {
-                var isi;
-                isi = "<i class='material-icons icon-list-oprec no-back' style='color: #388E3C'>check_circle</i><h1 style='display: inline-block; margin: 0; vertical-align: middle'><span class='mdl-layout-title' style='line-height: 0; font-size: 15px; vertical-align: middle'><strong>Berhasil</strong> "
-                      + data.pesan +
-                      "</span></h1>";
-                $('#isi_pesan').html(isi);
-                dialog.showModal();
-                el.remove();
-              }
-          },
-        });
+        window.location.href = "<?php echo base_url(); ?>index.php/mahasiswa/apply_oprec/" + id_oprec;
       }
     </script>
 

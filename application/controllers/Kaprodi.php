@@ -49,6 +49,7 @@ class Kaprodi extends CI_Controller {
 	}
 
 
+
 	public function list_asisten() {
 		$id_kelas = $this->input->post('id_kelas');
 
