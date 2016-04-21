@@ -48,11 +48,21 @@
 	}
 
 	public function apply_kelas() {
-		$id_kelas = $this->input->post('id_kelas');
+		$nama_lengkap 		= $this->input->post('nama');
+		$nrp 				= $this->input->post('nrp');
 
-		$data['detail_kelas'] = $this->kaprodi_m->kelas($id_kelas)->result_array();
+		$id_kelas 			= $this->input->post('id_kelas');
 
-		echo json_encode($data);
+		if($this->mahasiswa_m->cek_asisten($nrp)->result_array() == null)
+			$this->mahasiswa_m->add_asisten($nrp, $nama_lengkap);
+		
+		if($this->mahasiswa_m->add_asisten_daftar($nrp, $id_kelas)) {
+			echo json_encode(true);
+		} else {
+			echo json_encode(false);
+		}
+
+		//echo json_encode($data);
 	}
 
 

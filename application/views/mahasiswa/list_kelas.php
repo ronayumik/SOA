@@ -143,7 +143,7 @@
               <!-- Asisten -->
                         <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
                           <?php if($ada_asisten) { ?>
-                          <button id="<?php echo $kelas['k_id_kelas']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                          <!-- <button id="<?php echo $kelas['k_id_kelas']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">more_vert</i>
                           </button>
                           <ul for="<?php echo $kelas['k_id_kelas']; ?>" class="mdl-menu mdl-js-menu mdl-js-ripple-effect">
@@ -155,11 +155,14 @@
                               <i class="material-icons v-middle">delete</i>
                               <span class="v-middle">Delete</span>
                             </li>
-                          </ul>
+                          </ul> -->
                           <?php } else { ?>
-                          <button onclick="apply('<?php echo $kelas['k_id_kelas'] ?>' ,'<?php echo $room[$j] ?>', '<?php echo $hari[$l] ?>', '<?php echo $jam_mulai[$k] ?>', '<?php echo $jam_selesai[$k] ?>', '<?php echo $oprec_terpilih[0]['j_id'] ?>')" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">person_add</i>
+                          <button id="<?php echo $kelas['k_id_kelas']; ?>" onclick="apply('<?php echo $kelas['k_id_kelas'] ?>', '<?php echo $kelas['k_kelas'] ?>', '<?php echo $kelas['lmk_nama'] ?>' ,'<?php echo $room[$j] ?>', '<?php echo $hari[$l] ?>', '<?php echo $jam_mulai[$k] ?>', '<?php echo $jam_selesai[$k] ?>', '<?php echo $oprec_terpilih[0]['j_id'] ?>')" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">assignment</i>
                           </button>
+                          <div class="mdl-tooltip" for="<?php echo $kelas['k_id_kelas']; ?>">
+                            Apply
+                          </div>
                           <?php } ?>
                         </div>
 
@@ -232,41 +235,25 @@
             <div class="mdl-menu__item--full-bleed-divider"></div>
           </div>
         </div>
-        <!-- <div class="mdl-grid" style="padding: 0">
-          <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table;">
-            <h1 style="font-size: 20px; display: inline-block; margin: 0; vertical-align: middle; margin-left: 80px">
-              
-              <span  style="vertical-align: middle"> 
-              </span>
-            </h1>
-            <h1 style="padding: 0 5px; background: rgba(0,0,0,.1); float: right; font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
-              <i style="vertical-align: middle" class="material-icons">room</i>
-              <span id="ruang" style="vertical-align: middle"> 
-              </span>
-            </h1>
-            <div class="mdl-menu__item--full-bleed-divider"></div>
-          </div>
-        </div>
- -->
         <form id="form_apply">
           <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="nama">
+                <input class="mdl-textfield__input" type="text" id="nama" name="nama">
                 <label class="mdl-textfield__label" for="nama">Nama Lengkap</label>
               </div>
             </div>
 
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="number" id="nrp">
+                <input class="mdl-textfield__input" type="number" id="nrp" name="nrp">
                 <label class="mdl-textfield__label" for="nrp">NRP</label>
               </div>
             </div>
 
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="number" id="nohp">
+                <input class="mdl-textfield__input" type="number" id="nohp" name="nohp">
                 <label class="mdl-textfield__label" for="nohp">No HP</label>
               </div>
             </div>
@@ -286,7 +273,7 @@
                 <input class="mdl-textfield__input" placeholder="Transkrip" type="text" id="transkrip" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
                   <i class="material-icons">attach_file</i>
-                  <input type="file" id="uploadBtn" required>
+                  <input type="file" id="uploadBtn">
                 </div>
               </div>
             </div>
@@ -308,7 +295,7 @@
                 <span class="mdl-checkbox__label">Saya bersedia dengan <a href="">syarat dan ketentuan</a> yang berlaku</span>
               </label>
             </div>
-            
+            <div id="hiddem_input_add"></div>
           </div>
         </form>
 
@@ -319,6 +306,18 @@
             </button>
           <button type="button" class="mdl-button close">Batal</button>
         </div>
+    </dialog>
+
+    <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 400px;">
+      <div class="mdl-grid" style="padding: 0">
+        <div class="mdl-cell mdl-cell--8-col" id="isi_pesan">
+        </div>
+        <div class="mdl-cell mdl-cell--4-col" style="display: flex; align-items: center; text-align: left">
+          <button style="margin-left: auto; color: black;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp close">
+            OKAY
+          </button>
+        </div>
+      </div>
     </dialog>
 
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
@@ -341,51 +340,58 @@
       });
     </script>
     <script>
-    function apply(id_kelas, room, hari, jam_mulai, jam_selesai, id_jadwal) {
+    $(document).ready(function() {
+          
+          if (localStorage['pesan'] == 'yes') {
+
+              var isi;
+              isi = "<i class='material-icons icon-list-oprec no-back' style='color: #388E3C'>check_circle</i><h1 style='display: inline-block; margin: 0; vertical-align: middle'><span class='mdl-layout-title' style='line-height: 0; font-size: 15px; vertical-align: middle'><strong>Berhasil</strong> "
+                    + localStorage['isi_pesan'] +
+                    "</span></h1>";
+              $('#isi_pesan').html(isi);
+
+              var dialog = document.querySelector('#pesan_yes_no');
+              dialog.showModal();
+
+              localStorage['pesan']      = 'no';
+              localStorage['isi_pesan']  = '';
+          }
+      });
+
+    function apply(id_kelas, kelas, lmk_nama, room, hari, jam_mulai, jam_selesai, id_jadwal) {
         var dialog = document.querySelector('#apply_asisten');
         dialog.showModal();
-        $.ajax({
-          type: "POST",
-          url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_kelas',
-          data: ({id_kelas: id_kelas}),
-          dataType: 'json',
-          success: function(data) {
+        var nama_kelas = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-            var nama_kelas = ['A', 'B', 'C', 'D', 'E', 'F'];
+        var isi = hari + " " + jam_mulai + " - " + jam_selesai ;
+        $('#detail_waktu').html(isi);
 
-            var isi = hari + " " + jam_mulai + " - " + jam_selesai ;
-            $('#detail_waktu').html(isi);
+        isi = room;
+        $('#ruang').html(isi);
 
-            isi = room;
-            $('#ruang').html(isi);
+        isi = lmk_nama + " (" + kelas + ")";
+        $('#nama_mk').html(isi);
 
-            isi = data['detail_kelas'][0].lmk_nama + " (" + data['detail_kelas'][0].k_kelas + ")";
-            $('#nama_mk').html(isi);
-            // isi = "";
-            // for (var i = 5 - 1; i >= 0; i--) {
-              
-            //     isi += "<option value='" + nama_kelas[i] + "'>" + nama_kelas[i] + "</option>";
-
-            // };
-            // $('#kelas_add').html(isi);
-
-        },
-
-      });
+        isi = "";
+        isi += "<input type='hidden' name='id_kelas' value='"
+                + id_kelas +
+                "'>";
+        $('#hiddem_input_add').html(isi);
     }
 
     function submit_form_apply() {
       $.ajax({
         type: "POST",
-        url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_form',
+        url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_kelas',
         data:  $("#form_apply").serialize(),
         dataType: 'json',
         success: function(data) {
-          if(data) {
-            localStorage['pesan']      = 'yes';
-            localStorage['isi_pesan']  = 'membuat kelas baru';
-            location.reload();
-          }
+          console.log(data);
+          // if(data) {
+          //   localStorage['pesan']      = 'yes';
+          //   localStorage['isi_pesan']  = 'mendaftar sebagai Calon Asisten';
+          //   location.reload();
+          // }
         },
       });
     }
