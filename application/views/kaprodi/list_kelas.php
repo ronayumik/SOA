@@ -265,7 +265,7 @@
           </div>
         </h5>
         <div class="mdl-dialog__content">
-          <h5 class="mdl-dialog__title" style="padding: 0; font-size: 15px; text-align: right">
+          <h5 class="mdl-dialog__title" style="padding: 0; font-size: 15px; color: rgba(0, 0, 0, 0.4)">
             List Calon Asisten
           </h5>
           <table class="mdl-data-table mdl-js-data-table" style="font-size: 20px;">
@@ -277,26 +277,7 @@
               </tr>
             </thead>
             <tbody id="content_list_asisten_head">
-              <tr>
-                <td class='mdl-data-table__cell--non-numeric'>
-                  5113100150
-                </td>
-                <td style="font-size: 15px; text-align: center">
-                  Yes
-                </td>
-                <td style='padding: 12px'>
-                  <button onclick='submit_asisten("+ data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas + ")' style="color: white ;font-size: 10px; height: auto; line-height: 0; padding: 0 5px; background: #388E3C" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-                    <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">done</i>
-                    <span style="line-height: 0; font-size: 10px; vertical-align: middle">terima</span>
-                  </button>
-                </td>
-                <td style='padding: 12px'>
-                  <button class='list-asisten mdl-button mdl-js-button mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'>
-                    <i class='material-icons'>account_circle</i>
-                    <span>Detail</span>
-                  </button>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
@@ -372,12 +353,22 @@
 
             for(var i =0; i < data['list_asisten'].length; i++) {
               isi += "<tr><td class='mdl-data-table__cell--non-numeric'>"
-                  + data['list_asisten'][i].ad_nrp_mhs +
-                  "</td><td>"
-                  + data['list_asisten'][i].ad_ipk +
-                  "</td><td style='padding: 12px'><button onclick='submit_asisten("
-                  + data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas +
-                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
+                    + data['list_asisten'][i].ad_nrp_mhs +
+                    "</td><td style='font-size: 15px; text-align: center'>"
+                    + "Yes" +
+                    "</td><td style='padding: 12px'><button onclick='submit_asisten("
+                    + data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas + 
+                    ")' style='color: white ;font-size: 10px; height: auto; line-height: 0; padding: 0 5px; background: #388E3C' class='mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp'><i class='material-icons icon-list-oprec no-back' style='color: white; font-size: 20px; padding: 1px;'>done</i><span style='line-height: 0; font-size: 10px; vertical-align: middle'>terima</span></button></td><td style='padding: 12px'><button onclick='detail_asisten("
+                    + 'hai' + 
+                    "' class='list-asisten mdl-button mdl-js-button mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>account_circle</i><span>Detail</span></button></td></tr>";
+
+              // isi += "<tr><td class='mdl-data-table__cell--non-numeric'>"
+              //     + data['list_asisten'][i].ad_nrp_mhs +
+              //     "</td><td>"
+              //     + data['list_asisten'][i].ad_ipk +
+              //     "</td><td style='padding: 12px'><button onclick='submit_asisten("
+              //     + data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas +
+              //     ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
             }
             if(data['list_asisten'].length == 0) {
                isi += "<tr><td class='mdl-data-table__cell--non-numeric'>"
@@ -391,7 +382,7 @@
                 
             isi += "</div>";
 
-            //$('#content_list_asisten_head').html(isi);
+            $('#content_list_asisten_head').html(isi);
           },
         });
       }
