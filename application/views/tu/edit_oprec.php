@@ -232,11 +232,11 @@
       </main>
     </div>
 
-    <div style="position: absolute; bottom: 0; right: 0; z-index: 100; padding: 30px">
+    <!-- <div style="position: absolute; bottom: 0; right: 0; z-index: 100; padding: 30px">
       <button style="background: #5E7642" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
         <i class="material-icons">add</i>
       </button>
-    </div>
+    </div> -->
 
     <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 400px;">
       <div class="mdl-grid" style="padding: 0">
@@ -416,43 +416,13 @@
               var dialog = document.querySelector('#pesan_yes_no');
               dialog.showModal();
 
-              localStorage['pesan']      = 'no';
+              localStorage['pesan']      = 'idle';
               localStorage['isi_pesan']  = '';
           }
       });
 
       function load_page(url) {
         window.location.href = url;
-      }
-
-      function update_semester(id_jadwal) {
-        var j_semester = $('#j_semester').val();
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo base_url(); ?>index.php/tu/update_semester',
-          data: ({j_semester: j_semester, id_jadwal: id_jadwal}),
-          dataType: 'json',
-          success: function(data) {
-              if(data) {
-                location.reload();
-              }
-          },
-        });
-      }
-
-      function update_tahun(id_jadwal) {
-        var j_tahun = $('#j_tahun').val();
-        $.ajax({
-          type: 'POST',
-          url: '<?php echo base_url(); ?>index.php/tu/update_tahun',
-          data: ({j_tahun: j_tahun, id_jadwal: id_jadwal}),
-          dataType: 'json',
-          success: function(data) {
-              if(data) {
-                location.reload();
-              }
-          },
-        });
       }
 
       function hapus_kelas(id_kelas) {
@@ -470,6 +440,7 @@
           },
         });
       }
+
       function simpan_kelas() {
         $.ajax({
           type: "POST",
@@ -563,6 +534,7 @@
           },
         });
       }
+      
       function edit_kelas(id_kelas) {
         var dialog = document.querySelector('#edit_kelas');
         dialog.showModal();

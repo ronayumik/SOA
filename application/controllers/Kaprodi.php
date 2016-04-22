@@ -13,11 +13,12 @@ class Kaprodi extends CI_Controller {
 
 	public function index()
 	{
-		$data_header['menus'] = true;
-		$data_header['status'] = "";
-		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
-		$this->load->view('kaprodi/header', $data_header);
-		$this->load->view('kaprodi/index');
+		// $data_header['menus'] = true;
+		// $data_header['status'] = "";
+		// $data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
+		// $this->load->view('kaprodi/header', $data_header);
+		// $this->load->view('kaprodi/index');
+		$this->memilih_oprec();
 	}
 
 	public function memilih_oprec() {

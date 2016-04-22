@@ -60,6 +60,11 @@ Class Tu_m extends CI_Model{
         return $data;
     }
 
+    public function edit_oprec_exist($id_oprec, $buka, $tutup) {
+        $data = $this->db->query("UPDATE jadwal set j_tgl_oprek_buka = '$buka', j_tgl_oprek_tutup = '$tutup' where j_id = '$id_oprec'");
+        return $data;
+    }
+
 
 
 

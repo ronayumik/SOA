@@ -74,11 +74,15 @@
                   <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 16px"></div>
                   <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
                       <button onclick="load_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">mode_edit</i>
+                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">event</i>
                         <span style="line-height: 0; font-size: 15px; vertical-align: middle">Jadwal</span>
                       </button>
                       <button onclick="delete_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         Hapus
+                      </button>
+                      <button onclick="edit_this('<?php echo $oprec->j_id; ?>', '<?php echo $oprec->j_semester; ?>', '<?php echo $oprec->j_tahun; ?>', '<?php echo date_format($date_buka, 'Y-m-d'); ?>', '<?php echo date_format($date_tutup, 'Y-m-d'); ?>')" style="background: <?php echo $warna; ?>; margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">mode_edit</i>
+                        <span style="color: white; line-height: 0; font-size: 15px; vertical-align: middle">Edit</span>
                       </button>
                       <button style="margin-right: 8px; color: <?php echo $warna; ?>; float: left;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
                         <i class="material-icons icon-list-oprec no-back" style="color: <?php echo $warna; ?>; font-size: 20px; padding: 1px;">error</i>
@@ -178,6 +182,48 @@
         </div>
     </dialog>
 
+    <dialog id="edit_oprec" class="mdl-dialog" style="width: 480px">
+        <div class="mdl-grid" style="padding: 0">
+          <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
+            <i class="material-icons icon-list-oprec" style="background: #FFA000">mode_edit</i>
+            <h1 style="display: inline-block; margin: 0; vertical-align: middle">
+              <span id="edit_nama_oprec" class="mdl-layout-title" style="font-size: 23px;">
+                Semester Genap 2015/2016
+              </span>
+            </h1>
+            <div class="mdl-menu__item--full-bleed-divider"></div>
+          </div>
+        </div>
+
+        <form id="form_edit_oprec">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input placeholder="Placeholder" type="date" class="mdl-textfield__input" id="edit_waktu_buka" name="waktu_buka" required>
+                </input>
+                <label class="mdl-textfield__label" for="edit_waktu_buka">Waktu buka</label>
+              </div>
+            </div> 
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input placeholder="Placeholder" type="date" class="mdl-textfield__input" id="edit_waktu_tutup" name="waktu_tutup" required>
+                </input>
+                <label class="mdl-textfield__label" for="edit_waktu_tutup">Waktu tutup</label>
+              </div>
+            </div> 
+          </div>
+          <div id="hiddem_input_edit"> </div>
+        </form>
+
+        <div class="mdl-dialog__actions">
+          <button onclick="submit_edit_oprec()" style="margin-right: 8px; color: white; float: right; background: #FFA000" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+              <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">get_app</i>
+              <span style="line-height: 0; font-size: 15px; vertical-align: middle">SAVE</span>
+            </button>
+          <button type="button" class="mdl-button close">Batal</button>
+        </div>
+    </dialog>
+
     <script>
       var dialog = document.querySelector('#pesan_yes_no');
 
@@ -188,10 +234,19 @@
         });
       });
 
-      dialog = document.querySelector('#create_oprec');
+      dialog2 = document.querySelector('#create_oprec');
 
-      dialog.querySelector('.close').addEventListener('click', function() {
-        dialog.close();
+      dialog2.querySelector('.close').addEventListener('click', function() {
+        dialog2.close();
+        $('body').bind("mousewheel", function() {
+          return true;
+        });
+      });
+
+      dialog3 = document.querySelector('#edit_oprec');
+
+      dialog3.querySelector('.close').addEventListener('click', function() {
+        dialog3.close();
         $('body').bind("mousewheel", function() {
           return true;
         });
@@ -220,6 +275,38 @@
             }
           },
         });
+      }
+
+      function edit_this(j_id, j_semester, j_tahun, j_tgl_oprek_buka, j_tgl_oprek_tutup) {
+        dialog = document.querySelector('#edit_oprec');
+        dialog.showModal();
+
+        isi = "Semester " + j_semester + " " + j_tahun;
+        $('#edit_nama_oprec').html(isi);
+
+        $('#edit_waktu_buka').val(j_tgl_oprek_buka);
+        $('#edit_waktu_tutup').val(j_tgl_oprek_tutup);
+
+        isi = "";
+        isi += "<input type='hidden' name='id_oprec' value='"
+                    + j_id +
+                    "'>";
+        $('#hiddem_input_edit').html(isi);
+
+      }
+
+      function submit_edit_oprec() {
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo base_url(); ?>index.php/tu/submit_orpec_edited',
+          data: $('#form_edit_oprec').serialize(),
+          dataType: 'json',
+          success: function(data) {
+              if(data) {
+                location.reload();
+              }
+          },
+        })
       }
 
       function delete_this(id_oprec) {

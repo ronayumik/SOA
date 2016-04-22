@@ -308,7 +308,7 @@
         </div>
     </dialog>
 
-    <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 400px;">
+    <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 600px;">
       <div class="mdl-grid" style="padding: 0">
         <div class="mdl-cell mdl-cell--8-col" id="isi_pesan">
         </div>
@@ -338,8 +338,17 @@
           return true;
         });
       });
+      dialog2 = document.querySelector('#pesan_yes_no');
+
+      dialog2.querySelector('.close').addEventListener('click', function() {
+        dialog2.close();
+        $('body').bind("mousewheel", function() {
+          return true;
+        });
+      });
     </script>
     <script>
+
     $(document).ready(function() {
           
           if (localStorage['pesan'] == 'yes') {
@@ -353,8 +362,21 @@
               var dialog = document.querySelector('#pesan_yes_no');
               dialog.showModal();
 
-              localStorage['pesan']      = 'no';
+              localStorage['pesan']      = 'idle';
               localStorage['isi_pesan']  = '';
+          } else if(localStorage['pesan'] == 'no') {
+              var isi;
+              isi = "<i class='material-icons icon-list-oprec no-back' style='color: #D32F2F'>report_problem</i><h1 style='display: inline-block; margin: 0; vertical-align: middle'><span class='mdl-layout-title' style='line-height: 0; font-size: 15px; vertical-align: middle'><strong>Gagal</strong> "
+                    + localStorage['isi_pesan'] +
+                    "</span></h1>";
+              $('#isi_pesan').html(isi);
+
+              var dialog = document.querySelector('#pesan_yes_no');
+              dialog.showModal();
+
+              localStorage['pesan']      = 'idle';
+              localStorage['isi_pesan']  = '';
+
           }
       });
 
@@ -386,12 +408,17 @@
         data:  $("#form_apply").serialize(),
         dataType: 'json',
         success: function(data) {
-          console.log(data);
-          // if(data) {
-          //   localStorage['pesan']      = 'yes';
-          //   localStorage['isi_pesan']  = 'mendaftar sebagai Calon Asisten';
-          //   location.reload();
-          // }
+          //console.log(data);
+          if(data) {
+            localStorage['pesan']      = 'yes';
+            localStorage['isi_pesan']  = 'mendaftar sebagai Calon Asisten';
+            location.reload();
+          }
+          else {
+            localStorage['pesan']      = 'no';
+            localStorage['isi_pesan']  = ', Anda sudah mendaftar untuk kelas ini.';
+            location.reload();
+          }
         },
       });
     }

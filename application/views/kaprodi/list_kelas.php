@@ -181,9 +181,6 @@
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">indeterminate_check_box</i>
                             <?php } ?>
                           </button>
-                          <div class="mdl-tooltip" for="<?php echo $kelas['k_nrp_asisten']; ?>">
-                            Asisten
-                          </div>
                         </div>
 
                         <!-- <div class="mdl-cell mdl-cell--2-col" style="font-size: 25px; line-height: 30px; margin: 0; background: rgba(0,0,0,.1); width: 20%">
@@ -256,33 +253,55 @@
       </main>
     </div>
     <!-- Colored FAB button -->
-      <dialog id='list_asisten' class="mdl-dialog" style="width: 480px">
+      <dialog id='list_asisten' class="mdl-dialog" style="width: 543px">
         <h5 class="mdl-dialog__title">
           <div class="mdl-grid" style="padding: 0">
             <div id="nama_mk_head" class="mdl-cell mdl-cell--12-col" style="display: table; margin: 0; height: 55px; width: 90%; border-bottom: 1px solid rgba(0,0,0,.1)">
 
             </div>
-            <div id="nama_kelas_head" class="mdl-cell mdl-cell--12-col" style="background: rgba(0,0,0,.1); display: table; margin: 0; height: 55px; width: 10%; border-bottom: 1px solid rgba(0,0,0,.1)">
+            <div id="nama_kelas_head" class="mdl-cell mdl-cell--12-col" style="color: white; background: #388E3C; display: table; margin: 0; height: 55px; width: 10%; border-bottom: 1px solid rgba(0,0,0,.1)">
               
             </div>
           </div>
         </h5>
         <div class="mdl-dialog__content">
+          <h5 class="mdl-dialog__title" style="padding: 0; font-size: 15px; text-align: right">
+            List Calon Asisten
+          </h5>
           <table class="mdl-data-table mdl-js-data-table" style="font-size: 20px;">
             <thead>
               <tr>
                 <th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-descending">NRP</th>
-                <th>IPK</th>
+                <th>Pengalaman Asisten</th>
                 <th colspan="2" style="text-align: center">Action</th>
               </tr>
             </thead>
             <tbody id="content_list_asisten_head">
-
+              <tr>
+                <td class='mdl-data-table__cell--non-numeric'>
+                  5113100150
+                </td>
+                <td style="font-size: 15px; text-align: center">
+                  Yes
+                </td>
+                <td style='padding: 12px'>
+                  <button onclick='submit_asisten("+ data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas + ")' style="color: white ;font-size: 10px; height: auto; line-height: 0; padding: 0 5px; background: #388E3C" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+                    <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">done</i>
+                    <span style="line-height: 0; font-size: 10px; vertical-align: middle">terima</span>
+                  </button>
+                </td>
+                <td style='padding: 12px'>
+                  <button class='list-asisten mdl-button mdl-js-button mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'>
+                    <i class='material-icons'>account_circle</i>
+                    <span>Detail</span>
+                  </button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
         <div class="mdl-dialog__actions">
-          <button type="button" class="mdl-button close">Batal</button>
+          <button type="button" class="mdl-button close" style="margin-left: auto;">Tutup</button>
         </div>
       </dialog>
 
@@ -372,7 +391,7 @@
                 
             isi += "</div>";
 
-            $('#content_list_asisten_head').html(isi);
+            //$('#content_list_asisten_head').html(isi);
           },
         });
       }

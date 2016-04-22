@@ -46,7 +46,7 @@ class TU extends CI_Controller {
 	}
 
 	public function edit_kelas() {
-		$id_kelas = $this->input->post('id_kelas');
+		$id_kelas 				= $this->input->post('id_kelas');
 		$data['list_mk']  		= $this->tu_m->list_mk()->result_array();
 		$data['list_dosen'] 	= $this->tu_m->list_dosen()->result_array();
 		$data['detail_kelas'] 	= $this->kaprodi_m->kelas($id_kelas)->result_array();
@@ -114,43 +114,23 @@ class TU extends CI_Controller {
 		$waktu_tutup	= $this->input->post('waktu_tutup');
 
 		if($this->tu_m->tambah_oprec($semester, $tahun_ajaran, $waktu_buka, $waktu_tutup)) {
-			$data['pesan'] = 'berhasil menambah oprec';
+
 			echo json_encode(true);
 		}
 		
 	}
 
-
-
-	public function new_oprec() {
-		$this->tu_m->new_id_oprec();
-
-		$id_jadwal = $this->tu_m->get_last_id();
-
-		$this->edit_oprec($id_jadwal->result_array()[0]['j_id']);
-
-	}
-
-	public function update_semester() {
-		$semester = $this->input->post('j_semester');
-		$id_jadwal = $this->input->post('id_jadwal');
-
-		$data = $this->tu_m->update_semester($id_jadwal, $semester);
-		echo json_encode($data);
-	}
-
-	public function update_tahun() {
-		$tahun = $this->input->post('j_tahun');
-		$id_jadwal = $this->input->post('id_jadwal');
-
-		$data = $this->tu_m->update_tahun($id_jadwal, $tahun);
-		echo json_encode($data);
-	}
-
-
-
-
 	
+	public function submit_orpec_edited() {
+		$id_oprec 		= $this->input->post('id_oprec');
+		$buka 			= $this->input->post('waktu_buka');
+		$tutup 			= $this->input->post('waktu_tutup');
+
+		if($this->tu_m->edit_oprec_exist($id_oprec, $buka, $tutup)) {
+			echo json_encode(true);
+		}
+	}	
+
 	public function mengelola_akun_dosen()
 	{
 		$data['judul'] = "Mengelola Akun Dosen";
