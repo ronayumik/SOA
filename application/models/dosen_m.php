@@ -15,6 +15,11 @@ Class Dosen_m extends CI_Model{
         return $data;
     }
 
+    public function detail_asisten($id_asisten) {
+        $data = $this->db->query("SELECT * from asisten where a_nrp = '$id_asisten'");
+        return $data;
+    }
+
 	//--untuk hasilkan query
 	public function list_kelas_diajar($id_dosen)
     {
@@ -36,6 +41,8 @@ Class Dosen_m extends CI_Model{
         //$data = $query->result();
         //return $data;
     }
+
+
     
     public function detail_dosen($id)
     {

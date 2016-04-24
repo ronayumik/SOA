@@ -44,6 +44,15 @@ class Dosen extends CI_Controller {
 		$this->load->view('dosen/memilih_asisten_kelas', $data);
 	}
 
+	public function detail_asisten() {
+		$id_kelas = $this->input->post('id_kelas');
+		$id_asisten = $this->input->post('id_asisten');
+
+		$data['detail_kelas'] = $this->kaprodi_m->kelas($id_kelas)->result_array();
+		$data['detail_asisten'] = $this->dosen_m->detail_asisten($id_asisten)->result_array();
+		
+		echo json_encode($data);
+	}
 
 	public function pemilihan_calon_asisten()
 	{

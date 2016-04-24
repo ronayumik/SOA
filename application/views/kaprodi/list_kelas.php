@@ -174,13 +174,13 @@
                         </div>
 
                         <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
-                          <button id="<?php echo $kelas['k_nrp_asisten']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <?php if($ada_asisten) { ?>
+                          <?php if($ada_asisten) { ?>
+                            <button onclick="detail_asisten_pop('<?php echo $kelas['k_nrp_asisten']; ?>', '<?php echo $kelas['k_id_kelas']; ?>')" id="<?php echo $kelas['k_nrp_asisten']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">                            
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">more</i>
                             <?php } else { ?>
+                            <button id="<?php echo $kelas['k_nrp_asisten']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">indeterminate_check_box</i>
                             <?php } ?>
-                          </button>
                         </div>
 
                         <!-- <div class="mdl-cell mdl-cell--2-col" style="font-size: 25px; line-height: 30px; margin: 0; background: rgba(0,0,0,.1); width: 20%">
@@ -285,6 +285,34 @@
           <button type="button" class="mdl-button close" style="margin-left: auto;">Tutup</button>
         </div>
       </dialog>
+      <dialog id='detail_asisten_pop' class="mdl-dialog" style="width: 543px">
+        <h5 class="mdl-dialog__title">
+          
+          <div class="mdl-grid" style="padding: 0">
+            <div id="" class="mdl-cell mdl-cell--12-col" style="align-items: center; justify-content: center; color: white; background: #388E3C; display: flex; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1); ">
+              <i class="material-icons" style="font-size: 40px">assignment_ind</i>
+            </div>
+            <div id="detail_asisten" class="mdl-cell mdl-cell--12-col" style="text-align: center; display: table; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1);">
+
+            </div>
+            <div id="ho_hp" class="mdl-cell mdl-cell--6-col" style="width: 50%; margin: 0; padding: 8px; border-bottom: 1px solid rgba(0,0,0,.1);">
+              <i class="material-icons icon-list-oprec no-back" style="color: #5E7642; font-size: 30px; padding: 1px;">smartphone</i>
+                <span style="line-height: 0; font-size: 15px; vertical-align: middle">085768864959</span>
+            </div>
+            <div class="mdl-cell mdl-cell--6-col" style="width: 50%; margin: 0; padding: 8px; text-align: right; border-bottom: 1px solid rgba(0,0,0,.1);">
+              <span style="line-height: 0; font-size: 15px; vertical-align: middle" id="nrp_asisten"></span>
+              <i class="material-icons icon-list-oprec no-back" style="color: #5E7642; font-size: 30px; padding: 1px;">contacts</i>
+            </div>
+            
+          </div>
+        </h5>
+        <div class="mdl-dialog__content">
+          
+        </div>
+        <div class="mdl-dialog__actions" style="padding: 8px">
+          <button type="button" class="mdl-button close" style="margin-left: auto; margin-right: auto">Tutup</button>
+        </div>
+      </dialog>
 
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
 
@@ -299,6 +327,48 @@
         return true;
       });
     });
+
+    var dialog3 = document.querySelector('#detail_asisten_pop');
+
+    dialog3.querySelector('.close').addEventListener('click', function() {
+      dialog3.close();
+      // $('#nama_mk').remove();
+      // $('#nama_kelas').remove();
+      $('body').bind("mousewheel", function() {
+        return true;
+      });
+    });
+
+    function detail_asisten_pop(id_asisten, id_kelas){
+    var dialog2 = document.querySelector('#detail_asisten_pop');
+        dialog2.showModal();
+
+    $.ajax({
+      type: "POST",
+      url: "<?php echo base_url(); ?>index.php/dosen/detail_asisten",
+      data: ({id_asisten: id_asisten, id_kelas: id_kelas}),
+      dataType: 'json',
+      success: function(data) {
+      var nama_mk = data['detail_kelas'][0].lmk_nama;
+            var nama_dosen_kelas = data['detail_kelas'][0].u_nama;
+            var nama_kelas = data['detail_kelas'][0].k_kelas;
+            var nama_asisten = data['detail_asisten'][0].a_nama;
+            var nrp_asisten = data['detail_asisten'][0].a_nrp;
+            console.log(nama_asisten);
+
+            var isi = "<div id='nama_mk' style='padding: 0 15px; font-size: 25px; display: table-cell;vertical-align: middle;'>"
+                      + nama_asisten + 
+                      "</div>";
+
+            $('#detail_asisten').html(isi);
+
+            isi = '';
+            isi += nrp_asisten;
+            $('#nrp_asisten').html(isi);
+
+      }
+    });
+  }
 
     function load_page(url) {
         window.location.href = url;
