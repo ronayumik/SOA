@@ -157,7 +157,7 @@
                             </li>
                           </ul>
                           <?php } else { ?>
-                          <button onclick="add_asisten(<?php echo $kelas['k_id_kelas']; ?>)" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                          <button onclick="add_asisten('<?php echo $kelas['k_id_kelas']; ?>')" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">person_add</i>
                           </button>
                           <?php } ?>
@@ -176,7 +176,7 @@
                         <div class="mdl-cell mdl-cell--12-col" style="background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
                           <button id="<?php echo $kelas['k_nrp_asisten']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                             <?php if($ada_asisten) { ?>
-                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">check_box</i>
+                              <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">more</i>
                             <?php } else { ?>
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">indeterminate_check_box</i>
                             <?php } ?>
@@ -321,6 +321,11 @@
         }
         
       }
+
+      function detail_asisten(id_asisten){
+        console.log(id_asisten);
+      } 
+
       function add_asisten(id_kelas) {
         var dialog = document.querySelector('#list_asisten');
         dialog.showModal();
@@ -359,8 +364,8 @@
                     "</td><td style='padding: 12px'><button onclick='submit_asisten("
                     + data['list_asisten'][i].ad_nrp_mhs + "," + data['detail_kelas'][0].k_id_kelas + 
                     ")' style='color: white ;font-size: 10px; height: auto; line-height: 0; padding: 0 5px; background: #388E3C' class='mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp'><i class='material-icons icon-list-oprec no-back' style='color: white; font-size: 20px; padding: 1px;'>done</i><span style='line-height: 0; font-size: 10px; vertical-align: middle'>terima</span></button></td><td style='padding: 12px'><button onclick='detail_asisten("
-                    + 'hai' + 
-                    "' class='list-asisten mdl-button mdl-js-button mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>account_circle</i><span>Detail</span></button></td></tr>";
+                    + data['list_asisten'][i].ad_nrp_mhs + 
+                    ")' class='list-asisten mdl-button mdl-js-button mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>account_circle</i><span>Detail</span></button></td></tr>";
 
               // isi += "<tr><td class='mdl-data-table__cell--non-numeric'>"
               //     + data['list_asisten'][i].ad_nrp_mhs +
@@ -377,7 +382,7 @@
                   + "0.00" +
                   "</td><td style='padding: 12px'><button onclick='submit_asisten("
                   + 0 + "," + 0 +
-                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>APROVE</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>check</i><span>Detail</span></button></td></tr>";
+                  ")' class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>error</i><span>terima</span></button></td><td style='padding: 12px'><button class='list-asisten mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect' style='color: rgba(0,0,0,.5);font-size: 10px; height: auto; line-height: 0; padding: 0 5px;'><i class='material-icons'>error</i><span>Detail</span></button></td></tr>";
             }
                 
             isi += "</div>";
