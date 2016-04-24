@@ -289,8 +289,12 @@
         <h5 class="mdl-dialog__title">
           
           <div class="mdl-grid" style="padding: 0">
-            <div id="" class="mdl-cell mdl-cell--12-col" style="align-items: center; justify-content: center; color: white; background: #388E3C; display: flex; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1); ">
-              <i class="material-icons" style="font-size: 40px">assignment_ind</i>
+            <div id="" class="mdl-cell mdl-cell--12-col" style="align-items: center; color: white; background: #388E3C; display: flex; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1); ">
+              <i class="material-icons" style="font-size: 40px; margin-right: 10px; margin-left: 10px">assignment_ind</i>
+              <span style="margin-left: 10px; display: inline-block; vertical-align: middle; font-size: 15px">
+                  <span style="display: block; padding-bottom: 3px; font-size: 20px">Asisten Dosen</span>
+                  <span style="display: block; padding-top: 3px" id="nama_mk_detail_asisten"></span>
+                </span>
             </div>
             <div id="detail_asisten" class="mdl-cell mdl-cell--12-col" style="text-align: center; display: table; margin: 0; height: 55px; width: 100%; border-bottom: 1px solid rgba(0,0,0,.1);">
 
@@ -303,12 +307,13 @@
               <span style="line-height: 0; font-size: 15px; vertical-align: middle" id="nrp_asisten"></span>
               <i class="material-icons icon-list-oprec no-back" style="color: #5E7642; font-size: 30px; padding: 1px;">contacts</i>
             </div>
+
+            <div class="mdl-cell mdl-cell--12-col" style="width: 100%; margin: 0; padding: 8px; text-align: center;">
+              
+            </div>
             
           </div>
         </h5>
-        <div class="mdl-dialog__content">
-          
-        </div>
         <div class="mdl-dialog__actions" style="padding: 8px">
           <button type="button" class="mdl-button close" style="margin-left: auto; margin-right: auto">Tutup</button>
         </div>
@@ -365,6 +370,10 @@
             isi = '';
             isi += nrp_asisten;
             $('#nrp_asisten').html(isi);
+
+            isi = '';
+            isi += data['detail_kelas'][0].lmk_nama + " (" + data['detail_kelas'][0].k_kelas + ")";
+            $('#nama_mk_detail_asisten').html(isi);
 
       }
     });
