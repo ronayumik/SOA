@@ -8,6 +8,13 @@ Class Dosen_m extends CI_Model{
     }
     
 	
+    public function list_kelas($id_dosen, $id_jadwal) {
+        $data = $this->db->query("  SELECT *
+                                    FROM kelas AS k , asisten AS a, list_mata_kuliah AS list_mk, user_ AS dosen
+                                    WHERE a.a_nrp = k.k_nrp_asisten && list_mk.lmk_id = k.k_matkul && dosen.u_nip = k.k_id_dosen && k.k_id_jadwal = '$id_jadwal' && k.k_id_dosen = '$id_dosen'");
+        return $data;
+    }
+
 	//--untuk hasilkan query
 	public function list_kelas_diajar($id_dosen)
     {

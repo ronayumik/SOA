@@ -90,7 +90,7 @@
         </header> -->
         <nav class="demo-navigation mdl-navigation">
               <a class='mdl-navigation__link <?php if($menus) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/mahasiswa'>
-                <i class=' material-icons' role='presentation'>home</i>Menus
+                <i class=' material-icons' role='presentation'>home</i>Home
               </a>
               <div class="mdl-menu__item--full-bleed-divider"></div>
               <a class='mdl-navigation__link <?php if($memilih_oprec) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/mahasiswa/memilih_oprec'>

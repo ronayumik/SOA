@@ -185,10 +185,10 @@
     <dialog id="edit_oprec" class="mdl-dialog" style="width: 480px">
         <div class="mdl-grid" style="padding: 0">
           <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
-            <i class="material-icons icon-list-oprec" style="background: #FFA000">mode_edit</i>
+            <i class="material-icons icon-list-oprec" style="background: <?php echo $warna; ?>;">mode_edit</i>
             <h1 style="display: inline-block; margin: 0; vertical-align: middle">
               <span id="edit_nama_oprec" class="mdl-layout-title" style="font-size: 23px;">
-                Semester Genap 2015/2016
+                
               </span>
             </h1>
             <div class="mdl-menu__item--full-bleed-divider"></div>
@@ -216,10 +216,10 @@
         </form>
 
         <div class="mdl-dialog__actions">
-          <button onclick="submit_edit_oprec()" style="margin-right: 8px; color: white; float: right; background: #FFA000" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+          <button onclick="submit_edit_oprec()" style="margin-right: 8px; color: white; float: right; background: <?php echo $warna; ?>;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
               <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">get_app</i>
               <span style="line-height: 0; font-size: 15px; vertical-align: middle">SAVE</span>
-            </button>
+          </button>
           <button type="button" class="mdl-button close">Batal</button>
         </div>
     </dialog>

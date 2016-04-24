@@ -87,12 +87,16 @@
                       </div>
                     </div>
                   </div>
+                  <form id="form_isi_my_class" method="POST" action="<?php echo base_url(); ?>index.php/dosen/pilih_asisten_in_my_class">
+                    <input type='hidden' name='id_dosen' value='444444444444444444'>
+                    <input type='hidden' name='id_oprec' value='<?php echo $oprec->j_id; ?>'>
+                  </form>
                   <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 16px"></div>
                   <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
                     <?php if($waktu_untuk_dosen) { ?>
-                      <button onclick="load_this('<?php echo $oprec->j_id; ?>')" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
-                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">mode_edit</i>
-                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">Jadwal</span>
+                      <button onclick="my_class_in()" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+                        <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">class</i>
+                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">my class</span>
                       </button>
                       <button onclick="list_asisten('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         <i class="material-icons icon-list-oprec no-back" style="color: black; font-size: 20px; padding: 1px;">group</i>
@@ -101,7 +105,7 @@
                     <?php } else { ?>
                       <button style="margin-right: 8px; color: #B6B6B6; float: right; " class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
                         <i class="material-icons icon-list-oprec no-back" style="color: #B6B6B6; font-size: 20px; padding: 1px;">mode_edit</i>
-                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">Jadwal</span>
+                        <span style="line-height: 0; font-size: 15px; vertical-align: middle">my class</span>
                       </button>
                     <?php } ?>
                       <button style="margin-right: 8px; color: <?php echo $warna; ?>; float: left;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
@@ -119,6 +123,8 @@
         </div>
       </main>
     </div>
+
+    
 
     <dialog class="mdl-dialog" id="pesan_yes_no" style="width: 400px;">
       <div class="mdl-grid" style="padding: 0">
@@ -142,9 +148,13 @@
         });
       });
 
-      function load_this(id_oprec) {
-        window.location.href = "<?php echo base_url(); ?>index.php/kaprodi/pilih_asisten/" + id_oprec;
+      function my_class_in() {
+        $("#form_isi_my_class").submit();
       }
+
+      // function load_this(id_oprec) {
+      //   window.location.href = "<?php echo base_url(); ?>index.php/kaprodi/pilih_asisten/" + id_oprec;
+      // }
     </script>
 
     <script>

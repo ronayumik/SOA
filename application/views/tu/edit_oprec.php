@@ -299,7 +299,11 @@
         </form>
 
       <div class="mdl-dialog__actions">
-        <button onclick="simpan_kelas()" type="button" class="mdl-button">Simpan</button>
+        <button onclick="simpan_kelas()" style="margin-right: 8px; color: white; float: right; background: #0288D1;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+            <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">get_app</i>
+            <span style="line-height: 0; font-size: 15px; vertical-align: middle">SIMPAN</span>
+        </button>
+        <!-- <button onclick="simpan_kelas()" type="button" class="mdl-button">Simpan</button> -->
         <button type="button" class="mdl-button close">Batal</button>
       </div>
     </dialog>
@@ -308,7 +312,7 @@
         
         <div class="mdl-grid" style="padding: 0">
           <div class="mdl-cell mdl-cell--12-col" style="margin: 0; display: table">
-            <i style="background: #5E7642;" class="material-icons icon-list-oprec">add</i>
+            <i style="background: #CCFF90; color: #5E7642" class="material-icons icon-list-oprec">add</i>
             <h1 style="font-size: 20px;display: inline-block; margin: 0; vertical-align: middle">
               <i style="vertical-align: middle" class="material-icons">event</i>
               <span id="detail_waktu_add" style="vertical-align: middle"> 
@@ -371,7 +375,11 @@
         </form>
 
       <div class="mdl-dialog__actions">
-        <button onclick="create_kelas()" type="button" class="mdl-button">buat</button>
+        <button onclick="create_kelas()" style="margin-right: 8px; color: white; float: right; background: #CCFF90;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+            <i class="material-icons icon-list-oprec no-back" style="color: #5E7642; font-size: 20px; padding: 1px;">get_app</i>
+            <span style="color: #5E7642;line-height: 0; font-size: 15px; vertical-align: middle">BUAT</span>
+        </button>
+        <!-- <button onclick="create_kelas()" type="button" class="mdl-button">buat</button> -->
         <button type="button" class="mdl-button close">Batal</button>
       </div>
     </dialog>

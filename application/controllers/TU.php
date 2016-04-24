@@ -50,6 +50,7 @@ class TU extends CI_Controller {
 		$data['list_mk']  		= $this->tu_m->list_mk()->result_array();
 		$data['list_dosen'] 	= $this->tu_m->list_dosen()->result_array();
 		$data['detail_kelas'] 	= $this->kaprodi_m->kelas($id_kelas)->result_array();
+		
 		echo json_encode($data);
 	}
 

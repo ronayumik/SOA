@@ -3,11 +3,11 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
           </div>
-          <div class="mdl-cell mdl-cell--4-col">
-            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="margin-right: 0">
-              <div class="mdl-card__title mdl-card--expand">
+          <div class="mdl-cell mdl-cell--6-col">
+            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="margin-right: 0; height: 156px;">
+              <div class="mdl-card__title mdl-card--expand" >
                 <h4>
-                  List Open Recruitment
+                  Open Recruitment
                 </h4>
               </div>
               <div class="mdl-card__actions mdl-card--border">
@@ -19,11 +19,10 @@
               </div>
             </div>
           </div>
-          <div class="mdl-cell mdl-cell--4-col">
-            <div class="demo-card-event mdl-card mdl-shadow--2dp">
+          <div class="mdl-cell mdl-cell--6-col">
+            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="margin-left: 0; height: 156px;">
               <div class="mdl-card__title mdl-card--expand">
                 <h4>
-                  Pengelolaan<br>
                   Pengumuman<br>
                 </h4>
               </div>
@@ -34,24 +33,6 @@
                 </a>
                 <div class="mdl-layout-spacer"></div>
                 <!-- <i class="material-icons">arrow_forward</i> -->
-              </div>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--4-col">
-            <div class="demo-card-event mdl-card mdl-shadow--2dp" style="margin-left: 0">
-              <div class="mdl-card__title mdl-card--expand">
-                <h4>
-                  Pengelolaan<br>
-                  Akun Dosen<br>
-                </h4>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Masuk Perkakas
-                  <i style="margin-left: 20px;" class="material-icons">arrow_forward</i>
-                </a>
-                <div class="mdl-layout-spacer"></div>
-                <!-- <i class="material-icons">event</i> -->
               </div>
             </div>
           </div>

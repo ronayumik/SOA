@@ -29,7 +29,6 @@
 		$this->load->view('mahasiswa/memilih_oprec', $data);
  	}
 
-
 	public function apply_oprec($id) {
 		$id_jadwal = $id;
 
