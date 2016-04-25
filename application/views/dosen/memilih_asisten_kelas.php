@@ -95,21 +95,49 @@
           </div>
         </h5>
         <div class="mdl-dialog__content">
-          <h5 class="mdl-dialog__title" style="padding: 0; font-size: 15px; color: rgba(0, 0, 0, 0.4)">
-            List Calon Asisten
-          </h5>
-          <table class="mdl-data-table mdl-js-data-table" style="font-size: 20px;">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-descending">NRP</th>
-                <th>Pengalaman Asisten</th>
-                <th colspan="2" style="text-align: center">Action</th>
-              </tr>
-            </thead>
-            <tbody id="content_list_asisten_head">
-              
-            </tbody>
-          </table>
+        	<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        		<div class="mdl-tabs__tab-bar">
+				      <a style="width: 50%" href="#oprec-panel" class="mdl-tabs__tab is-active">List Asisten Oprec</a>
+				      <a style="width: 50%" href="#colserec-panel" class="mdl-tabs__tab">Close Recruitment</a>
+				  </div>
+				  <div class="mdl-tabs__panel is-active" id="oprec-panel" style="margin-top: 20px">
+	        		  <!-- <h5 class="mdl-dialog__title" style="padding: 0; font-size: 15px; color: rgba(0, 0, 0, 0.4)">
+			            List Calon Asisten
+			          </h5> -->
+			          <table class="mdl-data-table mdl-js-data-table" style="font-size: 20px;">
+			            <thead>
+			              <tr>
+			                <th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-descending">NRP</th>
+			                <th>Pengalaman Asisten</th>
+			                <th colspan="2" style="text-align: center">Action</th>
+			              </tr>
+			            </thead>
+			            <tbody id="content_list_asisten_head">
+			              
+			            </tbody>
+			          </table>
+			       </div>
+			      <div class="mdl-tabs__panel is-active" id="colserec-panel" style="margin-top: 20px">
+			      		<h5 class="mdl-dialog__title" style="text-align: center; padding: 0; font-size: 15px; color: rgba(0, 0, 0, 0.4)">
+			            Data diri Asisten
+			          </h5>
+	        		  <div class="mdl-grid" >
+	        		  	<div class="mdl-cell mdl-cell--6-col">
+	        		  	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="nrp" name="nrp">
+			                <label class="mdl-textfield__label" for="nrp">NRP</label>
+			              </div>
+	        		  	</div>
+	        		  	<div class="mdl-cell mdl-cell--6-col">
+	        		  		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                <input class="mdl-textfield__input" type="number" id="nama" name="nama">
+			                <label class="mdl-textfield__label" for="nrp">Nama</label>
+			              </div>
+	        		  	</div>
+	        		  </div>
+			       </div>
+        	</div>
+          
         </div>
         <div class="mdl-dialog__actions">
           <button type="button" class="mdl-button close" style="margin-left: auto; ; margin-right: auto">Tutup</button>
