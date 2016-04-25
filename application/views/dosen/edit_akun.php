@@ -69,54 +69,39 @@
           </ul>
         </div>
       </header>
-      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
-          <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
-          <div class="demo-avatar-dropdown">
-            <span>didit@dosen.its.ac.id</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">LogOut</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item"><a href="<?php echo base_url(); ?>dosen/edit_akun">Edit Akun</a></li>
-              <li class="mdl-menu__item">Logout</li>
-            </ul>
-          </div>
-        </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Kelas</a>
-          <a class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Calon Asdos</a>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-        </nav>
-      </div>
+      
       <main class="mdl-layout__content mdl-color--grey-100">
           <?php
             foreach($dosen as $data)
             {
                 
           ?>
-        <form action="#">
+        <form action="<?php echo base_url(); ?>dosen/edit_akun_do" method="post">
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="id" readonly="readonly" value="<?php echo $data->u_nip; ?>">
+                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_nip; ?></label>
+              </div>
+          </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="nama" value="<?php echo $data->u_nama; ?>">
                 <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_nama; ?></label>
               </div>
           </div>
           
           <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="email" value="<?php echo $data->u_email; ?>">
                 <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_email; ?></label>
               </div>
           </div>
         
         <div class="mdl-cell mdl-cell--12-col">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="pass" >
                 <label class="mdl-textfield__label" for="sample3"></label>
               </div>
           </div>
@@ -127,13 +112,12 @@
                 <label class="mdl-textfield__label" for="sample3">Retype Passwrod</label>
               </div>
           </div>
-          
+            <button type="submit">Simpan</button>
         </div>
        
         <?php } ?>
       </main>
     </div>
-      <a href="https://github.com/google/material-design-lite/blob/master/templates/dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">SIMPAN</a>
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
   </body>
 </html>

@@ -42,14 +42,34 @@ Class Dosen_m extends CI_Model{
         //return $data;
     }
 
-
+    public function edit_dosen($id, $nama, $email, $pass)
+    {
+        $query = $this->db->query("update user_ set u_nama = '$nama', u_email='$email', u_pass='$pass' where u_nip = '$id'");
+    }
     
     public function detail_dosen($id)
     {
-        $query = $this->db->query("select * from user where u_nip = $id");
+        $query = $this->db->query("select * from user_ where u_nip = '111111111111111111'");
         $data = $query->result();
         return $data;
     }
+    
+    public function login_d($email, $pass)
+    {
+        echo "$email - $pass";
+        $query = $this->db->query("SELECT * FROM user_ WHERE u_email = 'dosen1@kampus.com' AND u_pass = 'dosen1'");
+        $data = $query->result();
+        return $data;
+    }
+    
+    public function login($email, $pass)
+    {
+        echo "$email - $pass";
+        $query = $this->db->query("SELECT * FROM user_ WHERE u_email = '$email' AND u_pass = '$pass'");
+        $data = $query->result();
+        return $data;
+    }
+    
 }
     
 ?>
