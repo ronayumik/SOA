@@ -104,7 +104,14 @@ Class Tu_m extends CI_Model{
         $p_judul = $this->input->post('p_judul');
         $p_isi = $this->input->post('p_isi');
         $query = $this->db->query("update pengumuman set p_judul = '$p_judul', p_isi = '$p_isi' where p_id='$id'");
-        //var_dump($p_isi);
+        return $query;
+    }
+
+    public function tambah_pengumuman()
+    {
+        $p_judul = $this->input->post('p_judul');
+        $p_isi = $this->input->post('p_isi');
+        $query = $this->db->query("insert into pengumuman(p_judul,p_isi) values('$p_judul','$p_isi')");
         return $query;
     }
 }

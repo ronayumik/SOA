@@ -166,10 +166,24 @@ class TU extends CI_Controller {
  		$this->load->view('tu/edit_pengumuman/edit_pengumuman',$hasil);
  	}
 
+ 	public function tambah_pengumuman()
+ 	{
+ 		$data_header['judul'] = "Pengumuman";
+ 		$data_header['status'] = "";
+ 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/tambah_pengumuman');
+ 	}
+
  	public function simpan_pengumuman()
  	{
  		$id = $this->input->post('id');
  		$this->tu_m->simpan_pengumuman($id);
+ 		redirect('index.php/TU/lihat_pengumuman');
+ 	}
+
+ 	public function tmbh_pengumuman()
+ 	{
+ 		$this->tu_m->tambah_pengumuman($id);
  		redirect('index.php/TU/lihat_pengumuman');
  	}
 }
