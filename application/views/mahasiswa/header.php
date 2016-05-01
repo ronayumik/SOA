@@ -96,7 +96,7 @@
               <a class='mdl-navigation__link <?php if($memilih_oprec) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/mahasiswa/memilih_oprec'>
                 <i class=' material-icons' role='presentation'>home</i>List Open Recruitment Asisten
               </a>
-              <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>'>
+              <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>' href="<?php echo base_url(); ?>index.php/mahasiswa/melihat_pengumuman">
                 <i class=' material-icons' role='presentation'>today</i>Pengumuman
               </a>
               <div class="mdl-layout-spacer"></div>
