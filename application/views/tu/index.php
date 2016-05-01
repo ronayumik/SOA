@@ -48,7 +48,7 @@
                 </h4>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <a href="<?php echo base_url(); ?>index.php/tu/mengelola_akun_dosen" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                   Masuk Perkakas
                   <i style="margin-left: 20px;" class="material-icons">arrow_forward</i>
                 </a>

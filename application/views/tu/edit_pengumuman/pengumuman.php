@@ -16,8 +16,23 @@
         </div>
         <br>
         <?php }?>
+       <div style="font-size: 13px;" class="mdl-tooltip mdl-tooltip--left" for="new_oprec_button">
+        Buat Pengumuman
+      </div>
+
+
       </main>
     </div>
+
+    <div style="font-size: 13px;" class="mdl-tooltip mdl-tooltip--left" for="new_oprec_button">
+        Buat Pengumuman
+      </div>
+    <a href="<?php echo base_url();?>index.php/tu/tambah_pengumuman" style="position: absolute; bottom: 0; right: 0; z-index: 100; padding: 30px">
+      <button id="new_oprec_button" style="background: #673AB7" class="mdl-button mdl-js-button mdl-shadow--2dp mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
+    </a>
+
 
     <!-- Colored FAB button -->
     

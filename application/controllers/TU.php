@@ -134,10 +134,30 @@ class TU extends CI_Controller {
 
 	public function mengelola_akun_dosen()
 	{
+		$this->load->model('tu_m');
+ 		$hasil['h']=$this->tu_m->list_dosen();
 		$data['judul'] = "Mengelola Akun Dosen";
-		$this->load->view('tu/header',$data);
-        $this->load->view('tu/akun_dosen');
+		$data['status'] = "";
+		$this->load->view('tu/header_tu',$data);
+        $this->load->view('tu/akun_dosen',$hasil);
     }
+
+    public function tambah_akun_dosen()
+	{
+		$this->load->model('tu_m');
+ 		$hasil['h']=$this->tu_m->list_dosen();
+		$data['judul'] = "Mengelola Akun Dosen";
+		$data['status'] = "";
+		$this->load->view('tu/header_tu',$data);
+        $this->load->view('tu/edit_akun',$hasil);
+    }
+
+    public function simpan_akun_dosen()
+ 	{
+ 		$this->tu_m->simpan_dosen();
+ 		redirect('index.php/TU/mengelola_akun_dosen');
+ 	}
+
 	public function mengelola_pengumuman()
 	{
 		//$data['judul'] = "Mengelola Pengumuman";
@@ -151,7 +171,7 @@ class TU extends CI_Controller {
  		$hasil['h']=$this->tu_m->list_pengumuman();
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
- 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/header_tu',$data_header);
  		$this->load->view('tu/edit_pengumuman/pengumuman',$hasil);
  	}
 
@@ -162,7 +182,7 @@ class TU extends CI_Controller {
  		$hasil['h']=$this->tu_m->edit_pengumuman($id);
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
- 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/header_tu',$data_header);
  		$this->load->view('tu/edit_pengumuman/edit_pengumuman',$hasil);
  	}
 
@@ -170,7 +190,7 @@ class TU extends CI_Controller {
  	{
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
- 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/header_tu',$data_header);
  		$this->load->view('tu/edit_pengumuman/tambah_pengumuman');
  	}
 

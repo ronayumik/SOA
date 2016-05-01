@@ -21,7 +21,15 @@ Class Tu_m extends CI_Model{
     }
 
     public function list_dosen() {
-        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN'");
+        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view=1");
+        return $data;   
+    }
+
+    public function simpan_dosen() {
+        $u_nip = $this->input->post('u_nip');
+        $u_nama = $this->input->post('u_nama');
+        $u_email = $this->input->post('u_email');
+        $data = $this->db->query("insert into user_(u_nip,u_nama,u_email,u_pass,u_hak_akses) values('$u_nip','$u_nama','$u_email','$u_nip','DOSEN')");
         return $data;   
     }
 
