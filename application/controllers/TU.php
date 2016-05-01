@@ -144,4 +144,32 @@ class TU extends CI_Controller {
 	   //$this->load->view('tu/header',$data);
        $this->load->view('tu/pengumuman');
 	}
+
+	public function lihat_pengumuman()
+ 	{
+ 		$this->load->model('tu_m');
+ 		$hasil['h']=$this->tu_m->list_pengumuman();
+ 		$data_header['judul'] = "Pengumuman";
+ 		$data_header['status'] = "";
+ 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/pengumuman',$hasil);
+ 	}
+
+ 	public function edit_pengumuman()
+ 	{
+ 		$id = $this->input->post('id');
+ 		$this->load->model('tu_m');
+ 		$hasil['h']=$this->tu_m->edit_pengumuman($id);
+ 		$data_header['judul'] = "Pengumuman";
+ 		$data_header['status'] = "";
+ 		$this->load->view('tu/edit_pengumuman/header',$data_header);
+ 		$this->load->view('tu/edit_pengumuman/edit_pengumuman',$hasil);
+ 	}
+
+ 	public function simpan_pengumuman()
+ 	{
+ 		$id = $this->input->post('id');
+ 		$this->tu_m->simpan_pengumuman($id);
+ 		redirect('index.php/TU/lihat_pengumuman');
+ 	}
 }

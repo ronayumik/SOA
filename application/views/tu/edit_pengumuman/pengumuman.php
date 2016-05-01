@@ -7,6 +7,10 @@
                <h2 class="mdl-card__title-text"><?php echo $key->p_judul;?></h2>
             </div>
             <div class="mdl-card__supporting-text"><?php echo $key->p_isi;?><br><BR>
+              <form action="<?php echo base_url();?>index.php/TU/edit_pengumuman" method="POST">
+                <input type="hidden" value="<?php echo $key->p_id;?>" name="id">
+              <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="color:white" value="EDIT">
+              </form>
             </div>
           </div>
         </div>

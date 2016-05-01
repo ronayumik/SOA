@@ -79,8 +79,9 @@
  	public function melihat_pengumuman()
  	{
  		$hasil['h']=$this->mahasiswa_m->list_pengumuman();
- 		$data['judul'] = "Pengumuman";
- 		$this->load->view('mahasiswa/header',$data);
+ 		$data_header['judul'] = "Pengumuman";
+ 		$data_header['status'] = "";
+ 		$this->load->view('mahasiswa/header',$data_header);
  		$this->load->view('mahasiswa/pengumuman',$hasil);
  	}
  }
