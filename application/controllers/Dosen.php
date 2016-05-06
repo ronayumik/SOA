@@ -73,7 +73,8 @@ class Dosen extends CI_Controller {
 	
 	public function edit_akun()
 	{
-        $data['dosen'] = $this->dosen_m->detail_dosen('333333333333333333');
+        $id = $this->session->userdata('id');
+        $data['dosen'] = $this->dosen_m->detail_dosen($id);
 		$this->load->view('dosen/edit_akun', $data);
 	}
     

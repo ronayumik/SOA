@@ -64,11 +64,11 @@
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
             <li class="mdl-menu__item">
               <i class="material-icons v-middle">account_circle</i>
-              <span class="v-middle">Profile</span>
+                <a href="<?php echo base_url(); ?>user/edit_akun"><span class="v-middle">Profile</span></a>
             </li>
             <li class="mdl-menu__item">
               <i class="material-icons v-middle">exit_to_app</i>
-              <span class="v-middle">Logout</span>
+                <a href="<?php echo base_url(); ?>user/logout"><span class="v-middle">Logout</span></a>
             </li>
           </ul>
         </div>

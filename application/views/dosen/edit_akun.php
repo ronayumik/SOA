@@ -76,46 +76,65 @@
             {
                 
           ?>
-        <form action="<?php echo base_url(); ?>dosen/edit_akun_do" method="post">
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="id" readonly="readonly" value="<?php echo $data->u_nip; ?>">
-                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_nip; ?></label>
+        <div class="mdl-cell mdl-cell--6-col">  
+            <h4 style="margin-left:15px; margin-bottom:-15px; color:grey;">Ubah Data Diri</h4><h6 style="margin-left:15px; margin-bottom:-15px; color:grey;"> <?php echo $error; ?></h6>
+            <form action="<?php echo base_url(); ?>user/edit_akun_do" method="post">
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--12-col">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="sample3" name="id" readonly="readonly" value="<?php echo $data->u_nip; ?>">
+                        <label class="mdl-textfield__label" for="sample3">NIP</label>
+                  </div>
               </div>
-          </div>
-        <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="nama" value="<?php echo $data->u_nama; ?>">
-                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_nama; ?></label>
+              <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="nama" value="<?php echo $data->u_nama; ?>">
+                    <label class="mdl-textfield__label" for="sample3">Nama</label>
+                  </div>
               </div>
-          </div>
-          
-          <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="email" value="<?php echo $data->u_email; ?>">
-                <label class="mdl-textfield__label" for="sample3"><?php echo $data->u_email; ?></label>
+              <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3" name="email" value="<?php echo $data->u_email; ?>">
+                    <label class="mdl-textfield__label" for="sample3">Email</label>
+                  </div>
               </div>
+               
+                <div class="mdl-cell mdl-cell--8-col">
+                    <button type="submit" style="float:right; color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
+                </div>
+              </form>
+            <?php } ?>
+            </div>
           </div>
-        
-        <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="pass" >
-                <label class="mdl-textfield__label" for="sample3"></label>
+          <div class="mdl-cell mdl-cell--6-col" style="float:top;">  
+            <h4 style="margin-left:15px; margin-bottom:-15px; color:grey;">Ubah Password</h4><h6 style="margin-left:15px; margin-bottom:-15px; color:grey;"> <?php echo $error_pass; ?></h6>
+            <form action="<?php echo base_url(); ?>user/edit_pass_do" method="post">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="sample3" name="pass_lama" >
+                        <label class="mdl-textfield__label" for="sample3">Password Lama</label>
+                      </div>
+                  </div>
+                <div class="mdl-cell mdl-cell--12-col">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="sample3" name="pass_baru" >
+                        <label class="mdl-textfield__label" for="sample3">Password Baru</label>
+                      </div>
+                  </div>
+                <br>
+                <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="sample3" name="pass_konf" >
+                    <label class="mdl-textfield__label" for="sample3">Tulis Ulang Password</label>
+                  </div>
               </div>
+                <div class="mdl-cell mdl-cell--8-col">
+                    <button type="submit" style="float:right; color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
+                </div>
+              </form>
+            </div>
           </div>
-        
-        <div class="mdl-cell mdl-cell--12-col">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3">
-                <label class="mdl-textfield__label" for="sample3">Retype Passwrod</label>
-              </div>
-          </div>
-            <button type="submit">Simpan</button>
-        </div>
-       
-        <?php } ?>
       </main>
     </div>
     <script src="https://code.getmdl.io/1.1.2/material.min.js"></script>
