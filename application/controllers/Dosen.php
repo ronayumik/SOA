@@ -5,6 +5,10 @@ class Dosen extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        
+        if( $this->session->userdata('hak') != 'DOSEN')
+             redirect('/user', 'refresh');
+        
         $this->load->model('dosen_m');
         $this->load->model('tu_m');
         $this->load->model('kaprodi_m');

@@ -14,16 +14,16 @@
                 <label><?php echo $log_stat; ?></label>
              <form action="<?php echo base_url(); ?>user/login" method="post">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" name="email" value=" " type="text" id="sample3">
+                <input class="mdl-textfield__input" name="email" type="text" id="sample3">
                 <label class="mdl-textfield__label" for="sample3">Username</label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" name="pass" value="" type="password" id="sample3">
+                <input class="mdl-textfield__input" name="pass"  type="password" id="sample3">
                 <label class="mdl-textfield__label" for="sample3">Password</label>
               </div>
                  <div class="mdl-card__actions mdl-card--border">
                   <button type="submit" style="float:right; color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                  Button
+                  Login
                 </button>
             </form>
             </div>

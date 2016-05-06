@@ -6,6 +6,10 @@ class TU extends CI_Controller {
    	public function __construct()
     {
         parent::__construct();
+        
+        if( $this->session->userdata('hak') != 'TU')
+             redirect('/user', 'refresh');
+        
         $this->load->model('kaprodi_m');
         $this->load->model('tu_m');
         $this->load->helper('url');
