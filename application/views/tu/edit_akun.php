@@ -13,7 +13,7 @@
         </div><br>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <p>EMAIL</p>
-          <input class="mdl-textfield__input" type="email" name="u_email" id="sample3">
+          <input class="mdl-textfield__input" type="email" name="u_email" >
         </div><br>
         <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="color:white" value="SIMPAN">
       </form>

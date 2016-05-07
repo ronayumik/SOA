@@ -140,6 +140,7 @@ class TU extends CI_Controller {
 	{
 		$this->load->model('tu_m');
  		$hasil['h']=$this->tu_m->list_dosen();
+        $hasil['h_tidak_aktif']=$this->tu_m->list_dosen_tidak_aktif();
 		$data['judul'] = "Mengelola Akun Dosen";
 		$data['status'] = "";
 		$this->load->view('tu/header_tu',$data);
@@ -154,6 +155,27 @@ class TU extends CI_Controller {
 		$data['status'] = "";
 		$this->load->view('tu/header_tu',$data);
         $this->load->view('tu/edit_akun',$hasil);
+    }
+    
+    public function edit_status_dosen($id)
+	{
+		$this->load->model('tu_m');
+        $this->load->model('dosen_m');
+ 		$hasil['h']=$this->dosen_m->detail_dosen($id);
+		$data['judul'] = "Mengelola Akun Dosen";
+		$data['status'] = "";
+		$this->load->view('tu/header_tu',$data);
+        $this->load->view('tu/edit_status_dosen',$hasil);
+    }
+    
+    public function edit_akun_dosen($id)
+    {
+        $id = $this->input->post('u_nip');
+        $nama = $this->input->post('u_nama');
+        $email = $this->input->post('u_email');
+        
+        $this->tu_m->edit_akun_dosen($id, $nama, $email);
+        redirect('index.php/TU/mengelola_akun_dosen');
     }
 
     public function simpan_akun_dosen()
@@ -209,5 +231,17 @@ class TU extends CI_Controller {
  	{
  		$this->tu_m->tambah_pengumuman($id);
  		redirect('index.php/TU/lihat_pengumuman');
+ 	}
+    
+    public function hapus_pengumuman($id)
+ 	{
+ 		$this->tu_m->hapus_pengumuman($id);
+ 		redirect('index.php/TU/lihat_pengumuman');
+ 	}
+    
+    public function set_aktif_dosen($kode, $id)
+ 	{
+ 		$this->tu_m->set_aktif_dosen($kode, $id);
+ 		redirect('index.php/TU/mengelola_akun_dosen');
  	}
 }
