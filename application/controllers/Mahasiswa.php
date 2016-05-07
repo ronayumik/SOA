@@ -12,11 +12,17 @@
  	}
 
  	public function index() {
- 		$data_header['menus'] = true;
-		$data_header['status'] = "";
-		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
-		$this->load->view('mahasiswa/header', $data_header);
-		$this->load->view('mahasiswa/index');
+// 		$data_header['menus'] = true;
+//		$data_header['status'] = "";
+//		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
+//		$this->load->view('mahasiswa/header', $data_header);
+//		$this->load->view('mahasiswa/index');
+        
+        $hasil['h']=$this->mahasiswa_m->list_pengumuman();
+ 		$data_header['judul'] = "Pengumuman";
+ 		$data_header['status'] = "";
+ 		$this->load->view('mahasiswa/header',$data_header);
+ 		$this->load->view('mahasiswa/index',$hasil);
  	}
 
  	public function memilih_oprec()
@@ -26,7 +32,7 @@
 		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
 		$data['list_oprec'] = $this->tu_m->list_oprec();
 		$this->load->view('mahasiswa/header', $data_header);
-		$this->load->view('mahasiswa/memilih_oprec', $data);
+		$this->load->view('mahasiswa/memilih_oprec', $data);   
  	}
 
 	public function apply_oprec($id) {
@@ -78,10 +84,16 @@
 
  	public function melihat_pengumuman()
  	{
- 		$hasil['h']=$this->mahasiswa_m->list_pengumuman();
+// 		$hasil['h']=$this->mahasiswa_m->list_pengumuman();
+// 		$data_header['judul'] = "Pengumuman";
+// 		$data_header['status'] = "";
+// 		$this->load->view('mahasiswa/header',$data_header);
+// 		$this->load->view('mahasiswa/pengumuman',$hasil);
+        
+        $hasil['h']=$this->mahasiswa_m->list_syarat();
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
  		$this->load->view('mahasiswa/header',$data_header);
- 		$this->load->view('mahasiswa/pengumuman',$hasil);
+ 		$this->load->view('mahasiswa/syarat',$hasil);
  	}
  }

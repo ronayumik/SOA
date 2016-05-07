@@ -292,7 +292,7 @@
               <span style="color: rgb(63,81,181); font-size: 12px; letter-spacing: 0;">Syarat dan ketentuan</span>
               <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="syarat" style="margin-left: 5px">
                 <input type="checkbox" id="syarat" class="mdl-checkbox__input">
-                <span class="mdl-checkbox__label">Saya bersedia dengan <a href="">syarat dan ketentuan</a> yang berlaku</span>
+                <span class="mdl-checkbox__label">Saya bersedia dengan <a href="<?php echo base_url(); ?>index.php/mahasiswa/melihat_pengumuman">syarat dan ketentuan</a> yang berlaku</span>
               </label>
             </div>
             <div id="hiddem_input_add"></div>

@@ -14,6 +14,13 @@ Class Mahasiswa_m extends CI_Model{
         $query = $this->db->query("select * from pengumuman");
         return $query;
     }
+    
+//    baru
+    public function list_syarat()
+    {
+        $query = $this->db->query("select * from pengumuman where p_id= 2 or p_id = 3");
+        return $query;
+    }
 
     public function cek_asisten($nrp) {
         $data = $this->db->query("select a_nrp from asisten where a_nrp = '$nrp'");
