@@ -83,6 +83,7 @@ class User extends CI_Controller {
         $id = $this->session->userdata('id');
         $data['dosen'] = $this->dosen_m->detail_dosen($id);
         $data['error'] = '';
+        $data['error_pass'] = '';
 		$this->load->view('dosen/edit_akun', $data);
 	}
     
