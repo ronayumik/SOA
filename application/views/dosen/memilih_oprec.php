@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <form id="form_isi_my_class" method="POST" action="<?php echo base_url(); ?>index.php/dosen/pilih_asisten_in_my_class">
-                    <input type='hidden' name='id_dosen' value='444444444444444444'>
+                    <input type='hidden' name='id_dosen' value='<?php echo $_SESSION['id'] ?>'>
                     <input type='hidden' name='id_oprec' value='<?php echo $oprec->j_id; ?>'>
                   </form>
                   <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 16px"></div>
