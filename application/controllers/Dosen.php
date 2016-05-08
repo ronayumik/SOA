@@ -40,10 +40,11 @@ class Dosen extends CI_Controller {
 		$data_header['memilih'] = true;
 		$data_header['status'] = "add_asisten";
 		$data_header['judul'] = "Memilih Asisten";
-		$data['oprec_terpilih'] = $this->kaprodi_m->oprec_terpilih($id_oprec)->result_array();
-		$data_header['detail_oprec'] = $data['oprec_terpilih'];
-		$data['list_kelas'] = $this->dosen_m->list_kelas($id_dosen, $id_oprec);
 
+		
+		$data_header['detail_oprec'] =  $this->kaprodi_m->oprec_terpilih($id_oprec)->result_array();
+		$data['list_kelas'] = $this->dosen_m->list_kelas($id_dosen, $id_oprec);
+		//var_dump($data_header['detail_oprec']);
 		$this->load->view('dosen/header', $data_header);
 		$this->load->view('dosen/memilih_asisten_kelas', $data);
 	}

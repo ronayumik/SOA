@@ -87,14 +87,19 @@
                       </div>
                     </div>
                   </div>
-                  <form id="form_isi_my_class" method="POST" action="<?php echo base_url(); ?>index.php/dosen/pilih_asisten_in_my_class">
-                    <input type='hidden' name='id_dosen' value='444444444444444444'>
+
+
+                  <form id="form_isi_<?php echo $oprec->j_id; ?>" method="POST" action="<?php echo base_url(); ?>index.php/dosen/pilih_asisten_in_my_class">
+
+                    <input type='hidden' name='id_dosen' value='<?php echo $this->session->userdata('id');?>'>
+
                     <input type='hidden' name='id_oprec' value='<?php echo $oprec->j_id; ?>'>
                   </form>
                   <div class="mdl-cell mdl-cell--12-col" style="border-top: 1px solid rgba(0,0,0,0.1); margin-top: 0; margin-bottom: 16px"></div>
                   <div class="mdl-card__supporting-text" style="width: auto; padding-top: 0" >
                     <?php if($waktu_untuk_dosen) { ?>
-                      <button onclick="my_class_in()" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+
+                      <button onclick="my_class_in(<?php echo $oprec->j_id; ?>)" style="margin-right: 8px; color: white; float: right; background: #03A9F4" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">class</i>
                         <span style="line-height: 0; font-size: 15px; vertical-align: middle">my class</span>
                       </button>
@@ -148,8 +153,12 @@
         });
       });
 
-      function my_class_in() {
-        $("#form_isi_my_class").submit();
+
+
+      function my_class_in(idjadwal) {
+        var form_input = "#form_isi_";
+        form_input = form_input.concat(idjadwal);
+        $(form_input).submit();
       }
 
       // function load_this(id_oprec) {
