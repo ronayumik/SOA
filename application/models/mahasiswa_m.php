@@ -11,7 +11,7 @@ Class Mahasiswa_m extends CI_Model{
 	//--untuk hasilkan query
 	public function list_pengumuman()
     {
-        $query = $this->db->query("select * from pengumuman where view = 1");
+        $query = $this->db->query("select * from pengumuman");
         return $query;
     }
     
