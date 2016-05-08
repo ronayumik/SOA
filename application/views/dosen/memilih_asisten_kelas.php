@@ -36,9 +36,9 @@
 				<div class="mdl-cell mdl-cell--12-col" style="text-align: center; background: <?php echo $warna; ?>; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 3px; padding-bottom: 3px" >
                           
                           <?php if($ada_asisten) { ?>
-                          <button id="<?php echo $kelas['k_id_kelas']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                          <!-- <button id="<?php echo $kelas['k_id_kelas']; ?>" style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                               <i style="color: <?php echo $warna_muda; ?>;" class="material-icons">more_vert</i>
-                          </button>
+                          </button> -->
                           <ul for="<?php echo $kelas['k_id_kelas']; ?>" class="mdl-menu mdl-js-menu mdl-js-ripple-effect">
                             <li onclick="edit_kelas(<?php echo $kelas['k_id_kelas']; ?>)" role="button" class="mdl-menu__item">
                               <i class="material-icons v-middle">mode_edit</i>
