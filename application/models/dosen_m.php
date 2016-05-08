@@ -61,7 +61,7 @@ Class Dosen_m extends CI_Model{
     
     public function login_d($email, $pass)
     {
-        echo "$email - $pass";
+        //echo "$email - $pass";
         $query = $this->db->query("SELECT * FROM user_ WHERE u_email = 'dosen1@kampus.com' AND u_pass = 'dosen1'");
         $data = $query->result();
         return $data;
@@ -71,7 +71,7 @@ Class Dosen_m extends CI_Model{
     
     public function login($email, $pass)
     {
-        echo "$email - $pass";
+        //echo "$email - $pass";
         $query = $this->db->query("SELECT * FROM user_ WHERE u_email = '$email' AND u_pass = '$pass'");
         $data = $query->result();
         return $data;

@@ -168,13 +168,14 @@ class TU extends CI_Controller {
         $this->load->view('tu/edit_status_dosen',$hasil);
     }
     
-    public function edit_akun_dosen($id)
+    public function edit_akun_dosen()
     {
         $id = $this->input->post('u_nip');
         $nama = $this->input->post('u_nama');
         $email = $this->input->post('u_email');
         
         $this->tu_m->edit_akun_dosen($id, $nama, $email);
+        //var_dump($id);
         redirect('index.php/TU/mengelola_akun_dosen');
     }
 

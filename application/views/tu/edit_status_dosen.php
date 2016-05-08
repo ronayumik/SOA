@@ -3,14 +3,15 @@
 
        <form action="<?php echo base_url()?>index.php/tu/edit_akun_dosen" style="padding:20px" method="post">
         <?php foreach($h as $key) { ?>
-        <h4>TAMBAH AKUN DOSEN</h4>
+        <h4>EDIT AKUN DOSEN</h4>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <p>NAMA DOSEN</p>
           <input class="mdl-textfield__input" name="u_nama" type="text" id="sample3" value="<?php echo $key->u_nama; ?>">
         </div><br>
          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <p>NIP</p>
-          <input class="mdl-textfield__input" name="u_nip" type="text" id="sample3" value="<?php echo $key->u_nip; ?>">
+          <input class="mdl-textfield__input" type="text" disabled id="sample3" value="<?php echo $key->u_nip; ?>">
+          <input class="mdl-textfield__input" name="u_nip" type="hidden" id="sample3" value="<?php echo $key->u_nip; ?>">
         </div><br>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <p>EMAIL</p>
