@@ -253,8 +253,29 @@
 
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="number" id="nohp" name="ipk">
+                <label class="mdl-textfield__label" for="nohp">IPK</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="nohp" name="nilai">
+                <label class="mdl-textfield__label" for="nohp">Nilai matakuliah ini</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="number" id="nohp" name="nohp">
                 <label class="mdl-textfield__label" for="nohp">No HP</label>
+              </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="nohp" name="transkrip">
+                <label class="mdl-textfield__label" for="nohp">Link Transkrip</label>
               </div>
             </div>
 
@@ -268,15 +289,15 @@
               </div>
             </div>
 
-            <div class="mdl-cell mdl-cell--6-col">
+         <!--    <div class="mdl-cell mdl-cell--6-col">
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
                 <input class="mdl-textfield__input" placeholder="Transkrip" type="text" id="transkrip" readonly/>
                 <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                  <i class="material-icons">attach_file</i>
-                  <input type="file" id="uploadBtn">
+                  <input type="text" id="uploadBtn" name="transkrip">
                 </div>
               </div>
-            </div>
+            </div> -->
+            <input type="hidden" id="uploadBtn" name="transkrips">
 
             <div class="mdl-cell mdl-cell--12-col">
                 <h1 style="display: inline-block; margin: 0; vertical-align: middle; font-size: 0">

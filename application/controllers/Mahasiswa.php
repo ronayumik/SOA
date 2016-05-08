@@ -55,7 +55,9 @@
 	public function apply_kelas() {
 		$nama_lengkap 		= $this->input->post('nama');
 		$nrp 				= $this->input->post('nrp');
-
+		$ipk 				= $this->input->post('ipk');
+		$nilai 				= $this->input->post('nilai');
+		$transkrip 			= $this->input->post('transkrip');
 		$id_kelas 			= $this->input->post('id_kelas');
 
 		if($this->mahasiswa_m->cek_asisten($nrp)->result_array() == null)
@@ -64,7 +66,7 @@
 		if($this->mahasiswa_m->cek_daftar($nrp, $id_kelas)->result_array() != null) {
 			echo json_encode(false);
 		} else {
-			if($this->mahasiswa_m->add_asisten_daftar($nrp, $id_kelas)) {
+			if($this->mahasiswa_m->add_asisten_daftar($nrp, $id_kelas, $nilai, $ipk, $transkrip)) {
 				echo json_encode(true);
 			} else {
 				echo json_encode(false);
