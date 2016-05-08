@@ -268,10 +268,11 @@
 
         $.ajax({
           type: "POST",
-          url: '<?php echo base_url(); ?>index.php/kaprodi/list_asisten',
+          url: '<?php echo base_url(); ?>index.php/dosen/list_asisten',
           data: ({id_kelas: id_kelas}),
           dataType: 'json',
           success: function(data) {
+            
             var nama_mk = data['detail_kelas'][0].lmk_nama;
             var nama_dosen_kelas = data['detail_kelas'][0].u_nama;
             var nama_kelas = data['detail_kelas'][0].k_kelas;

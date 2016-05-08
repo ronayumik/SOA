@@ -89,4 +89,13 @@ class Dosen extends CI_Controller {
         $this->dosen_m->edit_dosen($id, $nama, $email, $pass);
         $this->index();
     }
+
+    public function list_asisten() {
+		$id_kelas = $this->input->post('id_kelas');
+
+		$data['detail_kelas'] = $this->kaprodi_m->kelas($id_kelas)->result_array();
+
+		$data['list_asisten'] = $this->kaprodi_m->list_asisten($id_kelas)->result_array();
+		echo json_encode($data);
+	}
 }
