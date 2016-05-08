@@ -10,6 +10,7 @@
               <form action="<?php echo base_url();?>index.php/TU/edit_pengumuman" method="POST">
                 <input type="hidden" value="<?php echo $key->p_id;?>" name="id">
               <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="color:white" value="EDIT">
+                  <a href="<?php echo base_url(); ?>tu/hapus_pengumuman/<?php echo $key->p_id;?>"><input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="color:white" value="HAPUS"></a>
               </form>
             </div>
           </div>

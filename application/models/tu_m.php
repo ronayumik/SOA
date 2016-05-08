@@ -21,7 +21,12 @@ Class Tu_m extends CI_Model{
     }
 
     public function list_dosen() {
-        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view=1");
+        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 1");
+        return $data;   
+    }
+    
+    public function list_dosen_tidak_aktif() {
+        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 0");
         return $data;   
     }
 
@@ -97,7 +102,7 @@ Class Tu_m extends CI_Model{
 
     public function list_pengumuman()
     {
-        $query = $this->db->query("select * from pengumuman");
+        $query = $this->db->query("select * from pengumuman where view = 1");
         return $query;
     }
 
@@ -121,6 +126,21 @@ Class Tu_m extends CI_Model{
         $p_isi = $this->input->post('p_isi');
         $query = $this->db->query("insert into pengumuman(p_judul,p_isi) values('$p_judul','$p_isi')");
         return $query;
+    }
+    
+    public function hapus_pengumuman($id)
+    {
+        $this->db->query("update pengumuman set view = 0 where p_id = '$id'");
+    }
+    
+    public function set_aktif_dosen($kode, $id)
+    {
+        $this->db->query("update user_ set view = '$kode' where u_nip = '$id'");
+    }
+    
+    public function edit_akun_dosen($id, $nama, $email)
+    {
+        $this->db->query("update user_ set u_nip = '$id', u_nama = '$nama', u_email = '$email' where u_nip = '$id'");
     }
 }
     
