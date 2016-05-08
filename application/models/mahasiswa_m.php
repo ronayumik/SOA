@@ -6,7 +6,7 @@ Class Mahasiswa_m extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
-    
+     
 	
 	//--untuk hasilkan query
 	public function list_pengumuman()
@@ -37,8 +37,8 @@ Class Mahasiswa_m extends CI_Model{
         return $data;
     }
 
-    public function add_asisten_daftar($nrp, $id_kelas) {
-        $data = $this->db->query("insert into asisten_daftar(ad_id_kelas, ad_nrp_mhs) values('$id_kelas', '$nrp')");
+    public function add_asisten_daftar($nrp, $id_kelas, $nilai, $ipk, $transkrip) {
+        $data = $this->db->query("insert into asisten_daftar(ad_id_kelas, ad_nrp_mhs, ad_nilai_matkul, ad_ipk, ad_transkrip) values('$id_kelas', '$nrp', '$nilai', '$ipk', '$transkrip')");
         return $data;   
         
     }
