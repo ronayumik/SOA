@@ -103,10 +103,10 @@
                         <i class="material-icons icon-list-oprec no-back" style="color: white; font-size: 20px; padding: 1px;">class</i>
                         <span style="line-height: 0; font-size: 15px; vertical-align: middle">my class</span>
                       </button>
-                      <button onclick="list_asisten('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
+                      <!-- <button onclick="list_asisten('<?php echo $oprec->j_id; ?>')" style="margin-right: 10px; color: black; float: right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent mdl-shadow--2dp">
                         <i class="material-icons icon-list-oprec no-back" style="color: black; font-size: 20px; padding: 1px;">group</i>
                         <span style="line-height: 0; font-size: 15px; vertical-align: middle">List Asisten</span>
-                      </button>
+                      </button> -->
                     <?php } else { ?>
                       <button style="margin-right: 8px; color: #B6B6B6; float: right; " class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent ">
                         <i class="material-icons icon-list-oprec no-back" style="color: #B6B6B6; font-size: 20px; padding: 1px;">mode_edit</i>
