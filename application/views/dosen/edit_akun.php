@@ -38,18 +38,27 @@
       display: block;
       right: 0;
       bottom: 0;
-      margin-right: 40px;
+      margin-right: 40px; 
       margin-bottom: 40px;
       z-index: 900;
     }
     </style>
   </head>
   <body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">Edit Akun</span>
-          
+          <span class="mdl-layout-title" style="left: -50px">
+                <a href="<?php echo base_url(); ?>index.php/user" style="color:#fff">
+                  <button style="width: 40px; height: 40px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i style="color: black" class="material-icons">arrow_back</i>
+                  </button>
+                 </a>
+                <span style="margin-left: 10px; display: inline-block; vertical-align: middle; font-size: 15px">
+                  <span style="display: block; padding-bottom: 3px; font-size: 20px">EDIT AKUN</span>
+                </span>
+                
+              </span>
       </header>
       
       <main class="mdl-layout__content mdl-color--grey-100">
@@ -64,7 +73,8 @@
             <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--12-col">
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" name="id" readonly="readonly" value="<?php echo $data->u_nip; ?>">
+                        <input class="mdl-textfield__input" type="text" disabled id="sample3" readonly="readonly" value="<?php echo $data->u_nip; ?>">
+                        <input class="mdl-textfield__input" type="hidden" id="sample3" name="id" readonly="readonly" value="<?php echo $data->u_nip; ?>">
                         <label class="mdl-textfield__label" for="sample3">NIP</label>
                   </div>
               </div>
@@ -82,7 +92,7 @@
               </div>
                
                 <div class="mdl-cell mdl-cell--8-col">
-                    <button type="submit" style="float:right; color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
+                    <button type="submit" style="color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
                 </div>
               </form>
             <?php } ?>
@@ -112,7 +122,7 @@
                   </div>
               </div>
                 <div class="mdl-cell mdl-cell--8-col">
-                    <button type="submit" style="float:right; color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
+                    <button type="submit" style=" color:white" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Simpan</button>
                 </div>
               </form>
             </div>
