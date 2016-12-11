@@ -20,7 +20,7 @@
 //		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
 //		$this->load->view('mahasiswa/header', $data_header);
 //		$this->load->view('mahasiswa/index');
-        
+
         $hasil['h']=$this->mahasiswa_m->list_pengumuman();
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
@@ -35,7 +35,7 @@
 		$data_header['judul'] = "Sistem Informasi Open Recruitment Asisten Dosen";
 		$data['list_oprec'] = $this->tu_m->list_oprec();
 		$this->load->view('mahasiswa/header', $data_header);
-		$this->load->view('mahasiswa/memilih_oprec', $data);   
+		$this->load->view('mahasiswa/memilih_oprec', $data);
  	}
 
 	public function apply_oprec($id) {
@@ -44,7 +44,7 @@
 		//Info Oprec
 		$data['oprec_terpilih'] = $this->kaprodi_m->oprec_terpilih($id_jadwal)->result_array();
 
-		//Info kelas2 
+		//Info kelas2
 		$data['list_kelas'] =  $this->kelas_m->list_kelas($id_jadwal);
 
 		$data_header['status'] = "apply_oprec";
@@ -62,19 +62,24 @@
 		$nilai 				= $this->input->post('nilai');
 		$transkrip 			= $this->input->post('transkrip');
 		$id_kelas 			= $this->input->post('id_kelas');
-
+    if(substr($nrp,0,7)=='5113100' && strlen($nrp) == 10)
+    {
 		if($this->mahasiswa_m->cek_asisten($nrp)->result_array() == null)
 			$this->mahasiswa_m->add_asisten($nrp, $nama_lengkap);
-		
+
 		if($this->mahasiswa_m->cek_daftar($nrp, $id_kelas)->result_array() != null) {
-			echo json_encode(false);
+			echo json_encode(2);
 		} else {
 			if($this->mahasiswa_m->add_asisten_daftar($nrp, $id_kelas, $nilai, $ipk, $transkrip)) {
-				echo json_encode(true);
+				echo json_encode(1);
 			} else {
-				echo json_encode(false);
+				echo json_encode(2);
 			}
 		}
+    }
+    else {
+      echo json_encode(3);
+    }
 		// } else {
 		// 	if($this->mahasiswa_m->add_asisten_daftar($nrp, $id_kelas)) {
 		// 		echo json_encode(true);
@@ -94,7 +99,7 @@
 // 		$data_header['status'] = "";
 // 		$this->load->view('mahasiswa/header',$data_header);
 // 		$this->load->view('mahasiswa/pengumuman',$hasil);
-        
+
         $hasil['h']=$this->mahasiswa_m->list_syarat();
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";

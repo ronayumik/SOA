@@ -2,18 +2,18 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          
+
           <a href="<?php echo base_url(); ?>index.php/kaprodi/memilih_oprec" style="margin-right: 20px;">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
             <i style="vertical-align: middle" class="material-icons">keyboard_backspace</i>
             </button>
           </a>
-          
+
           <span class="mdl-layout-title">
             Semester <?php echo $oprec_terpilih[0]['j_semester'] . " " . $oprec_terpilih[0]['j_tahun'] ?>
           </span>
 
-          
+
           <div class="mdl-layout-spacer"></div>
           <button class="mdl-button mdl-js-button" style="float: right; text-transform: none">
                   Due to <?php echo $oprec_terpilih[0]['j_tgl_oprek_tutup']; ?>
@@ -21,7 +21,7 @@
           </button>
         </div>
       </header> -->
-        
+
       <main class="mdl-layout__content mdl-color" style="padding:20px">
 
         <table class="tg">
@@ -35,7 +35,7 @@
             <th class="tg-baqh" style="width: 10%; font-size: 20px; font-weight: 500">JUM'AT</th>
           </tr>
 
-<?php 
+<?php
 
   $room = array(
     0 => "IF101",
@@ -79,7 +79,7 @@
 
               <?php for($l= 0; $l<5; $l++) { ?>
                   <td class="tg-6nwz" style="background: white;font-weight: 500; padding: 0">
-                    <?php 
+                    <?php
                         $flag = true;
                         foreach ($list_kelas->result_array() as $kelas) {
                           $ada_asisten = false;
@@ -93,7 +93,7 @@
                           }
                         if($kelas['k_ruang'] ==  $room[$j] && $kelas['k_waktu_jam_mulai'] == $jam_mulai[$k]) {
                       ?>
-                        <?php 
+                        <?php
                           if($kelas['k_waktu_hari'] == $hari[$l]) {
                           $flag = false;
                         ?>
@@ -121,7 +121,7 @@
                               <?php echo $kelas['u_nama']; ?>
                         </div>
 
-                        
+
 
                         <!-- <div class="mdl-cell mdl-cell--12-col" style="background: #CCFF90;text-align: center;display: table; min-height: 30px; width: 20%; margin: 0; font-size: 12px; padding-top: 2px; padding-bottom: 3px" >
                           <button style="width: 35px; height: 35px; font-size: 32px" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -167,8 +167,8 @@
                         </div>
 
                         <div class="mdl-cell mdl-cell--12-col" style="justify-content: flex-end; color: white; display: flex; align-items: center; background: <?php echo $warna; ?>;text-align: right; min-height: 30px; width: 60%; margin: 0; font-size: 12px; padding-top: 5px; padding-bottom: 5px" >
-                              <?php 
-                                if($ada_asisten) { 
+                              <?php
+                                if($ada_asisten) {
                                   echo $kelas['k_nrp_asisten'];
                                 } else {
                                   echo "<i>belum ada asisten</i>";
@@ -187,7 +187,7 @@
                         </div>
 
                         <?php } ?>
-                      <?php 
+                      <?php
                           } //if
                         }  //foreach
 
@@ -200,9 +200,9 @@
                               </button>
                             </div>
                           </div>
-                        
+
                     </div>
-                    <?php 
+                    <?php
                         }
                         $flag = true;
                       ?>
@@ -253,14 +253,14 @@
 
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="number" id="nohp" name="ipk">
+                <input class="mdl-textfield__input" type="number" id="ipk" name="ipk">
                 <label class="mdl-textfield__label" for="nohp">IPK</label>
               </div>
             </div>
 
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="nohp" name="nilai">
+                <input class="mdl-textfield__input" type="text" id="nilai" name="nilai">
                 <label class="mdl-textfield__label" for="nohp">Nilai matakuliah ini</label>
               </div>
             </div>
@@ -371,7 +371,7 @@
     <script>
 
     $(document).ready(function() {
-          
+
           if (localStorage['pesan'] == 'yes') {
 
               var isi;
@@ -423,25 +423,42 @@
     }
 
     function submit_form_apply() {
-      $.ajax({
-        type: "POST",
-        url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_kelas',
-        data:  $("#form_apply").serialize(),
-        dataType: 'json',
-        success: function(data) {
-          //console.log(data);
-          if(data) {
-            localStorage['pesan']      = 'yes';
-            localStorage['isi_pesan']  = 'mendaftar sebagai Calon Asisten';
-            location.reload();
-          }
-          else {
-            localStorage['pesan']      = 'no';
-            localStorage['isi_pesan']  = ', Anda sudah mendaftar untuk kelas ini.';
-            location.reload();
-          }
-        },
-      });
+      var IPK = parseFloat(document.getElementById("ipk").value);
+      var Nilai = document.getElementById("nilai").value;
+      var alphaExp = /^[a-dA-D]+$/;
+      if (IPK > 4.0){
+        window.alert('IPK tidak valid');
+      }
+      else if(!Nilai.match(alphaExp))
+      {
+        window.alert('Nilai Mata Kuliah tidak valid');
+      }
+      else {
+        $.ajax({
+          type: "POST",
+          url: '<?php echo base_url(); ?>index.php/mahasiswa/apply_kelas',
+          data:  $("#form_apply").serialize(),
+          dataType: 'json',
+          success: function(data) {
+            //console.log(data);
+            if(data == 1) {
+              localStorage['pesan']      = 'yes';
+              localStorage['isi_pesan']  = 'mendaftar sebagai Calon Asisten';
+              location.reload();
+            }
+            else if(data == 2) {
+              localStorage['pesan']      = 'no';
+              localStorage['isi_pesan']  = ', Anda sudah mendaftar untuk kelas ini.';
+              location.reload();
+            }
+            else {
+              localStorage['pesan']      = 'no';
+              localStorage['isi_pesan']  = ', Khusus Mahasiswa INFORMATIKA.';
+              location.reload();
+            }
+          },
+        });
+      }
     }
 
     </script>
@@ -607,7 +624,3 @@
     </script>
   </body>
 </html>
-
-
-
-
