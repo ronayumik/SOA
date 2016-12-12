@@ -13,6 +13,9 @@ class TU extends CI_Controller {
         $this->load->model('kaprodi_m');
         $this->load->model('tu_m');
         $this->load->helper('url');
+        $this->load->model('kelas_m');
+        $this->load->model('user_m');
+        $this->load->model('pengumuman_m');
     }
 
 	public function index()
@@ -40,7 +43,7 @@ class TU extends CI_Controller {
 		$data['oprec_terpilih'] = $this->kaprodi_m->oprec_terpilih($id_jadwal)->result_array();
 
 		//Info kelas2 
-		$data['list_kelas'] =  $this->kaprodi_m->list_kelas($id_jadwal);
+		$data['list_kelas'] =  $this->kelas_m->list_kelas($id_jadwal);
 
 		$data_header['status'] = "edit";
 		$data_header['judul'] = "Open Recruitment Asisten Dosen";
@@ -52,7 +55,7 @@ class TU extends CI_Controller {
 	public function edit_kelas() {
 		$id_kelas 				= $this->input->post('id_kelas');
 		$data['list_mk']  		= $this->tu_m->list_mk()->result_array();
-		$data['list_dosen'] 	= $this->tu_m->list_dosen()->result_array();
+		$data['list_dosen'] 	= $this->user_m->list_dosen()->result_array();
 		$data['detail_kelas'] 	= $this->kaprodi_m->kelas($id_kelas)->result_array();
 		
 		echo json_encode($data);
@@ -64,9 +67,8 @@ class TU extends CI_Controller {
 		$id_mk = $this->input->post('nama_mk');
 		$kelas = $this->input->post('kelas');
 		$id_dosen = $this->input->post('dosen_mk');
-		$id_jadwal = $this->input->post('id_jadwal');
 
-		if($this->tu_m->simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk)) {
+		if($this->kelas_m->simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk)) {
 			echo json_encode(true);
 		}
 
@@ -75,22 +77,25 @@ class TU extends CI_Controller {
 	public function create_kelas() {
 
 		$data['list_mk']  		= $this->tu_m->list_mk()->result_array();
-		$data['list_dosen'] 	= $this->tu_m->list_dosen()->result_array();
+		$data['list_dosen'] 	= $this->user_m->list_dosen()->result_array();
 		echo json_encode($data);
 	}
 
 	public function tambah_kelas() {
-		$id_dosen 	= $this->input->post('dosen_mk');
-		$kelas 		= $this->input->post('kelas');
-		$id_jadwal	= $this->input->post('id_jadwal');
-		$room		= $this->input->post('room');
-		$hari		= $this->input->post('hari');
-		$jam_mulai	= $this->input->post('jam_mulai');
-		$jam_selesai= $this->input->post('jam_selesai');
-		$id_mk 		= $this->input->post('nama_mk');
+		// echo json_encode($this->input->post());
+		$data = [];
+		$data['k_id_dosen'] 		= $this->input->post('dosen_mk');
+		$data['k_kelas'] 			= $this->input->post('kelas');
+		$data['k_id_jadwal']		= $this->input->post('id_jadwal');
+		$data['k_ruang']			= $this->input->post('room');
+		$data['k_waktu_hari']		= $this->input->post('hari');
+		$data['k_waktu_jam_mulai']	= $this->input->post('jam_mulai');
+		$data['k_waktu_jam_selesai']= $this->input->post('jam_selesai');
+		$data['k_matkul'] 			= $this->input->post('nama_mk');
+		$data['k_nrp_asisten'] 		= '0';
 
 
-		if($this->tu_m->tambah_kelas($id_dosen, $kelas, $id_jadwal, $room, $hari, $jam_mulai, $jam_selesai, $id_mk)) {
+		if($this->kelas_m->tambah_kelas($data)) {
 			echo json_encode(true);
 		}
 	}
@@ -98,7 +103,7 @@ class TU extends CI_Controller {
 	public function hapus_kelas() {
 		$id_kelas = $this->input->post('id_kelas');
 
-		if($this->tu_m->hapus_kelas($id_kelas)) {
+		if($this->kelas_m->hapus_kelas($id_kelas)) {
 			echo json_encode(true);
 		}
 	}
@@ -139,8 +144,8 @@ class TU extends CI_Controller {
 	public function mengelola_akun_dosen()
 	{
 		$this->load->model('tu_m');
- 		$hasil['h']=$this->tu_m->list_dosen();
-        $hasil['h_tidak_aktif']=$this->tu_m->list_dosen_tidak_aktif();
+ 		$hasil['h']=$this->user_m->list_dosen();
+        $hasil['h_tidak_aktif']=$this->user_m->list_dosen_tidak_aktif();
 		$data['judul'] = "Mengelola Akun Dosen";
 		$data['status'] = "";
 		$this->load->view('tu/header_tu',$data);
@@ -150,7 +155,7 @@ class TU extends CI_Controller {
     public function tambah_akun_dosen()
 	{
 		$this->load->model('tu_m');
- 		$hasil['h']=$this->tu_m->list_dosen();
+ 		$hasil['h']=$this->user_m->list_dosen();
 		$data['judul'] = "Mengelola Akun Dosen";
 		$data['status'] = "";
 		$this->load->view('tu/header_tu',$data);
@@ -174,14 +179,14 @@ class TU extends CI_Controller {
         $nama = $this->input->post('u_nama');
         $email = $this->input->post('u_email');
         
-        $this->tu_m->edit_akun_dosen($id, $nama, $email);
+        $this->user_m->edit_akun_dosen($id, $nama, $email);
         //var_dump($id);
         redirect('index.php/TU/mengelola_akun_dosen');
     }
 
     public function simpan_akun_dosen()
  	{
- 		$this->tu_m->simpan_dosen();
+ 		$this->user_m->simpan_dosen();
  		redirect('index.php/TU/mengelola_akun_dosen');
  	}
 
@@ -195,7 +200,7 @@ class TU extends CI_Controller {
 	public function lihat_pengumuman()
  	{
  		$this->load->model('tu_m');
- 		$hasil['h']=$this->tu_m->list_pengumuman();
+ 		$hasil['h']=$this->pengumuman_m->list_pengumuman();
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
  		$this->load->view('tu/edit_pengumuman/header_tu',$data_header);
@@ -206,7 +211,7 @@ class TU extends CI_Controller {
  	{
  		$id = $this->input->post('id');
  		$this->load->model('tu_m');
- 		$hasil['h']=$this->tu_m->edit_pengumuman($id);
+ 		$hasil['h']=$this->pengumuman_m->edit_pengumuman($id);
  		$data_header['judul'] = "Pengumuman";
  		$data_header['status'] = "";
  		$this->load->view('tu/edit_pengumuman/header_tu',$data_header);
@@ -224,25 +229,25 @@ class TU extends CI_Controller {
  	public function simpan_pengumuman()
  	{
  		$id = $this->input->post('id');
- 		$this->tu_m->simpan_pengumuman($id);
+ 		$this->pengumuman_m->simpan_pengumuman($id);
  		redirect('index.php/TU/lihat_pengumuman');
  	}
 
  	public function tmbh_pengumuman()
  	{
- 		$this->tu_m->tambah_pengumuman($id);
+ 		$this->pengumuman_m->tambah_pengumuman($id);
  		redirect('index.php/TU/lihat_pengumuman');
  	}
     
     public function hapus_pengumuman($id)
  	{
- 		$this->tu_m->hapus_pengumuman($id);
+ 		$this->pengumuman_m->hapus_pengumuman($id);
  		redirect('index.php/TU/lihat_pengumuman');
  	}
     
     public function set_aktif_dosen($kode, $id)
  	{
- 		$this->tu_m->set_aktif_dosen($kode, $id);
+ 		$this->user_m->set_aktif_dosen($kode, $id);
  		redirect('index.php/TU/mengelola_akun_dosen');
  	}
 }

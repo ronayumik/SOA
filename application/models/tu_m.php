@@ -20,47 +20,7 @@ Class Tu_m extends CI_Model{
         return $data;
     }
 
-    public function list_dosen() {
-        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 1");
-        return $data;   
-    }
-    
-    public function list_dosen_tidak_aktif() {
-        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 0");
-        return $data;   
-    }
 
-    public function simpan_dosen() {
-        $u_nip = $this->input->post('u_nip');
-        $u_nama = $this->input->post('u_nama');
-        $u_email = $this->input->post('u_email');
-        $data = $this->db->query("insert into user_(u_nip,u_nama,u_email,u_pass,u_hak_akses) values('$u_nip','$u_nama','$u_email','$u_nip','DOSEN')");
-        return $data;   
-    }
-
-    public function simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk) {
-        $data = $this->db->query("update kelas set k_id_dosen = '$id_dosen', k_kelas = '$kelas', k_matkul='$id_mk' where k_id_kelas = '$id_kelas'");
-        return $data;
-
-    }
-
-    public function hapus_kelas($id_kelas) {
-        $data = $this->db->query("DELETE from kelas where k_id_kelas = '$id_kelas'");
-        return $data;
-    }
-
-    public function tambah_kelas($id_dosen, $kelas, $id_jadwal, $ruang, $hari, $jam_mulai, $jam_selesai, $id_mk) {
-        $data = $this->db->query(" INSERT INTO kelas (
-                                        k_id_dosen, k_kelas, k_id_jadwal, k_ruang,
-                                        k_waktu_hari, k_waktu_jam_mulai, k_waktu_jam_selesai, k_matkul, k_nrp_asisten
-                                    ) VALUES (
-                                        '$id_dosen', '$kelas', '$id_jadwal', '$ruang', '$hari', '$jam_mulai',
-                                        '$jam_selesai', '$id_mk', '0'
-                                    )
-                                ");
-
-        return $data;
-    }
 
     public function hapus_oprec($id_jadwal) {
         $data = $this->db->query("DELETE FROM jadwal where j_id = '$id_jadwal'");
@@ -100,6 +60,28 @@ Class Tu_m extends CI_Model{
         return $this->db->query("update jadwal set j_tahun = '$tahun' where j_id = '$id_jadwal'");
     }
 
+
+    /* moved to kelas_m.php
+    
+    public function simpan_kelas($id_kelas, $id_dosen, $kelas, $id_mk) {
+        $data = $this->db->query("update kelas set k_id_dosen = '$id_dosen', k_kelas = '$kelas', k_matkul='$id_mk' where k_id_kelas = '$id_kelas'");
+        return $data;
+
+    }
+
+    public function hapus_kelas($id_kelas) {
+        $data = $this->db->query("DELETE from kelas where k_id_kelas = '$id_kelas'");
+        return $data;
+    }
+
+    public function tambah_kelas($dataToUpdate) {
+        
+        return $this->db->insert('kelas', $dataToUpdate);
+    }
+
+    */
+    
+/*  moved to pengumuman_m  
     public function list_pengumuman()
     {
         $query = $this->db->query("select * from pengumuman where view = 1 order by p_id desc");
@@ -131,8 +113,29 @@ Class Tu_m extends CI_Model{
     public function hapus_pengumuman($id)
     {
         $this->db->query("update pengumuman set view = 0 where p_id = '$id'");
+    }*/
+    
+/*  
+    moved to user_m.php
+
+    public function list_dosen() {
+        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 1");
+        return $data;   
     }
     
+    public function list_dosen_tidak_aktif() {
+        $data = $this->db->query("select * from user_ where u_hak_akses = 'DOSEN' and view = 0");
+        return $data;   
+    }
+
+    public function simpan_dosen() {
+        $u_nip = $this->input->post('u_nip');
+        $u_nama = $this->input->post('u_nama');
+        $u_email = $this->input->post('u_email');
+        $data = $this->db->query("insert into user_(u_nip,u_nama,u_email,u_pass,u_hak_akses) values('$u_nip','$u_nama','$u_email','$u_nip','DOSEN')");
+        return $data;   
+    }
+
     public function set_aktif_dosen($kode, $id)
     {
         $this->db->query("update user_ set view = '$kode' where u_nip = '$id'");
@@ -141,7 +144,8 @@ Class Tu_m extends CI_Model{
     public function edit_akun_dosen($id, $nama, $email)
     {
         $this->db->query("update user_ set u_nip = '$id', u_nama = '$nama', u_email = '$email' where u_nip = '$id'");
-    }
+    }*/
+
 }
     
 ?>

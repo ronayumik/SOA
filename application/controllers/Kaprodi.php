@@ -13,6 +13,9 @@ class Kaprodi extends CI_Controller {
         $this->load->model('kaprodi_m');
         $this->load->model('tu_m');
         $this->load->helper('url');
+        $this->load->model('kelas_m');
+        $this->load->model('user_m');
+        $this->load->model('pengumuman_m');
     }
 
 	public function index()
@@ -43,7 +46,7 @@ class Kaprodi extends CI_Controller {
 		$data['oprec_terpilih'] = $this->kaprodi_m->oprec_terpilih($id_jadwal)->result_array();
 
 		//Info kelas2 
-		$data['list_kelas'] =  $this->kaprodi_m->list_kelas($id_jadwal);
+		$data['list_kelas'] =  $this->kelas_m->list_kelas($id_jadwal);
 
 		$data_header['status'] = "add_asisten";
 		$data_header['judul'] = "Open Recruitment Asisten Dosen";

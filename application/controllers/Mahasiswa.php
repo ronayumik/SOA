@@ -9,6 +9,9 @@
  		$this->load->model('mahasiswa_m');
  		$this->load->model('tu_m');
  		$this->load->model('kaprodi_m');
+        $this->load->model('kelas_m');
+        $this->load->model('user_m');
+        $this->load->model('pengumuman_m');
  	}
 
  	public function index() {
@@ -42,7 +45,7 @@
 		$data['oprec_terpilih'] = $this->kaprodi_m->oprec_terpilih($id_jadwal)->result_array();
 
 		//Info kelas2 
-		$data['list_kelas'] =  $this->kaprodi_m->list_kelas($id_jadwal);
+		$data['list_kelas'] =  $this->kelas_m->list_kelas($id_jadwal);
 
 		$data_header['status'] = "apply_oprec";
 		$data_header['judul'] = "Open Recruitment Asisten Dosen";

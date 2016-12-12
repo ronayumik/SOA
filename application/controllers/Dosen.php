@@ -12,6 +12,9 @@ class Dosen extends CI_Controller {
         $this->load->model('dosen_m');
         $this->load->model('tu_m');
         $this->load->model('kaprodi_m');
+        $this->load->model('kelas_m');
+        $this->load->model('user_m');
+        $this->load->model('pengumuman_m');
     }
     
 	public function index()
@@ -43,7 +46,9 @@ class Dosen extends CI_Controller {
 
 		
 		$data_header['detail_oprec'] =  $this->kaprodi_m->oprec_terpilih($id_oprec)->result_array();
-		$data['list_kelas'] = $this->dosen_m->list_kelas($id_dosen, $id_oprec);
+
+		$data['list_kelas'] = $this->kelas_m->list_kelas($id_dosen, $id_oprec);
+
 		//var_dump($data_header['detail_oprec']);
 		$this->load->view('dosen/header', $data_header);
 		$this->load->view('dosen/memilih_asisten_kelas', $data);
