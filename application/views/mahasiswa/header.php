@@ -32,37 +32,9 @@
           </h1>
           <?php } ?>
           <div class="mdl-layout-spacer"></div>
-          <!-- <span style="font-weight: 400">tata.usaha@its.ac.id</span> -->
-          <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">arrow_drop_down</i>
-          </button> -->
-          <!-- <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">
-              <i class="material-icons v-middle">account_circle</i>
-              <span class="v-middle">Profile</span>
-            </li>
-            <li class="mdl-menu__item">
-              <i class="material-icons v-middle">exit_to_app</i>
-              <span class="v-middle">Logout</span>
-            </li>
-          </ul> -->
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer ">
-        <!-- <header class="demo-drawer-header">
-          <img src="<?php echo base_url();?>assets/images/user.jpg" class="demo-avatar">
-          <div class="demo-avatar-dropdown">
-            <span>ibnu@tu.if.its.ac.id</span>
-            <div class="mdl-layout-spacer"></div>
-            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-              <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">LogOut</span>
-            </button>
-            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Logout</li>
-            </ul>
-          </div>
-        </header> -->
         <nav class="demo-navigation mdl-navigation">
               <a class='mdl-navigation__link <?php if($menus) echo 'active' ?>' href='<?php echo base_url(); ?>index.php/mahasiswa'>
                 <i class=' material-icons' role='presentation'>home</i>Home
@@ -74,6 +46,18 @@
               <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>' href="<?php echo base_url(); ?>index.php/mahasiswa/melihat_pengumuman">
                 <i class=' material-icons' role='presentation'>today</i>Pengumuman
               </a>
+              <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>' href="<?php echo base_url(); ?>index.php/mahasiswa/melihat_pengumuman">
+                <i class=' material-icons' role='presentation'>today</i>Pengumuman
+              </a>
+              <?php 
+              if ( ! $this->session->userdata('logged_in'))
+                { ?>
+
+                <a class='mdl-navigation__link <?php if($pengumuman) echo 'active' ?>' href="<?php echo base_url(); ?>index.php/user/login">
+                  <i class=' material-icons' role='presentation'>today</i>Login
+                </a>
+                    <?php
+                }?>
               <div class="mdl-layout-spacer"></div>
         </nav>
       </div>
